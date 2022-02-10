@@ -8,8 +8,11 @@ public class EdgeDictionaryService {
     public static void main(String[] args) throws Exception {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
             final EdgeDictionariesResult dictionariesResult = lwClient.getEdgeDictionaries();
-            // handle result
+
+            if (dictionariesResult.getDictionaries() != null) {
+                dictionariesResult.getDictionaries()
+                        .forEach(dictionary -> System.out.println(dictionary.getDictionaryId()));
+            }
         }
     }
-
 }

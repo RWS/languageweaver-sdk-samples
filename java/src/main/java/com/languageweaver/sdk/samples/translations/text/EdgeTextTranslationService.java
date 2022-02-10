@@ -13,12 +13,12 @@ public class EdgeTextTranslationService {
                     .setTargetLanguageId("fra")
                     .setModel("generic")
                     .addInput("The weather is wonderful today!")
-                    .addInput("This is a new input that is part of an array translation.")
-                    .setInputFormat("plain")
-                    .addDictionary("e929ec5e-4f9c-43b1-8b1d-e48742f396d0");
+                    .setInputFormat("plain/text")
+                    .addDictionary("DictionaryName1")
+                    .addDictionary("DictionaryName2");
             final EdgeTranslationTextResult translateTextResult = lwClient.translateText(translateTextRequest);
 
-            System.out.println(translateTextResult);
+            System.out.println(translateTextResult.getTranslation());
         }
     }
 }

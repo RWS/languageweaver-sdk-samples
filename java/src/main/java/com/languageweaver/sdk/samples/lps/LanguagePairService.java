@@ -10,7 +10,11 @@ public class LanguagePairService {
     public static void main(String[] args) throws Exception {
         try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(new ClientConfiguration())) {
             final LanguagePairsResult languagePairsResult = lwClient.getLanguagePairs();
-            // handle result
+
+            if (languagePairsResult.getLanguagePairs() != null) {
+                languagePairsResult.getLanguagePairs()
+                        .forEach(languagePair -> System.out.println(languagePair.getName()));
+            }
         }
     }
 }

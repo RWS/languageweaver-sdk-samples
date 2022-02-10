@@ -15,10 +15,11 @@ public class CloudTextTranslationService {
                     .addInput("The weather is wonderful today!")
                     .addInput("This is a new input that is part of an array translation.")
                     .setInputFormat("plain")
-                    .addDictionary("e929ec5e-4f9c-43b1-8b1d-e48742f396d0");
+                    .addDictionary("e929ec5e-4f9c-43b1-8b1d-e48742f396d0")
+                    .addDictionary("0116ba95-8451-4cb2-ab6a-5e94334434d1");
             final CloudTranslationTextResult translateTextResult = lwClient.translateText(translateTextRequest);
 
-            System.out.println(translateTextResult);
+            System.out.println(translateTextResult.getTranslation());
         }
     }
 }

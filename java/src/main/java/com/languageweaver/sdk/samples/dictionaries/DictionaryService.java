@@ -10,7 +10,11 @@ public class DictionaryService {
     public static void main(String[] args) throws Exception {
         try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(new ClientConfiguration())) {
             final DictionariesResult dictionariesResult = lwClient.getDictionaries();
-            // handle result
+
+            if (dictionariesResult.getDictionaries() != null) {
+                dictionariesResult.getDictionaries()
+                        .forEach(dictionary -> System.out.println(dictionary.getId()));
+            }
         }
     }
 }

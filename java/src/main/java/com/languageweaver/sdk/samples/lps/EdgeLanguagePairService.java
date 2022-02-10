@@ -8,7 +8,11 @@ public class EdgeLanguagePairService {
     public static void main(String[] args) throws Exception {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
             final EdgeLanguagePairsResult languagePairsResult = lwClient.getEdgeLanguagePairs();
-            // handle result
+
+            if (languagePairsResult.getLanguagePairs() != null) {
+                languagePairsResult.getLanguagePairs()
+                        .forEach(languagePair -> System.out.println(languagePair.getLanguagePairId()));
+            }
         }
     }
 
