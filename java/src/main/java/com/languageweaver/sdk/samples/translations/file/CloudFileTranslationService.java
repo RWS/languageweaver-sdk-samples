@@ -17,8 +17,8 @@ public class CloudFileTranslationService {
                     .setModel("generic")
                     .setInputFormat("plain")
                     // provide full path to the source file
-                    .setInputFile(Paths.get("src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
-                    .setOutputFile(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
+                    .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
+                    .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
                     .addDictionary("e929ec5e-4f9c-43b1-8b1d-e48742f396d0")
                     .addDictionary("0116ba95-8451-4cb2-ab6a-5e94334434d1");
 

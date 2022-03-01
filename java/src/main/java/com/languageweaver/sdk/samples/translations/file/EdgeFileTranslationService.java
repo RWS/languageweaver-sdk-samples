@@ -16,8 +16,8 @@ public class EdgeFileTranslationService {
                     .setTargetLanguageId("fra")
                     .setModel("generic")
                     // provide full path to the source file
-                    .setInputFile(Paths.get("src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
-                    .setOutputFile(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
+                    .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
+                    .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
                     .setInputFormat("text/plain")
                     .addDictionary("DictionaryName1")
                     .addDictionary("DictionaryName2");

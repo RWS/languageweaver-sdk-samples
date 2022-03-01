@@ -13,10 +13,11 @@ public class EdgeBatchFileTranslationService {
                     .setSourceLanguageId("eng")
                     .setTargetLanguageId("fra")
                     .setModel("generic")
-                    .setInputBatchFolderPath(Paths.get("src", "main", "resources", "input").toFile().getAbsolutePath())
-                    .setOutputBatchFolderPath(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath())
+                    // provide full path to the input and output folders
+                    .setInputBatchFolderPath(Paths.get("java", "src", "main", "resources", "input").toFile().getAbsolutePath())
+                    .setOutputBatchFolderPath(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath())
                     .addDictionary("DictionaryName1")
-                    .addDictionary("DictionaryName2");;
+                    .addDictionary("DictionaryName2");
 
             lwClient.translateBatchFile(translateFileRequest);
         }

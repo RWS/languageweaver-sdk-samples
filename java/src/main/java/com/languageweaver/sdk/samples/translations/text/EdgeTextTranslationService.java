@@ -13,7 +13,7 @@ public class EdgeTextTranslationService {
                     .setTargetLanguageId("fra")
                     .setModel("generic")
                     .addInput("The weather is wonderful today!")
-                    .setInputFormat("plain/text")
+                    .setInputFormat("text/plain")
                     .addDictionary("DictionaryName1")
                     .addDictionary("DictionaryName2");
             final EdgeTranslationTextResult translateTextResult = lwClient.translateText(translateTextRequest);
