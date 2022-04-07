@@ -10,9 +10,7 @@ public class EdgeBatchFileTranslationService {
     public static void main(String[] args) throws Exception {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
             EdgeTranslateBatchFileRequest translateFileRequest = new EdgeTranslateBatchFileRequest()
-                    .setSourceLanguageId("eng")
-                    .setTargetLanguageId("fra")
-                    .setModel("generic")
+                    .setLanguagePairId("EngFra_Generic_SRV_TNMV_8_5_x_1")
                     // provide full path to the input and output folders
                     .setInputBatchFolderPath(Paths.get("java", "src", "main", "resources", "input").toFile().getAbsolutePath())
                     .setOutputBatchFolderPath(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath())

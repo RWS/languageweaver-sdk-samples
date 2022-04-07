@@ -16,8 +16,8 @@ public class TextTranslationService {
                     .setModel("generic")
                     .addInput("The weather is wonderful today!")
                     .setInputFormat("plain")
-                    .addDictionary("e929ec5e-4f9c-43b1-8b1d-e48742f396d0")
-                    .addDictionary("0116ba95-8451-4cb2-ab6a-5e94334434d1");
+                    .addDictionary("689f06cf-36ba-4903-a530-da1f7766f478")
+                    .addDictionary("3d297ee3-0878-4ef7-9ee7-ca14b48e6956");
             final TranslateTextResult translateTextResult = lwClient.translateText(translateTextRequest);
 
             System.out.println(translateTextResult.getTranslation());

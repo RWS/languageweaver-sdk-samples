@@ -9,9 +9,7 @@ public class EdgeTextTranslationService {
     public static void main(String[] args) throws Exception {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
             EdgeTranslateTextRequest translateTextRequest = new EdgeTranslateTextRequest()
-                    .setSourceLanguageId("eng")
-                    .setTargetLanguageId("fra")
-                    .setModel("generic")
+                    .setLanguagePairId("EngFra_Generic_SRV_TNMV_8_5_x_1")
                     .addInput("The weather is wonderful today!")
                     .setInputFormat("text/plain")
                     .addDictionary("DictionaryName1")
