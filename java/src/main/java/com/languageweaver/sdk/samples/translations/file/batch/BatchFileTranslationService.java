@@ -15,8 +15,8 @@ public class BatchFileTranslationService {
                     .setSourceLanguageId("eng")
                     .setTargetLanguageId("fra")
                     .setModel("generic")
-                    .addDictionary("e929ec5e-4f9c-43b1-8b1d-e48742f396d0")
-                    .addDictionary("0116ba95-8451-4cb2-ab6a-5e94334434d1")
+                    .addDictionary("689f06cf-36ba-4903-a530-da1f7766f478")
+                    .addDictionary("3d297ee3-0878-4ef7-9ee7-ca14b48e6956")
                     // provide full path to the input and output folders
                     .setInputBatchFolderPath(Paths.get("java", "src", "main", "resources", "input").toFile().getAbsolutePath())
                     .setOutputBatchFolderPath(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath());
