@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AssemblyName>LanguageWeaver.Sdk.Samples</AssemblyName>
+        <RootNamespace>LanguageWeaver.Sdk.Samples</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="languageweaver.sdk" Version="2.1.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Resources\Output" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="Resources\Input\input1.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+      <None Update="Resources\Input\input2.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
+    <PropertyGroup>
+        <StartupObject>LanguageWeaver.Sdk.Samples.Dictionaries.EdgeDictionaryService</StartupObject>
+    </PropertyGroup>
+
+</Project>
