@@ -14,6 +14,7 @@ public class EdgeBatchFileTranslationService {
                     // provide full path to the input and output folders
                     .setInputBatchFolderPath(Paths.get("java", "src", "main", "resources", "input").toFile().getAbsolutePath())
                     .setOutputBatchFolderPath(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath())
+                    .setPdfConverter("STANDARD")
                     .addDictionary("DictionaryName1")
                     .addDictionary("DictionaryName2");
 

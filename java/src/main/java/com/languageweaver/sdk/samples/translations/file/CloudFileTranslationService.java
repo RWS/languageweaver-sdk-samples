@@ -15,7 +15,8 @@ public class CloudFileTranslationService {
                     .setSourceLanguageId("eng")
                     .setTargetLanguageId("fra")
                     .setModel("generic")
-                    .setInputFormat("plain")
+                    .setInputFormat("pdf")
+                    .setPdfConverter("ABBYY")
                     // provide full path to the source file
                     .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
                     .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")

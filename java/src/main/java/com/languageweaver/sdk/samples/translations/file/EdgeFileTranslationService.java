@@ -16,7 +16,8 @@ public class EdgeFileTranslationService {
                     // provide full path to the source file
                     .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
                     .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
-                    .setInputFormat("text/plain")
+                    .setInputFormat("application/pdf")
+                    .setPdfConverter("SMART_SELECTION")
                     .addDictionary("DictionaryName1")
                     .addDictionary("DictionaryName2");
 
