@@ -14,10 +14,12 @@ public class TextTranslationService {
                     .setSourceLanguageId("eng")
                     .setTargetLanguageId("fra")
                     .setModel("generic")
-                    .addInput("The weather is wonderful today!")
-                    .setInputFormat("plain")
                     // provide list of dictionaries
-                    .addDictionary("dictionaryId or name");
+//                  .addDictionary("689f06cf-36ba-4903-a530-da1f7766f478")
+//                  .addDictionary("3d297ee3-0878-4ef7-9ee7-ca14b48e6956")
+                    .addInput("The weather is wonderful today!")
+                    .setInputFormat("plain");
+
             final TranslateTextResult translateTextResult = lwClient.translateText(translateTextRequest);
 
             System.out.println(translateTextResult.getTranslation());
