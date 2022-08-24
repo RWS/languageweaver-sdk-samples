@@ -1,4 +1,5 @@
 ﻿using LanguageWeaver.Sdk.Translate.Request.Cloud;
+using LanguageWeaver.Sdk.Translate.Result.Cloud;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.Text;
 
@@ -25,7 +26,7 @@ public static class CloudTextTranslationService
             }
         };
 
-        var translateTextResult = lwClient.TranslateText(translateTextRequest);
+        CloudTranslationTextResult translateTextResult = lwClient.TranslateText(translateTextRequest);
         translateTextResult.Translation.ForEach(Console.WriteLine);
     }
 }

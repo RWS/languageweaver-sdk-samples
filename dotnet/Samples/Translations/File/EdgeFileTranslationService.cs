@@ -1,4 +1,5 @@
 ﻿using LanguageWeaver.Sdk.Translate.Request.Edge;
+using LanguageWeaver.Sdk.Translate.Result.Edge;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File;
 
@@ -23,7 +24,7 @@ public class EdgeFileTranslationService
                 "Resources", "Output", "input1-translated.txt")
         };
 
-        var translateFileResult = lwClient.TranslateFile(translateFileRequest);
+        EdgeTranslationFileResult translateFileResult = lwClient.TranslateFile(translateFileRequest);
         // handle result
     }
 }
