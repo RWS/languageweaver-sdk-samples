@@ -1,4 +1,5 @@
 ﻿using LanguageWeaver.Sdk.Translate.Request.Edge;
+using LanguageWeaver.Sdk.Translate.Result.Edge;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.Text;
 
@@ -22,7 +23,7 @@ public static class EdgeTextTranslationService
             }
         };
 
-        var translateTextResult = lwClient.TranslateText(translateTextRequest);
+        EdgeTranslationTextResult translateTextResult = lwClient.TranslateText(translateTextRequest);
         Console.WriteLine(translateTextResult.Translation);
     }
 }
