@@ -1,6 +1,7 @@
 package com.languageweaver.sdk.samples.translations.file;
 
 import com.languageweaver.sdk.LanguageWeaverClient;
+import com.languageweaver.sdk.PdfConverter;
 import com.languageweaver.sdk.SdkFactory;
 import com.languageweaver.sdk.configurations.ClientConfiguration;
 import com.languageweaver.sdk.translate.request.TranslateFileRequest;
@@ -21,9 +22,9 @@ public class FileTranslationService {
                     .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
                     .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
                     .setInputFormat("pdf")
-                    .setPdfConverter("ABBYY")
-                    .addDictionary("689f06cf-36ba-4903-a530-da1f7766f478")
-                    .addDictionary("3d297ee3-0878-4ef7-9ee7-ca14b48e6956");
+                    .setPdfConverter(PdfConverter.ABBYY)
+                    // provide list of dictionaries
+                    .addDictionary("dictionaryId or name");
 
             final TranslationFileResult translateFile = lwClient.translateFile(translateFileRequest);
             // handle result if outputFile not specified

@@ -1,6 +1,7 @@
 package com.languageweaver.sdk.samples.translations.file.batch;
 
 import com.languageweaver.sdk.EdgeLanguageWeaverClient;
+import com.languageweaver.sdk.PdfConverter;
 import com.languageweaver.sdk.translate.request.edge.EdgeTranslateBatchFileRequest;
 
 import java.nio.file.Paths;
@@ -14,7 +15,7 @@ public class EdgeBatchFileTranslationService {
                     // provide full path to the input and output folders
                     .setInputBatchFolderPath(Paths.get("java", "src", "main", "resources", "input").toFile().getAbsolutePath())
                     .setOutputBatchFolderPath(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath())
-                    .setPdfConverter("STANDARD")
+                    .setPdfConverter(PdfConverter.STANDARD)
                     .addDictionary("DictionaryName1")
                     .addDictionary("DictionaryName2");
 

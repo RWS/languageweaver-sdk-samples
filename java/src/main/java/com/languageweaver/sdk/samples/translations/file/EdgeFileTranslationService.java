@@ -1,6 +1,7 @@
 package com.languageweaver.sdk.samples.translations.file;
 
 import com.languageweaver.sdk.EdgeLanguageWeaverClient;
+import com.languageweaver.sdk.PdfConverter;
 import com.languageweaver.sdk.translate.request.edge.EdgeTranslateFileRequest;
 import com.languageweaver.sdk.translate.result.edge.EdgeTranslationFileResult;
 
@@ -17,7 +18,7 @@ public class EdgeFileTranslationService {
                     .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
                     .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
                     .setInputFormat("application/pdf")
-                    .setPdfConverter("SMART_SELECTION")
+                    .setPdfConverter(PdfConverter.ABBYY)
                     .addDictionary("DictionaryName1")
                     .addDictionary("DictionaryName2");
 

@@ -1,6 +1,7 @@
 package com.languageweaver.sdk.samples.translations.file;
 
 import com.languageweaver.sdk.CloudLanguageWeaverClient;
+import com.languageweaver.sdk.PdfConverter;
 import com.languageweaver.sdk.translate.request.cloud.CloudTranslateFileRequest;
 import com.languageweaver.sdk.translate.result.cloud.CloudTranslationFileResult;
 
@@ -16,7 +17,7 @@ public class CloudFileTranslationService {
                     .setTargetLanguageId("fra")
                     .setModel("generic")
                     .setInputFormat("pdf")
-                    .setPdfConverter("ABBYY")
+                    .setPdfConverter(PdfConverter.STANDARD)
                     // provide full path to the source file
                     .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
                     .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
