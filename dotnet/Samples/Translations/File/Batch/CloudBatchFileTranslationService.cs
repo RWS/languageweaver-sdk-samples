@@ -1,4 +1,5 @@
-﻿using LanguageWeaver.Sdk.Translate.Request.Cloud;
+﻿using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Request.Cloud;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File.Batch;
 
@@ -12,6 +13,7 @@ public class CloudBatchFileTranslationService
             SourceLanguageId = "eng",
             TargetLanguageId = "fra",
             Model = "generic",
+            PdfConverter = PdfConverter.STANDARD,
             Dictionaries = new List<string>
             {
                 "689f06cf-36ba-4903-a530-da1f7766f478",

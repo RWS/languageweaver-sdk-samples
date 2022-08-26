@@ -1,4 +1,6 @@
-﻿using LanguageWeaver.Sdk.Translate.Request.Edge;
+﻿using LanguageWeaver.Sdk.Configurations;
+using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Request.Edge;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File.Batch;
 
@@ -10,6 +12,7 @@ public class EdgeBatchFileTranslationService
         var translateBatchFileRequest = new EdgeTranslateBatchFileRequest
         {
             LanguagePairId = "EngFra_Generic_SRV_TNMV_8_5_x_1",
+            PdfConverter = PdfConverter.STANDARD,
             Dictionaries = new List<string>
             {
                 "DictionaryName1",

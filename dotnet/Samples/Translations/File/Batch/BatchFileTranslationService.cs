@@ -1,4 +1,5 @@
 ﻿using LanguageWeaver.Sdk.Configurations;
+using LanguageWeaver.Sdk.Constants;
 using LanguageWeaver.Sdk.Translate.Request;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File.Batch;
@@ -13,6 +14,7 @@ public class BatchFileTranslationService
             SourceLanguageId = "eng",
             TargetLanguageId = "fra",
             Model = "generic",
+            PdfConverter = PdfConverter.ABBYY,
             Dictionaries = new List<string>
             {
                 // provide list of dictionaries

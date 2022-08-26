@@ -1,4 +1,5 @@
-﻿using LanguageWeaver.Sdk.Translate.Request.Edge;
+﻿using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Request.Edge;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File;
 
@@ -10,7 +11,8 @@ public class EdgeFileTranslationService
         var translateFileRequest = new EdgeTranslateFileRequest
         {
             LanguagePairId = "EngFra_Generic_SRV_TNMV_8_5_x_1",
-            InputFormat = "text/plain",
+            InputFormat = "application/pdf",
+            PdfConverter = PdfConverter.STANDARD,
             Dictionaries = new List<string>
             {
                 "DictionaryName1",
@@ -18,9 +20,9 @@ public class EdgeFileTranslationService
             },
             // provide full path to the source and output file
             InputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
-                "Resources", "Input", "input1.txt"),
+                "Resources", "Input", "input.pdf"),
             OutputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
-                "Resources", "Output", "input1-translated.txt")
+                "Resources", "Output", "input-translated.docx")
         };
 
         var translateFileResult = lwClient.TranslateFile(translateFileRequest);

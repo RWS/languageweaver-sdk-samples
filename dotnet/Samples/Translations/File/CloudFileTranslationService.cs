@@ -1,4 +1,5 @@
-﻿using LanguageWeaver.Sdk.Translate.Request.Cloud;
+﻿using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Request.Cloud;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File;
 
@@ -12,7 +13,8 @@ public class CloudFileTranslationService
             SourceLanguageId = "eng",
             TargetLanguageId = "fra",
             Model = "generic",
-            InputFormat = "plain",
+            InputFormat = "pdf",
+            PdfConverter = PdfConverter.ABBYY,
             Dictionaries = new List<string>
             {
                 "689f06cf-36ba-4903-a530-da1f7766f478",
@@ -20,12 +22,12 @@ public class CloudFileTranslationService
             },
             // provide full path to the source and output file
             InputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
-                "Resources", "Input", "input1.txt"),
+                "Resources", "Input", "input.pdf"),
             OutputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
-                "Resources", "Output", "input1-translated.txt")
+                "Resources", "Output", "input-translated.docx")
         };
 
         var translateFileResult = lwClient.TranslateFile(translateFileRequest);
-        // handle result
     }
+    // handle result
 }
