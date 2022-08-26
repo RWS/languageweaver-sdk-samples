@@ -1,5 +1,6 @@
 ﻿using LanguageWeaver.Sdk.Configurations;
 using LanguageWeaver.Sdk.Translate.Request;
+using LanguageWeaver.Sdk.Translate.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.Text;
 
@@ -24,7 +25,7 @@ public class TextTranslationService
             }
         };
 
-        var translateTextResult = lwClient.TranslateText(translateTextRequest);
+        TranslateTextResult translateTextResult = lwClient.TranslateText(translateTextRequest);
         Console.WriteLine(translateTextResult.Translation);
     }
 }

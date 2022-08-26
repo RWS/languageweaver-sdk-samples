@@ -1,5 +1,6 @@
-﻿using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Constants;
 using LanguageWeaver.Sdk.Translate.Request.Edge;
+using LanguageWeaver.Sdk.Translate.Result.Edge;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File;
 
@@ -25,7 +26,7 @@ public class EdgeFileTranslationService
                 "Resources", "Output", "input-translated.docx")
         };
 
-        var translateFileResult = lwClient.TranslateFile(translateFileRequest);
+        EdgeTranslationFileResult translateFileResult = lwClient.TranslateFile(translateFileRequest);
         // handle result
     }
 }

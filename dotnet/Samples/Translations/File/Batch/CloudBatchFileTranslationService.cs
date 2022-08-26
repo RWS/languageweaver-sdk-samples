@@ -1,5 +1,6 @@
-﻿using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Constants;
 using LanguageWeaver.Sdk.Translate.Request.Cloud;
+using LanguageWeaver.Sdk.Translate.Result.Cloud;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File.Batch;
 
@@ -26,6 +27,6 @@ public class CloudBatchFileTranslationService
                     "Resources", "Output")
         };
 
-        lwClient.TranslateBatchFile(translateBatchFileRequest);
+        CloudTranslationBatchFileResult cloudTranslationBatchFileResult = lwClient.TranslateBatchFile(translateBatchFileRequest);
     }
 }

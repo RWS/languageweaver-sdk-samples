@@ -1,5 +1,6 @@
-﻿using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Constants;
 using LanguageWeaver.Sdk.Translate.Request.Cloud;
+using LanguageWeaver.Sdk.Translate.Result.Cloud;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File;
 
@@ -27,7 +28,8 @@ public class CloudFileTranslationService
                 "Resources", "Output", "input-translated.docx")
         };
 
-        var translateFileResult = lwClient.TranslateFile(translateFileRequest);
+
+        CloudTranslationFileResult translateFileResult = lwClient.TranslateFile(translateFileRequest);
+        // handle result
     }
-    // handle result
 }
