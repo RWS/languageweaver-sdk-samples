@@ -1,8 +1,8 @@
 package com.languageweaver.sdk.samples.translations.file;
 
-import com.languageweaver.sdk.CloudLanguageWeaverClient;
-import com.languageweaver.sdk.translate.request.cloud.CloudTranslateFileRequest;
-import com.languageweaver.sdk.translate.result.cloud.CloudTranslationFileResult;
+import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
+import com.languageweaver.sdk.feedback.cloud.result.CloudTranslationFileResult;
+import com.languageweaver.sdk.translate.cloud.request.CloudTranslateFileRequest;
 
 import java.io.File;
 import java.nio.file.Paths;
