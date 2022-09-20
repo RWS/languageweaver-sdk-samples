@@ -1,7 +1,7 @@
 package com.languageweaver.sdk.samples.dictionaries;
 
-import com.languageweaver.sdk.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.translate.result.edge.EdgeDictionariesResult;
+import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
+import com.languageweaver.sdk.translate.edge.result.EdgeDictionariesResult;
 
 public class EdgeDictionaryService {
 

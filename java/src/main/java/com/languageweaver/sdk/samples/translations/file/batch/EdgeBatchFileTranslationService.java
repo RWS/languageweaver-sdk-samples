@@ -1,7 +1,7 @@
 package com.languageweaver.sdk.samples.translations.file.batch;
 
-import com.languageweaver.sdk.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.translate.request.edge.EdgeTranslateBatchFileRequest;
+import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
+import com.languageweaver.sdk.translate.edge.request.EdgeTranslateBatchFileRequest;
 
 import java.nio.file.Paths;
 
