@@ -1,8 +1,8 @@
 package com.languageweaver.sdk.samples.translations.text;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
-import com.languageweaver.sdk.feedback.cloud.result.CloudTranslationTextResult;
 import com.languageweaver.sdk.translate.cloud.request.CloudTranslateTextRequest;
+import com.languageweaver.sdk.translate.cloud.result.CloudTranslationTextResult;
 
 public class CloudTextTranslationService {
 

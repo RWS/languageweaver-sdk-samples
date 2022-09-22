@@ -1,7 +1,7 @@
 package com.languageweaver.sdk.samples.dictionaries;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
-import com.languageweaver.sdk.feedback.cloud.result.CloudDictionariesResult;
+import com.languageweaver.sdk.translate.cloud.result.CloudDictionariesResult;
 
 public class CloudDictionaryService {
 
