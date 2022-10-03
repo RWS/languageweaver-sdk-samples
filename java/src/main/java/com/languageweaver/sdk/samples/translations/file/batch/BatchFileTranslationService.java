@@ -1,9 +1,10 @@
 package com.languageweaver.sdk.samples.translations.file.batch;
 
-import com.languageweaver.sdk.LanguageWeaverClient;
-import com.languageweaver.sdk.SdkFactory;
-import com.languageweaver.sdk.configurations.ClientConfiguration;
-import com.languageweaver.sdk.translate.request.TranslateBatchFileRequest;
+import com.languageweaver.sdk.common.LanguageWeaverClient;
+import com.languageweaver.sdk.common.SdkFactory;
+import com.languageweaver.sdk.common.configurations.ClientConfiguration;
+import com.languageweaver.sdk.common.constants.PdfConverter;
+import com.languageweaver.sdk.translate.common.request.TranslateBatchFileRequest;
 
 import java.nio.file.Paths;
 
@@ -15,6 +16,7 @@ public class BatchFileTranslationService {
                     .setSourceLanguageId("eng")
                     .setTargetLanguageId("fra")
                     .setModel("generic")
+                    .setPdfConverter(PdfConverter.STANDARD)
                     // provide list of dictionaries
                     .addDictionary("dictionaryId or name")
                     // provide full path to the input and output folders
