@@ -1,0 +1,73 @@
+.app {
+    padding: 20px;
+    color: #5d6e7f;
+}
+
+.api-credentials-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.api-credentials-inputs {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.api-credentials-input-wrapper {
+    margin: 0 5px;
+    width: 50%;
+    display: flex;
+}
+
+.api-credentials-input {
+    margin-left: 5px;
+    flex: 1;
+}
+
+.sample-categories-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.sample-categories {
+    margin-top: 20px;
+}
+
+.sample-category {
+    padding: 10px;
+    border: 1px solid #e1e7eb;
+    margin: 5px 0;
+}
+
+.sample-category-title {
+    border-bottom: 1px dashed #e1e7eb;
+}
+
+.sample-category-items {
+    margin: 10px 0 0 10px;
+}
+
+.sample-category-item {
+    margin: 10px 0;
+}
+
+.sample-category-item-title {
+    background-color: #e1e7eb;
+    border: 1px solid #e1e7eb;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 1.5;
+    border-radius: 4px;
+}
+
+.sample-category-item-title:hover {
+    background-color: #b4b9bc;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
