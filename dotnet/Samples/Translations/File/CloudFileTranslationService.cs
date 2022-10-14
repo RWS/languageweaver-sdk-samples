@@ -1,4 +1,5 @@
-﻿using LanguageWeaver.Sdk.Translate.Request.Cloud;
+﻿using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Request.Cloud;
 using LanguageWeaver.Sdk.Translate.Result.Cloud;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File;
@@ -13,7 +14,7 @@ public class CloudFileTranslationService
             SourceLanguageId = "eng",
             TargetLanguageId = "fra",
             Model = "generic",
-            InputFormat = "plain",
+            InputFormat = InputFormat.Plain,
             Dictionaries = new List<string>
             {
                 "689f06cf-36ba-4903-a530-da1f7766f478",

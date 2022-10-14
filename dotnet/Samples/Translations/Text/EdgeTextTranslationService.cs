@@ -1,4 +1,5 @@
-﻿using LanguageWeaver.Sdk.Translate.Request.Edge;
+﻿using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Request.Edge;
 using LanguageWeaver.Sdk.Translate.Result.Edge;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.Text;
@@ -15,7 +16,7 @@ public static class EdgeTextTranslationService
             {
                 "The weather is wonderful today!"
             },
-            InputFormat = "text/plain",
+            InputFormat = InputFormat.Plain,
             Dictionaries = new List<string>
             {
                 "DictionaryName1",

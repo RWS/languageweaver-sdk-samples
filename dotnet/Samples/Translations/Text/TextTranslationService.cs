@@ -1,4 +1,5 @@
 ﻿using LanguageWeaver.Sdk.Configurations;
+using LanguageWeaver.Sdk.Constants;
 using LanguageWeaver.Sdk.Translate.Request;
 using LanguageWeaver.Sdk.Translate.Result;
 
@@ -18,7 +19,7 @@ public class TextTranslationService
             {
                 "The weather is wonderful today!"
             },
-            InputFormat = "plain",
+            InputFormat = InputFormat.Plain,
             Dictionaries = new List<string>
             {
                 // provide list of dictionaries
