@@ -13,6 +13,21 @@ import {getEdgeLanguagePairs} from "./samples/lps/EdgeLanguagePairService";
 import {getDictionaries} from "./samples/dictionaries/DictionaryService";
 import {getCloudDictionaries} from "./samples/dictionaries/CloudDictionaryService";
 import {getEdgeDictionaries} from "./samples/dictionaries/EdgeDictionaryService";
+import {getFeedback} from "./samples/feedback/read/FeedbackReadService";
+import {getCloudFeedback} from "./samples/feedback/read/CloudFeedbackReadService";
+import {getEdgeFeedback} from "./samples/feedback/read/EdgeFeedbackReadService";
+import {createFeedback} from "./samples/feedback/create/FeedbackCreateService";
+import {createCloudFeedback} from "./samples/feedback/create/CloudFeedbackCreateService";
+import {createEdgeFeedback} from "./samples/feedback/create/EdgeFeedbackCreateService";
+import {updateFeedback} from "./samples/feedback/update/FeedbackUpdateService";
+import {updateCloudFeedback} from "./samples/feedback/update/CloudFeedbackUpdateService";
+import {updateEdgeFeedback} from "./samples/feedback/update/EdgeFeedbackUpdateService";
+import {updateFeedbackApproval} from "./samples/feedback/update/approvalStatus/FeedbackApprovalUpdateService";
+import {updateCloudFeedbackApproval} from "./samples/feedback/update/approvalStatus/CloudFeedbackApprovalUpdateService";
+import {updateEdgeFeedbackApproval} from "./samples/feedback/update/approvalStatus/EdgeFeedbackApprovalUpdateService";
+import {deleteFeedback} from "./samples/feedback/delete/FeedbackDeleteService";
+import {deleteCloudFeedback} from "./samples/feedback/delete/CloudFeedbackDeleteService";
+import {deleteEdgeFeedback} from "./samples/feedback/delete/EdgeFeedbackDeleteService";
 
 const textTranslationItems = [
     {
@@ -104,6 +119,96 @@ const dictionariesItems = [
     }
 ];
 
+const readFeedbackItems = [
+    {
+        id: "feedback-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => getFeedback(clientId, clientSecret)
+    },
+    {
+        id: "feedback-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => getCloudFeedback(clientId, clientSecret)
+    },
+    {
+        id: "feedback-edge",
+        title: "Edge",
+        onClick: clientId => getEdgeFeedback(clientId)
+    }
+];
+
+const createFeedbackItems = [
+    {
+        id: "create-feedback-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => createFeedback(clientId, clientSecret)
+    },
+    {
+        id: "create-feedback-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => createCloudFeedback(clientId, clientSecret)
+    },
+    {
+        id: "create-feedback-edge",
+        title: "Edge",
+        onClick: clientId => createEdgeFeedback(clientId)
+    }
+];
+
+const updateFeedbackItems = [
+    {
+        id: "update-feedback-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => updateFeedback(clientId, clientSecret)
+    },
+    {
+        id: "update-feedback-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => updateCloudFeedback(clientId, clientSecret)
+    },
+    {
+        id: "update-feedback-edge",
+        title: "Edge",
+        onClick: clientId => updateEdgeFeedback(clientId)
+    }
+];
+
+const updateFeedbackApprovalItems = [
+    {
+        id: "update-feedback-approval-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => updateFeedbackApproval(clientId, clientSecret)
+    },
+    {
+        id: "update-feedback-approval-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => updateCloudFeedbackApproval(clientId, clientSecret)
+    },
+    {
+        id: "update-feedback-approval-edge",
+        title: "Edge",
+        onClick: clientId => updateEdgeFeedbackApproval(clientId)
+    }
+];
+
+const deleteFeedbackItems = [
+    {
+        id: "delete-feedback-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => deleteFeedback(clientId, clientSecret)
+    },
+    {
+        id: "delete-feedback-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => deleteCloudFeedback(clientId, clientSecret)
+    },
+    {
+        id: "delete-feedback-edge",
+        title: "Edge",
+        onClick: clientId => deleteEdgeFeedback(clientId)
+    }
+];
+
 export const samplesConfig = [
     {
         id: "text-translation",
@@ -129,7 +234,32 @@ export const samplesConfig = [
         id: "dictionaries",
         title: "Dictionaries",
         items: dictionariesItems
-    }
+    },
+    {
+        id: "feedback",
+        title: "Feedback - Read",
+        items: readFeedbackItems
+    },
+    {
+        id: "create-feedback",
+        title: "Feedback - Create",
+        items: createFeedbackItems
+    },
+    {
+        id: "update-feedback",
+        title: "Feedback - Update",
+        items: updateFeedbackItems
+    },
+    {
+        id: "update-feedback-approval",
+        title: "Feedback Approval Status - Update",
+        items: updateFeedbackApprovalItems
+    },
+    {
+        id: "delete-feedback",
+        title: "Feedback - Delete",
+        items: deleteFeedbackItems
+    },
 ];
 
 const blob1 = new Blob(["The weather is wonderful today!"]);
