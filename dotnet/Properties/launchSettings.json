@@ -1,0 +1,14 @@
+﻿{
+  "$schema": "http://json.schemastore.org/launchsettings.json",
+  "profiles": {
+    "dotnet": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "LW_CLIENT_ID": "your-client-id",
+        "LW_CLIENT_SECRET": "your-client-secret",
+        "LW_EDGE_OVERWRITE_URL": "your-edge-overwrite-url",
+        "LW_PRODUCT" : "CLOUD"
+      }
+    }
+  }
+}

@@ -1,10 +1,10 @@
 package com.languageweaver.sdk.samples.translations.file;
 
-import com.languageweaver.sdk.LanguageWeaverClient;
-import com.languageweaver.sdk.SdkFactory;
-import com.languageweaver.sdk.configurations.ClientConfiguration;
-import com.languageweaver.sdk.translate.request.TranslateFileRequest;
-import com.languageweaver.sdk.translate.result.TranslationFileResult;
+import com.languageweaver.sdk.common.LanguageWeaverClient;
+import com.languageweaver.sdk.common.SdkFactory;
+import com.languageweaver.sdk.common.configurations.ClientConfiguration;
+import com.languageweaver.sdk.translate.common.request.TranslateFileRequest;
+import com.languageweaver.sdk.translate.common.result.TranslationFileResult;
 
 import java.io.File;
 import java.nio.file.Paths;
