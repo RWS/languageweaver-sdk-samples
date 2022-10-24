@@ -6,7 +6,6 @@ import {
 } from "@language-weaver/lw-sdk-js";
 import {file1} from "../../../samples-utils";
 
-
 export const translateFileUsingCloud = async (clientId, clientSecret) => {
     try {
         const clientConfiguration = new ClientConfiguration();
