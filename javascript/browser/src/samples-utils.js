@@ -10,9 +10,15 @@ import {
     translateFileUsingCloud,
     translatePdfFileUsingCloud
 } from "./samples/translations/file/CloudFileTranslationService";
-import {translateBatchFileUsingEdge} from "./samples/translations/file/batch/EdgeBatchFileTranslationService";
-import {translateBatchFileUsingCloud} from "./samples/translations/file/batch/CloudBatchFileTranslationService";
-import {translateBatchFile} from "./samples/translations/file/batch/BatchFileTranslationService";
+import {
+    translateBatchFileUsingEdge,
+    translatePdfBatchFileUsingEdge
+} from "./samples/translations/file/batch/EdgeBatchFileTranslationService";
+import {
+    translateBatchFileUsingCloud,
+    translatePdfBatchFileUsingCloud
+} from "./samples/translations/file/batch/CloudBatchFileTranslationService";
+import {translateBatchFile, translatePdfBatchFile} from "./samples/translations/file/batch/BatchFileTranslationService";
 import {getLanguagePairs} from "./samples/lps/LanguagePairService";
 import {getCloudLanguagePairs} from "./samples/lps/CloudLanguagePairService";
 import {getEdgeLanguagePairs} from "./samples/lps/EdgeLanguagePairService";
@@ -105,6 +111,24 @@ const batchFileTranslationItems = [
         id: "batch-file-translation-edge",
         title: "Edge",
         onClick: clientId => translateBatchFileUsingEdge(clientId)
+    }
+];
+
+const pdfBatchFileTranslationItems = [
+    {
+        id: "pdf-batch-file-translation-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => translatePdfBatchFile(clientId, clientSecret)
+    },
+    {
+        id: "pdf-batch-file-translation-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => translatePdfBatchFileUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "pdf-batch-file-translation-edge",
+        title: "Edge",
+        onClick: clientId => translatePdfBatchFileUsingEdge(clientId)
     }
 ];
 
@@ -256,6 +280,11 @@ export const samplesConfig = [
         items: batchFileTranslationItems
     },
     {
+        id: "pdf-batch-file-translation",
+        title: "PDF - Batch File Translation",
+        items: pdfBatchFileTranslationItems
+    },
+    {
         id: "language-pairs",
         title: "Language Pairs",
         items: languagePairsItems
@@ -301,6 +330,10 @@ export const file2 = new File([blob2], "input2.txt", {
     type: "text/plain"
 });
 
-const pdf = new jsPDF();
-pdf.text("The weather is wonderful today!", 10, 10);
-export const file3 = new File([pdf.output("blob")], "input3.pdf");
+const pdf1 = new jsPDF();
+pdf1.text("The weather is wonderful today!", 10, 10);
+export const file3 = new File([pdf1.output("blob")], "input3.pdf");
+
+const pdf2 = new jsPDF();
+pdf2.text("This is a new input that is part of an array translation.", 10, 10);
+export const file4 = new File([pdf2.output("blob")], "input4.pdf");

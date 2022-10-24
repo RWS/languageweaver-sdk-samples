@@ -2,10 +2,11 @@ import {
     ClientConfiguration,
     CloudLanguageWeaverClient,
     CloudTranslateFileRequest,
-    CredentialsConfiguration, Format
+    CredentialsConfiguration,
+    Format,
+    PdfConverter
 } from "@language-weaver/lw-sdk-js";
 import {file1, file3} from "../../../samples-utils";
-import {PdfConverter} from "@language-weaver/lw-sdk-js/lib/common/constants/PdfConverter";
 
 
 export const translateFileUsingCloud = async (clientId, clientSecret) => {

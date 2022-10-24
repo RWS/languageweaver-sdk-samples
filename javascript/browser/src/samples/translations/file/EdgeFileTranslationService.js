@@ -2,10 +2,11 @@ import {
     ClientConfiguration,
     CredentialsConfiguration,
     EdgeLanguageWeaverClient,
-    EdgeTranslateFileRequest, Format
+    EdgeTranslateFileRequest,
+    Format,
+    PdfConverter
 } from "@language-weaver/lw-sdk-js";
 import {file1, file3} from "../../../samples-utils";
-import {PdfConverter} from "@language-weaver/lw-sdk-js/lib/common/constants/PdfConverter";
 
 export const translateFileUsingEdge = async clientId => {
     try {
