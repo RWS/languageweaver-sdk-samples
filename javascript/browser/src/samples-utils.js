@@ -1,9 +1,15 @@
 import {translateText} from "./samples/translations/text/TextTranslationService";
 import {translateTextUsingEdge} from "./samples/translations/text/EdgeTextTranslationService";
 import {translateTextUsingCloud} from "./samples/translations/text/CloudTextTranslationService";
-import {translateFile} from "./samples/translations/file/FileTranslationService";
-import {translateFileUsingEdge} from "./samples/translations/file/EdgeFileTranslationService";
-import {translateFileUsingCloud} from "./samples/translations/file/CloudFileTranslationService";
+import {translateFile, translatePdfFile} from "./samples/translations/file/FileTranslationService";
+import {
+    translateFileUsingEdge,
+    translatePdfFileUsingEdge
+} from "./samples/translations/file/EdgeFileTranslationService";
+import {
+    translateFileUsingCloud,
+    translatePdfFileUsingCloud
+} from "./samples/translations/file/CloudFileTranslationService";
 import {translateBatchFileUsingEdge} from "./samples/translations/file/batch/EdgeBatchFileTranslationService";
 import {translateBatchFileUsingCloud} from "./samples/translations/file/batch/CloudBatchFileTranslationService";
 import {translateBatchFile} from "./samples/translations/file/batch/BatchFileTranslationService";
@@ -28,6 +34,7 @@ import {updateEdgeFeedbackApproval} from "./samples/feedback/update/approvalStat
 import {deleteFeedback} from "./samples/feedback/delete/FeedbackDeleteService";
 import {deleteCloudFeedback} from "./samples/feedback/delete/CloudFeedbackDeleteService";
 import {deleteEdgeFeedback} from "./samples/feedback/delete/EdgeFeedbackDeleteService";
+import jsPDF from "jspdf";
 
 const textTranslationItems = [
     {
@@ -62,6 +69,24 @@ const fileTranslationItems = [
         id: "file-translation-edge",
         title: "Edge",
         onClick: clientId => translateFileUsingEdge(clientId)
+    }
+];
+
+const pdfFileTranslationItems = [
+    {
+        id: "pdf-file-translation-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => translatePdfFile(clientId, clientSecret)
+    },
+    {
+        id: "pdf-file-translation-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => translatePdfFileUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "pdf-file-translation-edge",
+        title: "Edge",
+        onClick: clientId => translatePdfFileUsingEdge(clientId)
     }
 ];
 
@@ -221,6 +246,11 @@ export const samplesConfig = [
         items: fileTranslationItems
     },
     {
+        id: "pdf-file-translation",
+        title: "PDF - File Translation",
+        items: pdfFileTranslationItems
+    },
+    {
         id: "batch-file-translation",
         title: "Batch File Translation",
         items: batchFileTranslationItems
@@ -270,3 +300,7 @@ const blob2 = new Blob(["This is a new input that is part of an array translatio
 export const file2 = new File([blob2], "input2.txt", {
     type: "text/plain"
 });
+
+const pdf = new jsPDF();
+pdf.text("The weather is wonderful today!", 10, 10);
+export const file3 = new File([pdf.output("blob")], "input3.pdf");

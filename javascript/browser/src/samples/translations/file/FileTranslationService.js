@@ -4,7 +4,8 @@ import SdkFactory, {
     Format,
     TranslateFileRequest
 } from "@language-weaver/lw-sdk-js";
-import {file1} from "../../../samples-utils";
+import {file1, file3} from "../../../samples-utils";
+import {PdfConverter} from "@language-weaver/lw-sdk-js/lib/common/constants/PdfConverter";
 
 export const translateFile = async (clientId, clientSecret) => {
     try {
@@ -21,6 +22,26 @@ export const translateFile = async (clientId, clientSecret) => {
         translateFileRequest.inputFormat = Format.PLAIN;
         // provide a File object
         translateFileRequest.input = file1;
+        const translateFileResult = await lwClient.translateFile(translateFileRequest);
+        console.log(translateFileResult.fileContent);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export const translatePdfFile = async (clientId, clientSecret) => {
+    try {
+        const clientConfiguration = new ClientConfiguration();
+        clientConfiguration.credentialsConfiguration = new CredentialsConfiguration(clientId, clientSecret);
+        const lwClient = await SdkFactory.getLanguageWeaverClient(clientConfiguration);
+        const translateFileRequest = new TranslateFileRequest();
+        translateFileRequest.sourceLanguageId = "eng";
+        translateFileRequest.targetLanguageId = "fra";
+        translateFileRequest.model = "generic";
+        translateFileRequest.inputFormat = Format.PDF;
+        translateFileRequest.pdfConverter = PdfConverter.STANDARD;
+        translateFileRequest.input = file3;
+
         const translateFileResult = await lwClient.translateFile(translateFileRequest);
         console.log(translateFileResult.fileContent);
     } catch (e) {
