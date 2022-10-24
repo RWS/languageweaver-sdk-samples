@@ -1,5 +1,5 @@
 const path = require("path");
-const {EdgeLanguageWeaverClient, Format, EdgeTranslateFileRequest} = require("@language-weaver/lw-sdk-js");
+const {EdgeLanguageWeaverClient, Format, EdgeTranslateFileRequest, PdfConverter} = require("@language-weaver/lw-sdk-js");
 
 const translateFile = async () => {
     try {
@@ -21,4 +21,22 @@ const translateFile = async () => {
     }
 }
 
+const translatePdfFile = async () => {
+    try {
+        const edgeLanguageWeaverClient = await new EdgeLanguageWeaverClient().build();
+        const translateFileRequest = new EdgeTranslateFileRequest();
+        translateFileRequest.languagePairId = "EngFra_Generic_SRV_TNMV_8_5_x_1";
+        translateFileRequest.input = path.resolve("resources/input_pdf/input1.pdf");
+        // provide full path to the target directory
+        translateFileRequest.outputDir = path.resolve("resources/output");
+        translateFileRequest.outputFile = "input1-translated.docx";
+        translateFileRequest.inputFormat = Format.PDF;
+        translateFileRequest.pdfConverter = PdfConverter.STANDARD;
+        await edgeLanguageWeaverClient.translateFileUsingEdgeParams(translateFileRequest);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 translateFile();
+// translatePdfFile();
