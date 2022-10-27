@@ -1,5 +1,6 @@
 ﻿using LanguageWeaver.Sdk.Configurations;
 using LanguageWeaver.Sdk.Translate.Request;
+using LanguageWeaver.Sdk.Translate.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File;
 
@@ -25,7 +26,7 @@ public class FileTranslationService
                            "Resources", "Output", "input1-translated.txt")
         };
 
-        var translateFileResult = lwClient.TranslateFile(translateFileRequest);
+        TranslationFileResult translateFileResult = lwClient.TranslateFile(translateFileRequest);
         // handle result
     }
 }
