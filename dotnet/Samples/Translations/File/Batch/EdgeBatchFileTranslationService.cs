@@ -1,4 +1,5 @@
-﻿using LanguageWeaver.Sdk.Translate.Request.Edge;
+﻿using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Request.Edge;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File.Batch;
 
@@ -10,15 +11,18 @@ public class EdgeBatchFileTranslationService
         var translateBatchFileRequest = new EdgeTranslateBatchFileRequest
         {
             LanguagePairId = "EngFra_Generic_SRV_TNMV_8_5_x_1",
+            PdfConverter = PdfConverter.ABBYY,
             Dictionaries = new List<string>
             {
                 "DictionaryName1",
                 "DictionaryName2"
             },
             // provide full path to the input and output folders
-            InputBatchFolderPath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, 
+            InputBatchFolderPath = Path.Combine(
+                Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
                 "Resources", "Input"),
-            OutputBatchFolderPath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName, 
+            OutputBatchFolderPath = Path.Combine(
+                Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
                 "Resources", "Output")
         };
 

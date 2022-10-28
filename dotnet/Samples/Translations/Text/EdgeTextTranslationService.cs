@@ -16,7 +16,7 @@ public static class EdgeTextTranslationService
             {
                 "The weather is wonderful today!"
             },
-            InputFormat = InputFormat.Plain,
+            InputFormat = Format.Plain,
             Dictionaries = new List<string>
             {
                 "DictionaryName1",
