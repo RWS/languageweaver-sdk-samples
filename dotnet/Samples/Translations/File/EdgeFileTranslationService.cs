@@ -20,6 +20,11 @@ public class EdgeFileTranslationService
         {
             LanguagePairId = "EngFra_Generic_SRV_TNMV_8_5_x_1",
             InputFormat = Format.Plain,
+            Dictionaries = new List<string>
+            {
+                "DictionaryName1",
+                "DictionaryName2"
+            },
             // provide full path to the source and output file
             InputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
                 "Resources", "Input", "input1.txt"),
@@ -38,6 +43,11 @@ public class EdgeFileTranslationService
             LanguagePairId = "EngFra_Generic_SRV_TNMV_8_5_x_1",
             InputFormat = Format.Pdf,
             PdfConverter = PdfConverter.STANDARD,
+            Dictionaries = new List<string>
+            {
+                "DictionaryName1",
+                "DictionaryName2"
+            },
             // provide full path to the source and output file
             InputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
                 "Resources", "Input", "input1.pdf"),
