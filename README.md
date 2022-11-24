@@ -16,7 +16,8 @@ LW_CLIENT_SECRET=your-client-secret
 ```
 The credentials can also be defined directly in the command line.
 ```
-LW_CLIENT_ID=your-client-id LW_CLIENT_SECRET=your-client-secret node path_to_sample
+LW_CLIENT_ID=your-client-id LW_CLIENT_SECRET=your-client-secret node path_to_sample // MacOS and Linux
+set LW_CLIENT_ID=your-client-id&& set LW_CLIENT_SECRET=your-client-secret&& node path_to_sample // Windows
 ```
 ### Running the Node.JS samples
 Run the following command:

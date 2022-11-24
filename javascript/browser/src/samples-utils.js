@@ -1,12 +1,24 @@
 import {translateText} from "./samples/translations/text/TextTranslationService";
 import {translateTextUsingEdge} from "./samples/translations/text/EdgeTextTranslationService";
 import {translateTextUsingCloud} from "./samples/translations/text/CloudTextTranslationService";
-import {translateFile} from "./samples/translations/file/FileTranslationService";
-import {translateFileUsingEdge} from "./samples/translations/file/EdgeFileTranslationService";
-import {translateFileUsingCloud} from "./samples/translations/file/CloudFileTranslationService";
-import {translateBatchFileUsingEdge} from "./samples/translations/file/batch/EdgeBatchFileTranslationService";
-import {translateBatchFileUsingCloud} from "./samples/translations/file/batch/CloudBatchFileTranslationService";
-import {translateBatchFile} from "./samples/translations/file/batch/BatchFileTranslationService";
+import {translateFile, translatePdfFile} from "./samples/translations/file/FileTranslationService";
+import {
+    translateFileUsingEdge,
+    translatePdfFileUsingEdge
+} from "./samples/translations/file/EdgeFileTranslationService";
+import {
+    translateFileUsingCloud,
+    translatePdfFileUsingCloud
+} from "./samples/translations/file/CloudFileTranslationService";
+import {
+    translateBatchFileUsingEdge,
+    translatePdfBatchFileUsingEdge
+} from "./samples/translations/file/batch/EdgeBatchFileTranslationService";
+import {
+    translateBatchFileUsingCloud,
+    translatePdfBatchFileUsingCloud
+} from "./samples/translations/file/batch/CloudBatchFileTranslationService";
+import {translateBatchFile, translatePdfBatchFile} from "./samples/translations/file/batch/BatchFileTranslationService";
 import {getLanguagePairs} from "./samples/lps/LanguagePairService";
 import {getCloudLanguagePairs} from "./samples/lps/CloudLanguagePairService";
 import {getEdgeLanguagePairs} from "./samples/lps/EdgeLanguagePairService";
@@ -28,6 +40,7 @@ import {updateEdgeFeedbackApproval} from "./samples/feedback/update/approvalStat
 import {deleteFeedback} from "./samples/feedback/delete/FeedbackDeleteService";
 import {deleteCloudFeedback} from "./samples/feedback/delete/CloudFeedbackDeleteService";
 import {deleteEdgeFeedback} from "./samples/feedback/delete/EdgeFeedbackDeleteService";
+import jsPDF from "jspdf";
 
 const textTranslationItems = [
     {
@@ -65,6 +78,24 @@ const fileTranslationItems = [
     }
 ];
 
+const pdfFileTranslationItems = [
+    {
+        id: "pdf-file-translation-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => translatePdfFile(clientId, clientSecret)
+    },
+    {
+        id: "pdf-file-translation-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => translatePdfFileUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "pdf-file-translation-edge",
+        title: "Edge",
+        onClick: clientId => translatePdfFileUsingEdge(clientId)
+    }
+];
+
 const batchFileTranslationItems = [
     {
         id: "batch-file-translation-generic",
@@ -80,6 +111,24 @@ const batchFileTranslationItems = [
         id: "batch-file-translation-edge",
         title: "Edge",
         onClick: clientId => translateBatchFileUsingEdge(clientId)
+    }
+];
+
+const pdfBatchFileTranslationItems = [
+    {
+        id: "pdf-batch-file-translation-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => translatePdfBatchFile(clientId, clientSecret)
+    },
+    {
+        id: "pdf-batch-file-translation-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => translatePdfBatchFileUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "pdf-batch-file-translation-edge",
+        title: "Edge",
+        onClick: clientId => translatePdfBatchFileUsingEdge(clientId)
     }
 ];
 
@@ -221,9 +270,19 @@ export const samplesConfig = [
         items: fileTranslationItems
     },
     {
+        id: "pdf-file-translation",
+        title: "PDF - File Translation",
+        items: pdfFileTranslationItems
+    },
+    {
         id: "batch-file-translation",
         title: "Batch File Translation",
         items: batchFileTranslationItems
+    },
+    {
+        id: "pdf-batch-file-translation",
+        title: "PDF - Batch File Translation",
+        items: pdfBatchFileTranslationItems
     },
     {
         id: "language-pairs",
@@ -270,3 +329,11 @@ const blob2 = new Blob(["This is a new input that is part of an array translatio
 export const file2 = new File([blob2], "input2.txt", {
     type: "text/plain"
 });
+
+const pdf1 = new jsPDF();
+pdf1.text("The weather is wonderful today!", 10, 10);
+export const file3 = new File([pdf1.output("blob")], "input3.pdf");
+
+const pdf2 = new jsPDF();
+pdf2.text("This is a new input that is part of an array translation.", 10, 10);
+export const file4 = new File([pdf2.output("blob")], "input4.pdf");
