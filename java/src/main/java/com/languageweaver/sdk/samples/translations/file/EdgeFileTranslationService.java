@@ -14,12 +14,12 @@ public class EdgeFileTranslationService {
 
     public static void main(String[] args) throws Exception {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
-            edgeLanguageWeaverClientTranslateFile(lwClient);
-            edgeLanguageWeaverClientTranslateFileWithPdfConverter(lwClient);
+            translateFile(lwClient);
+            translateFileWithPdfConverter(lwClient);
         }
     }
 
-    private static void edgeLanguageWeaverClientTranslateFileWithPdfConverter(EdgeLanguageWeaverClient lwClient) throws IOException, InterruptedException {
+    private static void translateFileWithPdfConverter(EdgeLanguageWeaverClient lwClient) throws IOException, InterruptedException {
         EdgeTranslateFileRequest translateFileRequest = new EdgeTranslateFileRequest()
                 .setLanguagePairId("EngFra_Generic_SRV_TNMV_8_5_x_1")
                 // provide full path to the source file
@@ -34,7 +34,7 @@ public class EdgeFileTranslationService {
         // handle result
     }
 
-    private static void edgeLanguageWeaverClientTranslateFile(EdgeLanguageWeaverClient lwClient) throws IOException, InterruptedException {
+    private static void translateFile(EdgeLanguageWeaverClient lwClient) throws IOException, InterruptedException {
         EdgeTranslateFileRequest translateFileRequest = new EdgeTranslateFileRequest()
                 .setLanguagePairId("EngFra_Generic_SRV_TNMV_8_5_x_1")
                 // provide full path to the source file

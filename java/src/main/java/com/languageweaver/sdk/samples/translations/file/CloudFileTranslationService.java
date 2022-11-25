@@ -14,12 +14,12 @@ public class CloudFileTranslationService {
 
     public static void main(String[] args) throws Exception {
         try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
-            cloudLanguageWeaverTranslateFile(lwClient);
-            cloudLanguageWeaverTranslateFileWithPdfConverter(lwClient);
+            translateFile(lwClient);
+            translateFileWithPdfConverter(lwClient);
         }
     }
 
-    private static void cloudLanguageWeaverTranslateFileWithPdfConverter(CloudLanguageWeaverClient lwClient) throws IOException, InterruptedException {
+    private static void translateFileWithPdfConverter(CloudLanguageWeaverClient lwClient) throws IOException, InterruptedException {
         CloudTranslateFileRequest translateFileRequest = new CloudTranslateFileRequest()
                 .setSourceLanguageId("eng")
                 .setTargetLanguageId("fra")
@@ -36,7 +36,7 @@ public class CloudFileTranslationService {
         // handle result
     }
 
-    private static void cloudLanguageWeaverTranslateFile(CloudLanguageWeaverClient lwClient) throws IOException, InterruptedException {
+    private static void translateFile(CloudLanguageWeaverClient lwClient) throws IOException, InterruptedException {
         CloudTranslateFileRequest translateFileRequest = new CloudTranslateFileRequest()
                 .setSourceLanguageId("eng")
                 .setTargetLanguageId("fra")

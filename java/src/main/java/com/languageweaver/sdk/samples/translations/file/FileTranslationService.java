@@ -16,12 +16,12 @@ public class FileTranslationService {
 
     public static void main(String[] args) throws Exception {
         try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(new ClientConfiguration())) {
-            sdkFactoryTranslateFile(lwClient);
-            sdkFactoryTranslateFileWithPdfConverter(lwClient);
+            translateFile(lwClient);
+            translateFileWithPdfConverter(lwClient);
         }
     }
 
-    private static void sdkFactoryTranslateFileWithPdfConverter(LanguageWeaverClient lwClient) throws IOException, InterruptedException {
+    private static void translateFileWithPdfConverter(LanguageWeaverClient lwClient) throws IOException, InterruptedException {
         TranslateFileRequest translateFileRequest = new TranslateFileRequest()
                 .setSourceLanguageId("eng")
                 .setTargetLanguageId("fra")
@@ -38,7 +38,7 @@ public class FileTranslationService {
         // handle result if outputFile not specified
     }
 
-    private static void sdkFactoryTranslateFile(LanguageWeaverClient lwClient) throws IOException, InterruptedException {
+    private static void translateFile(LanguageWeaverClient lwClient) throws IOException, InterruptedException {
         TranslateFileRequest translateFileRequest = new TranslateFileRequest()
                 .setSourceLanguageId("eng")
                 .setTargetLanguageId("fra")
