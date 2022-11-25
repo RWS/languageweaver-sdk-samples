@@ -1,3 +1,5 @@
+import jsPDF from "jspdf";
+
 import {translateText} from "./samples/translations/text/TextTranslationService";
 import {translateTextUsingEdge} from "./samples/translations/text/EdgeTextTranslationService";
 import {translateTextUsingCloud} from "./samples/translations/text/CloudTextTranslationService";
@@ -40,7 +42,13 @@ import {updateEdgeFeedbackApproval} from "./samples/feedback/update/approvalStat
 import {deleteFeedback} from "./samples/feedback/delete/FeedbackDeleteService";
 import {deleteCloudFeedback} from "./samples/feedback/delete/CloudFeedbackDeleteService";
 import {deleteEdgeFeedback} from "./samples/feedback/delete/EdgeFeedbackDeleteService";
-import jsPDF from "jspdf";
+import {retrieveFileTranslation} from "./samples/translations/file/retrieve/RetrieveFileTranslationService";
+import {
+    retrieveFileTranslationUsingCloud
+} from "./samples/translations/file/retrieve/CloudRetrieveFileTranslationService";
+import {
+    retrieveFileTranslationUsingEdge
+} from "./samples/translations/file/retrieve/EdgeRetrieveFileTranslationService";
 
 const textTranslationItems = [
     {
@@ -111,6 +119,24 @@ const batchFileTranslationItems = [
         id: "batch-file-translation-edge",
         title: "Edge",
         onClick: clientId => translateBatchFileUsingEdge(clientId)
+    }
+];
+
+const retrieveFileTranslationItems = [
+    {
+        id: "retrieve-file-translation-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => retrieveFileTranslation(clientId, clientSecret)
+    },
+    {
+        id: "retrieve-file-translation-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => retrieveFileTranslationUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "retrieve-file-translation-edge",
+        title: "Edge",
+        onClick: clientId => retrieveFileTranslationUsingEdge(clientId)
     }
 ];
 
@@ -283,6 +309,11 @@ export const samplesConfig = [
         id: "pdf-batch-file-translation",
         title: "PDF - Batch File Translation",
         items: pdfBatchFileTranslationItems
+    },
+    {
+        id: "retrieve-file-translation",
+        title: "Retrieve File Translation",
+        items: retrieveFileTranslationItems
     },
     {
         id: "language-pairs",
