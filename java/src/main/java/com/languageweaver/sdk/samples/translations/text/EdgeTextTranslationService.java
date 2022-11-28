@@ -1,8 +1,8 @@
 package com.languageweaver.sdk.samples.translations.text;
 
-import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.translate.edge.request.EdgeTranslateTextRequest;
-import com.languageweaver.sdk.translate.edge.result.EdgeTranslationTextResult;
+import com.languageweaver.sdk.EdgeLanguageWeaverClient;
+import com.languageweaver.sdk.translate.request.edge.EdgeTranslateTextRequest;
+import com.languageweaver.sdk.translate.result.edge.EdgeTranslationTextResult;
 
 public class EdgeTextTranslationService {
 

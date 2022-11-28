@@ -1,10 +1,10 @@
 package com.languageweaver.sdk.samples.translations.text;
 
-import com.languageweaver.sdk.common.LanguageWeaverClient;
-import com.languageweaver.sdk.common.SdkFactory;
-import com.languageweaver.sdk.common.configurations.ClientConfiguration;
-import com.languageweaver.sdk.translate.common.request.TranslateTextRequest;
-import com.languageweaver.sdk.translate.common.result.TranslateTextResult;
+import com.languageweaver.sdk.LanguageWeaverClient;
+import com.languageweaver.sdk.SdkFactory;
+import com.languageweaver.sdk.configurations.ClientConfiguration;
+import com.languageweaver.sdk.translate.request.TranslateTextRequest;
+import com.languageweaver.sdk.translate.result.TranslateTextResult;
 
 public class TextTranslationService {
 

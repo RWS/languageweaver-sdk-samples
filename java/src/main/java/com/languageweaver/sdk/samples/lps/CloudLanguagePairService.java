@@ -1,7 +1,7 @@
 package com.languageweaver.sdk.samples.lps;
 
-import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
-import com.languageweaver.sdk.feedback.cloud.result.CloudLanguagePairsResult;
+import com.languageweaver.sdk.CloudLanguageWeaverClient;
+import com.languageweaver.sdk.translate.result.cloud.CloudLanguagePairsResult;
 
 public class CloudLanguagePairService {
 
