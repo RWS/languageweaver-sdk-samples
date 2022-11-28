@@ -1,5 +1,7 @@
-﻿using LanguageWeaver.Sdk.Translate.Request.Cloud;
-using LanguageWeaver.Sdk.Translate.Result.Cloud;
+﻿using LanguageWeaver.Sdk.Common.Cloud;
+using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Cloud.Request;
+using LanguageWeaver.Sdk.Translate.Cloud.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.Text;
 
@@ -18,7 +20,7 @@ public static class CloudTextTranslationService
                 "The weather is wonderful today!",
                 "This is a new input that is part of an array translation."
             },
-            InputFormat = "plain",
+            InputFormat = Format.Plain,
             Dictionaries = new List<string>()
             {
                 "689f06cf-36ba-4903-a530-da1f7766f478",
