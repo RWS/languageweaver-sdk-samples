@@ -1,7 +1,7 @@
 package com.languageweaver.sdk.samples.translations.file.batch;
 
-import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
-import com.languageweaver.sdk.translate.cloud.request.CloudTranslateBatchFileRequest;
+import com.languageweaver.sdk.CloudLanguageWeaverClient;
+import com.languageweaver.sdk.translate.request.cloud.CloudTranslateBatchFileRequest;
 
 import java.nio.file.Paths;
 

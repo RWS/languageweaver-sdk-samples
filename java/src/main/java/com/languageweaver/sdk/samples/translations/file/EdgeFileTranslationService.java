@@ -1,8 +1,8 @@
 package com.languageweaver.sdk.samples.translations.file;
 
-import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.translate.edge.request.EdgeTranslateFileRequest;
-import com.languageweaver.sdk.translate.edge.result.EdgeTranslationFileResult;
+import com.languageweaver.sdk.EdgeLanguageWeaverClient;
+import com.languageweaver.sdk.translate.request.edge.EdgeTranslateFileRequest;
+import com.languageweaver.sdk.translate.result.edge.EdgeTranslationFileResult;
 
 import java.io.File;
 import java.nio.file.Paths;
