@@ -1,5 +1,6 @@
 package com.languageweaver.sdk.samples.translations.text;
 
+import com.languageweaver.sdk.common.constants.Format;
 import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
 import com.languageweaver.sdk.translate.edge.request.EdgeTranslateTextRequest;
 import com.languageweaver.sdk.translate.edge.result.EdgeTranslationTextResult;
@@ -11,7 +12,7 @@ public class EdgeTextTranslationService {
             EdgeTranslateTextRequest translateTextRequest = new EdgeTranslateTextRequest()
                     .setLanguagePairId("EngFra_Generic_SRV_TNMV_8_5_x_1")
                     .addInput("The weather is wonderful today!")
-                    .setInputFormat("text/plain")
+                    .setInputFormat(Format.PLAIN)
                     .addDictionary("DictionaryName1")
                     .addDictionary("DictionaryName2");
             final EdgeTranslationTextResult translateTextResult = lwClient.translateText(translateTextRequest);
