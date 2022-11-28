@@ -1,7 +1,8 @@
-﻿using LanguageWeaver.Sdk.Configurations;
+﻿using LanguageWeaver.Sdk.Common;
+using LanguageWeaver.Sdk.Configurations;
 using LanguageWeaver.Sdk.Constants;
-using LanguageWeaver.Sdk.Translate.Request;
-using LanguageWeaver.Sdk.Translate.Result;
+using LanguageWeaver.Sdk.Translate.Common.Request;
+using LanguageWeaver.Sdk.Translate.Common.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File;
 
@@ -10,11 +11,11 @@ public class FileTranslationService
     public static void Main()
     {
         using var lwClient = new SdkFactory().GetLanguageWeaverClient(new ClientConfiguration());
-        SdkFactoryFileTranslation(lwClient);
-        SdkFactoryFileTranslationWithPdfConverter(lwClient);
+        TranslateFile(lwClient);
+        TranslateFileWithPdfConverter(lwClient);
     }
 
-    private static void SdkFactoryFileTranslation(ILanguageWeaverClient lwClient)
+    private static void TranslateFile(ILanguageWeaverClient lwClient)
     {
         var translateFileRequest = new TranslateFileRequest
         {
@@ -37,7 +38,7 @@ public class FileTranslationService
         // handle result
     }
 
-    private static void SdkFactoryFileTranslationWithPdfConverter(ILanguageWeaverClient lwClient)
+    private static void TranslateFileWithPdfConverter(ILanguageWeaverClient lwClient)
     {
         var translateFileRequest = new TranslateFileRequest
         {

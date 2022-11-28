@@ -1,6 +1,7 @@
-﻿using LanguageWeaver.Sdk.Constants;
-using LanguageWeaver.Sdk.Translate.Request.Cloud;
-using LanguageWeaver.Sdk.Translate.Result.Cloud;
+﻿using LanguageWeaver.Sdk.Common.Cloud;
+using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Cloud.Request;
+using LanguageWeaver.Sdk.Translate.Cloud.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.Text;
 

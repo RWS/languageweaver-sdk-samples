@@ -1,6 +1,7 @@
-﻿using LanguageWeaver.Sdk.Constants;
-using LanguageWeaver.Sdk.Translate.Request.Edge;
-using LanguageWeaver.Sdk.Translate.Result.Edge;
+﻿using LanguageWeaver.Sdk.Common.Edge;
+using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Edge.Request;
+using LanguageWeaver.Sdk.Translate.Edge.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.Text;
 

@@ -1,6 +1,7 @@
-﻿using LanguageWeaver.Sdk.Configurations;
+﻿using LanguageWeaver.Sdk.Common;
+using LanguageWeaver.Sdk.Configurations;
 using LanguageWeaver.Sdk.Constants;
-using LanguageWeaver.Sdk.Translate.Request;
+using LanguageWeaver.Sdk.Translate.Common.Request;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File.Batch;
 

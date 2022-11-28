@@ -1,6 +1,7 @@
-﻿using LanguageWeaver.Sdk.Constants;
-using LanguageWeaver.Sdk.Translate.Request.Edge;
-using LanguageWeaver.Sdk.Translate.Result.Edge;
+﻿using LanguageWeaver.Sdk.Common.Edge;
+using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Edge.Request;
+using LanguageWeaver.Sdk.Translate.Edge.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.File;
 
@@ -10,11 +11,11 @@ public class EdgeFileTranslationService
     {
         using var lwClient = new EdgeLanguageWeaverClient().Build();
 
-        EdgeLanguageWeaverClientFileTranslation(lwClient);
-        EdgeLanguageWeaverClientFileTranslationWithPdfConverter(lwClient);
+        TranslateFile(lwClient);
+        TranslateFileWithPdfConverter(lwClient);
     }
 
-    private static void EdgeLanguageWeaverClientFileTranslation(EdgeLanguageWeaverClient lwClient)
+    private static void TranslateFile(EdgeLanguageWeaverClient lwClient)
     {
         var translateFileRequest = new EdgeTranslateFileRequest
         {
@@ -36,7 +37,7 @@ public class EdgeFileTranslationService
         // handle result
     }
 
-    private static void EdgeLanguageWeaverClientFileTranslationWithPdfConverter(EdgeLanguageWeaverClient lwClient)
+    private static void TranslateFileWithPdfConverter(EdgeLanguageWeaverClient lwClient)
     {
         var translateFileRequest = new EdgeTranslateFileRequest
         {
