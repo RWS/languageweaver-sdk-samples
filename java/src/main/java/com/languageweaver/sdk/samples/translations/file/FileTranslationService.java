@@ -21,6 +21,22 @@ public class FileTranslationService {
         }
     }
 
+    private static void translateFile(LanguageWeaverClient lwClient) throws IOException, InterruptedException {
+        TranslateFileRequest translateFileRequest = new TranslateFileRequest()
+                .setSourceLanguageId("eng")
+                .setTargetLanguageId("fra")
+                .setModel("generic")
+                // provide full path to the source file
+                .setInputFile(Paths.get("src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
+                .setOutputFile(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
+                .setInputFormat(Format.PLAIN)
+                // provide list of dictionaries
+                .addDictionary("dictionaryId or name");
+
+        final TranslationFileResult translateFile = lwClient.translateFile(translateFileRequest);
+        // handle result if outputFile not specified
+    }
+
     private static void translateFileWithPdfConverter(LanguageWeaverClient lwClient) throws IOException, InterruptedException {
         TranslateFileRequest translateFileRequest = new TranslateFileRequest()
                 .setSourceLanguageId("eng")
@@ -38,19 +54,4 @@ public class FileTranslationService {
         // handle result if outputFile not specified
     }
 
-    private static void translateFile(LanguageWeaverClient lwClient) throws IOException, InterruptedException {
-        TranslateFileRequest translateFileRequest = new TranslateFileRequest()
-                .setSourceLanguageId("eng")
-                .setTargetLanguageId("fra")
-                .setModel("generic")
-                // provide full path to the source file
-                .setInputFile(Paths.get("src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
-                .setOutputFile(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
-                .setInputFormat(Format.PLAIN)
-                // provide list of dictionaries
-                .addDictionary("dictionaryId or name");
-
-        final TranslationFileResult translateFile = lwClient.translateFile(translateFileRequest);
-        // handle result if outputFile not specified
-    }
 }
