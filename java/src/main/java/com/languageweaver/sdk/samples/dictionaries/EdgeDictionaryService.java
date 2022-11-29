@@ -7,9 +7,6 @@ public class EdgeDictionaryService {
     public static final int PAGE_NUMBER = 1;
     public static final int PAGE_SIZE = 100;
 
-    public static final int PAGE_NUMBER = 1;
-    public static final int PAGE_SIZE = 100;
-
     public static void main(String[] args) throws Exception {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
             final EdgeDictionariesResult dictionariesResult = lwClient.getEdgeDictionaries(PAGE_NUMBER, PAGE_SIZE);
