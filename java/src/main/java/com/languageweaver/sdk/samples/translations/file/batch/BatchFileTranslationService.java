@@ -20,8 +20,8 @@ public class BatchFileTranslationService {
                     // provide list of dictionaries
                     .addDictionary("dictionaryId or name")
                     // provide full path to the input and output folders
-                    .setInputBatchFolderPath(Paths.get("src", "main", "resources", "input").toFile().getAbsolutePath())
-                    .setOutputBatchFolderPath(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath());
+                    .setInputBatchFolderPath(Paths.get("java","src", "main", "resources", "input").toFile().getAbsolutePath())
+                    .setOutputBatchFolderPath(Paths.get("java","src", "main", "resources", "output").toFile().getAbsolutePath());
 
             lwClient.translateBatchFile(translateFileRequest);
         }

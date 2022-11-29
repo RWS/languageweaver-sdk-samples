@@ -13,8 +13,8 @@ public class EdgeBatchFileTranslationService {
             EdgeTranslateBatchFileRequest translateFileRequest = new EdgeTranslateBatchFileRequest()
                     .setLanguagePairId("EngFra_Generic_SRV_TNMV_8_5_x_1")
                     // provide full path to the input and output folders
-                    .setInputBatchFolderPath(Paths.get("src", "main", "resources", "input").toFile().getAbsolutePath())
-                    .setOutputBatchFolderPath(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath())
+                    .setInputBatchFolderPath(Paths.get("java","src", "main", "resources", "input").toFile().getAbsolutePath())
+                    .setOutputBatchFolderPath(Paths.get("java","src", "main", "resources", "output").toFile().getAbsolutePath())
                     .setPdfConverter(PdfConverter.STANDARD)
                     .addDictionary("DictionaryName1")
                     .addDictionary("DictionaryName2");

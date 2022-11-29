@@ -27,8 +27,8 @@ public class FileTranslationService {
                 .setTargetLanguageId("fra")
                 .setModel("generic")
                 // provide full path to the source file
-                .setInputFile(Paths.get("src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
-                .setOutputFile(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
+                .setInputFile(Paths.get("java","src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
+                .setOutputFile(Paths.get("java","src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
                 .setInputFormat(Format.PLAIN)
                 // provide list of dictionaries
                 .addDictionary("dictionaryId or name");
@@ -43,8 +43,8 @@ public class FileTranslationService {
                 .setTargetLanguageId("fra")
                 .setModel("generic")
                 // provide full path to the source file
-                .setInputFile(Paths.get("src", "main", "resources", "input", "input1.pdf").toFile().getAbsolutePath())
-                .setOutputFile(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.docx")
+                .setInputFile(Paths.get("java","src", "main", "resources", "input", "input1.pdf").toFile().getAbsolutePath())
+                .setOutputFile(Paths.get("java","src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.docx")
                 .setInputFormat(Format.PDF)
                 .setPdfConverter(PdfConverter.ABBYY)
                 // provide list of dictionaries
