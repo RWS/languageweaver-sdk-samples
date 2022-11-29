@@ -23,8 +23,8 @@ public class EdgeFileTranslationService {
         EdgeTranslateFileRequest translateFileRequest = new EdgeTranslateFileRequest()
                 .setLanguagePairId("EngFra_Generic_SRV_TNMV_8_5_x_1")
                 // provide full path to the source file
-                .setInputFile(Paths.get("java","src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
-                .setOutputFile(Paths.get("java","src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
+                .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
+                .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
                 .setInputFormat(Format.PLAIN)
                 .addDictionary("DictionaryName1")
                 .addDictionary("DictionaryName2");
@@ -37,8 +37,8 @@ public class EdgeFileTranslationService {
         EdgeTranslateFileRequest translateFileRequest = new EdgeTranslateFileRequest()
                 .setLanguagePairId("EngFra_Generic_SRV_TNMV_8_5_x_1")
                 // provide full path to the source file
-                .setInputFile(Paths.get("java","src", "main", "resources", "input", "input1.pdf").toFile().getAbsolutePath())
-                .setOutputFile(Paths.get("java","src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.docx")
+                .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.pdf").toFile().getAbsolutePath())
+                .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.docx")
                 .setInputFormat(Format.PDF)
                 .setPdfConverter(PdfConverter.STANDARD)
                 .addDictionary("DictionaryName1")
