@@ -18,8 +18,8 @@ public class CloudBatchFileTranslationService {
                     .addDictionary("689f06cf-36ba-4903-a530-da1f7766f478")
                     .addDictionary("3d297ee3-0878-4ef7-9ee7-ca14b48e6956")
                     // provide full path to the input and output folders
-                    .setInputBatchFolderPath(Paths.get("src", "main", "resources", "input").toFile().getAbsolutePath())
-                    .setOutputBatchFolderPath(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath());
+                    .setInputBatchFolderPath(Paths.get("java", "src", "main", "resources", "input").toFile().getAbsolutePath())
+                    .setOutputBatchFolderPath(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath());
 
             lwClient.translateBatchFile(translateFileRequest);
         }
