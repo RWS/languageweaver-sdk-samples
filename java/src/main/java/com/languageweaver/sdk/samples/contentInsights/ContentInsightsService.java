@@ -20,7 +20,7 @@ public class ContentInsightsService {
                     .setTargetLanguageId("fra")
                     .setModel("generic")
                     // provide full path to the source file
-                    .setInputFile(Paths.get("src", "main", "resources", "input", "inputtt.txt").toFile().getAbsolutePath())
+                    .setInputFile(Paths.get("src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
                     .setOutputFile(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
                     .setInputFormat(Format.PLAIN)
                     .addDictionary("689f06cf-36ba-4903-a530-da1f7766f478")
