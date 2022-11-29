@@ -5,7 +5,6 @@ import com.languageweaver.sdk.common.constants.Format;
 import com.languageweaver.sdk.contentInsights.cloud.request.CloudContentInsightsRequest;
 import com.languageweaver.sdk.contentInsights.cloud.request.CloudGetContentInsightsForTranslationsRequest;
 import com.languageweaver.sdk.contentInsights.cloud.result.CloudContentInsightsResult;
-import com.languageweaver.sdk.contentInsights.common.api.ContentInsightsResult;
 import com.languageweaver.sdk.translate.cloud.request.CloudTranslateFileRequest;
 
 import java.io.File;
@@ -26,7 +25,7 @@ public class CloudContentInsightsService {
                 .setSourceLanguage("eng")
                 .setFile(Paths.get("src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath());
 
-        final ContentInsightsResult cloudContentInsightsResult = lwClient.getContentInsights(contentInsightsRequest);
+        final CloudContentInsightsResult cloudContentInsightsResult = lwClient.getContentInsights(contentInsightsRequest);
         //handle result
     }
 
