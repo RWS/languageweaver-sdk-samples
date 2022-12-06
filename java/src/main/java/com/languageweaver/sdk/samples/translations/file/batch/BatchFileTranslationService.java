@@ -1,9 +1,9 @@
 package com.languageweaver.sdk.samples.translations.file.batch;
 
-import com.languageweaver.sdk.common.LanguageWeaverClient;
-import com.languageweaver.sdk.common.SdkFactory;
-import com.languageweaver.sdk.common.configurations.ClientConfiguration;
-import com.languageweaver.sdk.translate.common.request.TranslateBatchFileRequest;
+import com.languageweaver.sdk.LanguageWeaverClient;
+import com.languageweaver.sdk.SdkFactory;
+import com.languageweaver.sdk.configurations.ClientConfiguration;
+import com.languageweaver.sdk.translate.request.TranslateBatchFileRequest;
 
 import java.nio.file.Paths;
 
