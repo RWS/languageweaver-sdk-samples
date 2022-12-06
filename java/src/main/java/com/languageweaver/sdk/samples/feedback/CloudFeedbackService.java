@@ -14,11 +14,8 @@ import java.util.List;
 
 public class CloudFeedbackService {
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static CloudFeedbackResult createFeedback() throws IOException {
         try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
-            CloudFeedbackResult feedback;
-
-//          CREATE FEEDBACK
             CloudCreateFeedbackRequest createFeedbackRequest = new CloudCreateFeedbackRequest()
                     .setSourceLanguageId("eng")
                     .setTargetLanguageId("fra")
@@ -31,30 +28,49 @@ public class CloudFeedbackService {
                     .addComment("custom comment")
                     .setTranslationMetadata("metadata")
                     .setNumberOfSegments(1)
-                    .setQualityEstimationMT(QualityEstimation.ADEQUATE);
+                    .setQualityEstimationMT(QualityEstimation.ADEQUATE)
+                    .setQualityEstimation(QualityEstimation.POOR);
 
-            feedback = lwClient.createFeedback(createFeedbackRequest);
-            System.out.println(feedback.getFeedbackId());
+            CloudFeedbackResult feedback = lwClient.createFeedback(createFeedbackRequest);
+            return feedback;
+        }
+    }
 
-//          UPDATE FEEDBACK
-            CloudUpdateFeedbackRequest cloudUpdateFeedbackRequest = feedback.toUpdateRequest()
+    public static void updateFeedback() throws IOException {
+        try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
+            CloudUpdateFeedbackRequest cloudUpdateFeedbackRequest = new CloudUpdateFeedbackRequest()
+                    .setFeedbackId("feedbackId")
                     .setSuggestedTranslation("new suggested translation")
                     .setRating(2)
                     .setQualityEstimation(QualityEstimation.POOR)
                     .clearComments().addComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
 
-            feedback = lwClient.updateFeedback(cloudUpdateFeedbackRequest);
+            CloudFeedbackResult feedback = lwClient.updateFeedback(cloudUpdateFeedbackRequest);
+        }
+    }
 
-//          UPDATE FEEDBACK APPROVAL
-            CloudUpdateFeedbackApprovalRequest cloudUpdateApprovalRequest = feedback.toUpdateApprovalRequest(ApprovalStatus.REJECTED);
-            feedback = lwClient.updateFeedbackApproval(cloudUpdateApprovalRequest);
+    public static void updateFeedbackStatus() throws IOException {
+        try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
+            CloudUpdateFeedbackApprovalRequest cloudUpdateApprovalRequest = new CloudUpdateFeedbackApprovalRequest()
+                    .setFeedbackId("feedbackId")
+                    .setApprovalStatus(ApprovalStatus.APPROVED);
+
+            CloudFeedbackResult feedback = lwClient.updateFeedbackApproval(cloudUpdateApprovalRequest);
             System.out.println(feedback.getApprovalState());
+        }
+    }
 
-//          DELETE FEEDBACK
-            DeleteFeedbackRequest deleteFeedbackRequest = feedback.toDeleteRequest();
+    public static void deleteFeedback() throws IOException {
+        try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
+            DeleteFeedbackRequest deleteFeedbackRequest = new CloudDeleteFeedbackRequest()
+                    .setFeedbackId("feedbackId");
+
             lwClient.deleteFeedback(deleteFeedbackRequest);
+        }
+    }
 
-//          RETRIEVE FEEDBACK
+    public static void retrieveFeedback() throws IOException {
+        try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
             int pageNumber = 1;
             int pageSize = 50;
             CloudFeedbackListResult cloudFeedbackList;
@@ -67,8 +83,11 @@ public class CloudFeedbackService {
                         .forEach(cloudFeedbackResult -> System.out.println(cloudFeedbackResult.getFeedbackId()));
                 pageNumber++;
             } while (cloudFeedbackList.getFeedbackList().size() == pageSize);
+        }
+    }
 
-//          FILTER FEEDBACK
+    public static void filterFeedback() throws IOException {
+        try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
             CloudFilterFeedbackRequest filterFeedbackRequest = new CloudFilterFeedbackRequest()
                     .setApprovalStatus(ApprovalStatus.APPROVED)
                     .setFeedbackCategory(FeedbackCategory.IMPROVEMENT)
@@ -79,7 +98,7 @@ public class CloudFeedbackService {
                             .setCriteria(CloudFeedbackSortCriteria.DATE)
                             .setOrder(Order.DESCENDING));
 
-            pageNumber = 1;
+            int pageNumber = 1;
             CloudFeedbackListResult filteredFeedback;
             do {
                 filteredFeedback = lwClient.getCloudFeedback(filterFeedbackRequest, pageNumber);
@@ -93,5 +112,30 @@ public class CloudFeedbackService {
         }
     }
 
+    public static void main(String[] args) throws IOException, ParseException {
+        try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
+            CloudFeedbackResult feedback;
 
+//          CREATE FEEDBACK
+            feedback = createFeedback();
+            System.out.println(feedback.getFeedbackId());
+
+//          UPDATE FEEDBACK
+            CloudUpdateFeedbackRequest cloudUpdateFeedbackRequest = feedback.toUpdateRequest()
+                    .setSuggestedTranslation("new suggested translation")
+                    .setRating(2)
+                    .setQualityEstimation(QualityEstimation.POOR)
+                    .clearComments().addComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
+            feedback = lwClient.updateFeedback(cloudUpdateFeedbackRequest);
+
+//          UPDATE FEEDBACK APPROVAL
+            CloudUpdateFeedbackApprovalRequest cloudUpdateApprovalRequest = feedback.toUpdateApprovalRequest(ApprovalStatus.REJECTED);
+            feedback = lwClient.updateFeedbackApproval(cloudUpdateApprovalRequest);
+            System.out.println(feedback.getApprovalState());
+
+//          DELETE FEEDBACK
+            DeleteFeedbackRequest deleteFeedbackRequest = feedback.toDeleteRequest();
+            lwClient.deleteFeedback(deleteFeedbackRequest);
+        }
+    }
 }
