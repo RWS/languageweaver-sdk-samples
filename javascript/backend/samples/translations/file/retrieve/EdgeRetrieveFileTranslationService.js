@@ -5,7 +5,7 @@ const retrieveFileTranslationUsingEdge = async () => {
     try {
         const edgeLanguageWeaverClient = await new EdgeLanguageWeaverClient().build();
         const request = new EdgeRetrieveFileRequest();
-        request.requestId = "requestId";
+        request.translationId = "translationId";
         request.outputDir = path.resolve("resources/output");
         request.outputFile = "input1-translated.txt";
         request.outputFormat = Format.PLAIN;
