@@ -11,6 +11,8 @@ import com.languageweaver.sdk.translate.common.result.TranslationFileResult;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FileTranslationService {
 
@@ -18,6 +20,7 @@ public class FileTranslationService {
         try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(new ClientConfiguration())) {
             translateFile(lwClient);
             translateFileWithPdfConverter(lwClient);
+            translateFileWithLinguisticOptions(lwClient);
         }
     }
 
@@ -54,4 +57,22 @@ public class FileTranslationService {
         // handle result if outputFile not specified
     }
 
+    private static void translateFileWithLinguisticOptions(LanguageWeaverClient lwClient) throws IOException, InterruptedException {
+        Map<String, String> linguisticOptions = new HashMap<>();
+        linguisticOptions.put("Spelling", "US");
+        TranslateFileRequest translateFileRequest = new TranslateFileRequest()
+                .setSourceLanguageId("fra")
+                .setTargetLanguageId("eng")
+                .setModel("generic")
+                // provide full path to the source file
+                .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input3.txt").toFile().getAbsolutePath())
+                .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input3-translated.txt")
+                .setInputFormat(Format.PLAIN)
+                .setLinguisticOptions(linguisticOptions)
+                // provide list of dictionaries
+                .addDictionary("dictionaryId or name");
+
+        final TranslationFileResult translateFile = lwClient.translateFile(translateFileRequest);
+        // handle result if outputFile not specified
+    }
 }

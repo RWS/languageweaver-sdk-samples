@@ -9,6 +9,8 @@ import com.languageweaver.sdk.translate.cloud.result.CloudTranslationFileResult;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CloudFileTranslationService {
 
@@ -16,6 +18,7 @@ public class CloudFileTranslationService {
         try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
             translateFile(lwClient);
             translateFileWithPdfConverter(lwClient);
+            translateFileWithLinguisticOptions(lwClient);
         }
     }
 
@@ -45,6 +48,25 @@ public class CloudFileTranslationService {
                 // provide full path to the source file
                 .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.pdf").toFile().getAbsolutePath())
                 .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.docx")
+                .addDictionary("689f06cf-36ba-4903-a530-da1f7766f478")
+                .addDictionary("3d297ee3-0878-4ef7-9ee7-ca14b48e6956");
+
+        final CloudTranslationFileResult translateFile = lwClient.translateFile(translateFileRequest);
+        // handle result
+    }
+
+    private static void translateFileWithLinguisticOptions(CloudLanguageWeaverClient lwClient) throws IOException, InterruptedException {
+        Map<String, String> linguisticOptions = new HashMap<>();
+        linguisticOptions.put("Spelling", "UK");
+        CloudTranslateFileRequest translateFileRequest = new CloudTranslateFileRequest()
+                .setSourceLanguageId("fra")
+                .setTargetLanguageId("eng")
+                .setModel("generic")
+                .setInputFormat(Format.PLAIN)
+                .setLinguisticOptions(linguisticOptions)
+                // provide full path to the source file
+                .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input3.txt").toFile().getAbsolutePath())
+                .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input3-translated.txt")
                 .addDictionary("689f06cf-36ba-4903-a530-da1f7766f478")
                 .addDictionary("3d297ee3-0878-4ef7-9ee7-ca14b48e6956");
 
