@@ -12,7 +12,7 @@ public class EdgeLinguisticOptionsService {
 
             if (edgeLinguisticOptionsResult.getLinguisticOptions() != null) {
                 edgeLinguisticOptionsResult.getLinguisticOptions()
-                        .forEach(languagePair -> System.out.println(languagePair.getId()));
+                        .forEach(linguisticOption -> System.out.println(linguisticOption.getId()));
             }
         }
     }

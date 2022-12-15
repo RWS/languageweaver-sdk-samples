@@ -14,7 +14,7 @@ public class LinguisticOptionsService {
 
             if (linguisticOptionsResult.getLinguisticOptions() != null) {
                 linguisticOptionsResult.getLinguisticOptions()
-                        .forEach(languagePair -> System.out.println(languagePair.getId()));
+                        .forEach(linguisticOption -> System.out.println(linguisticOption.getId()));
             }
         }
     }

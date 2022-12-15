@@ -12,7 +12,7 @@ public class CloudLinguisticOptionsService {
 
             if (cloudLinguisticOptionsResult.getLinguisticOptions() != null) {
                 cloudLinguisticOptionsResult.getLinguisticOptions()
-                        .forEach(languagePair -> System.out.println(languagePair.getName()));
+                        .forEach(linguisticOption -> System.out.println(linguisticOption.getName()));
             }
         }
     }
