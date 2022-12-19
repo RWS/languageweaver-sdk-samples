@@ -1,26 +1,40 @@
 import jsPDF from "jspdf";
 
-import {translateText} from "./samples/translations/text/TextTranslationService";
-import {translateTextUsingEdge} from "./samples/translations/text/EdgeTextTranslationService";
-import {translateTextUsingCloud} from "./samples/translations/text/CloudTextTranslationService";
-import {translateFile, translatePdfFile} from "./samples/translations/file/FileTranslationService";
+import {translateText, translateTextWithLinguisticOptions} from "./samples/translations/text/TextTranslationService";
 import {
-    translateFileUsingEdge,
+    translateTextUsingEdge,
+    translateTextWithLinguisticOptionsUsingEdge
+} from "./samples/translations/text/EdgeTextTranslationService";
+import {
+    translateTextUsingCloud,
+    translateTextWithLinguisticOptionsUsingCloud
+} from "./samples/translations/text/CloudTextTranslationService";
+import {
+    translateFile,
+    translateFileWithLinguisticOptions,
+    translatePdfFile
+} from "./samples/translations/file/FileTranslationService";
+import {
+    translateFileUsingEdge, translateFileWithLinguisticOptionsUsingEdge,
     translatePdfFileUsingEdge
 } from "./samples/translations/file/EdgeFileTranslationService";
 import {
-    translateFileUsingCloud,
+    translateFileUsingCloud, translateFileWithLinguisticOptionsUsingCloud,
     translatePdfFileUsingCloud
 } from "./samples/translations/file/CloudFileTranslationService";
 import {
-    translateBatchFileUsingEdge,
+    translateBatchFileUsingEdge, translateBatchFileWithLinguisticOptionsUsingEdge,
     translatePdfBatchFileUsingEdge
 } from "./samples/translations/file/batch/EdgeBatchFileTranslationService";
 import {
-    translateBatchFileUsingCloud,
+    translateBatchFileUsingCloud, translateBatchFileWithLinguisticOptionsUsingCloud,
     translatePdfBatchFileUsingCloud
 } from "./samples/translations/file/batch/CloudBatchFileTranslationService";
-import {translateBatchFile, translatePdfBatchFile} from "./samples/translations/file/batch/BatchFileTranslationService";
+import {
+    translateBatchFile,
+    translateBatchFileWithLinguisticOptions,
+    translatePdfBatchFile
+} from "./samples/translations/file/batch/BatchFileTranslationService";
 import {getLanguagePairs} from "./samples/lps/LanguagePairService";
 import {getCloudLanguagePairs} from "./samples/lps/CloudLanguagePairService";
 import {getEdgeLanguagePairs} from "./samples/lps/EdgeLanguagePairService";
@@ -71,6 +85,24 @@ const textTranslationItems = [
     }
 ];
 
+const textTranslationWithLinguisticOptionsItems = [
+    {
+        id: "text-translation-with-linguistic-options-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => translateTextWithLinguisticOptions(clientId, clientSecret)
+    },
+    {
+        id: "text-translation-with-linguistic-options-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => translateTextWithLinguisticOptionsUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "text-translation-with-linguistic-options-edge",
+        title: "Edge",
+        onClick: clientId => translateTextWithLinguisticOptionsUsingEdge(clientId)
+    }
+];
+
 const fileTranslationItems = [
     {
         id: "file-translation-generic",
@@ -104,6 +136,24 @@ const pdfFileTranslationItems = [
         id: "pdf-file-translation-edge",
         title: "Edge",
         onClick: clientId => translatePdfFileUsingEdge(clientId)
+    }
+];
+
+const fileTranslationWithLinguisticOptionsItems = [
+    {
+        id: "file-translation-with-linguistic-options-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => translateFileWithLinguisticOptions(clientId, clientSecret)
+    },
+    {
+        id: "file-translation-with-linguistic-options-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => translateFileWithLinguisticOptionsUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "file-translation-with-linguistic-options-edge",
+        title: "Edge",
+        onClick: clientId => translateFileWithLinguisticOptionsUsingEdge(clientId)
     }
 ];
 
@@ -158,6 +208,24 @@ const pdfBatchFileTranslationItems = [
         id: "pdf-batch-file-translation-edge",
         title: "Edge",
         onClick: clientId => translatePdfBatchFileUsingEdge(clientId)
+    }
+];
+
+const batchFileTranslationWithLinguisticOptionsItems = [
+    {
+        id: "batch-file-translation-with-linguistic-options-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => translateBatchFileWithLinguisticOptions(clientId, clientSecret)
+    },
+    {
+        id: "batch-file-translation-with-linguistic-options-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => translateBatchFileWithLinguisticOptionsUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "batch-file-translation-with-linguistic-options-edge",
+        title: "Edge",
+        onClick: clientId => translateBatchFileWithLinguisticOptionsUsingEdge(clientId)
     }
 ];
 
@@ -312,6 +380,11 @@ export const samplesConfig = [
         items: textTranslationItems
     },
     {
+        id: "text-translation-with-linguistic-options",
+        title: "Text Translation With Linguistic Options",
+        items: textTranslationWithLinguisticOptionsItems
+    },
+    {
         id: "file-translation",
         title: "File Translation",
         items: fileTranslationItems
@@ -322,6 +395,11 @@ export const samplesConfig = [
         items: pdfFileTranslationItems
     },
     {
+        id: "file-translation-with-linguistic-options",
+        title: "File Translation With Linguistic Options",
+        items: fileTranslationWithLinguisticOptionsItems
+    },
+    {
         id: "batch-file-translation",
         title: "Batch File Translation",
         items: batchFileTranslationItems
@@ -330,6 +408,11 @@ export const samplesConfig = [
         id: "pdf-batch-file-translation",
         title: "PDF - Batch File Translation",
         items: pdfBatchFileTranslationItems
+    },
+    {
+        id: "batch-file-translation-with-linguistic-options",
+        title: "Batch File Translation With Linguistic Options",
+        items: batchFileTranslationWithLinguisticOptionsItems
     },
     {
         id: "retrieve-file-translation",
@@ -394,3 +477,13 @@ export const file3 = new File([pdf1.output("blob")], "input3.pdf");
 const pdf2 = new jsPDF();
 pdf2.text("This is a new input that is part of an array translation.", 10, 10);
 export const file4 = new File([pdf2.output("blob")], "input4.pdf");
+
+const blob5 = new Blob(["j'aime cette couleur"]);
+export const file5 = new File([blob5], "input5.txt", {
+    type: "text/plain"
+});
+
+const blob6 = new Blob(["cette couleur est magnifique"]);
+export const file6 = new File([blob6], "input6.txt", {
+    type: "text/plain"
+});

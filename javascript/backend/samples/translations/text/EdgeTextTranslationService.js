@@ -18,4 +18,25 @@ const translateText = async () => {
     }
 }
 
+const translateTextWithLinguisticOptions = async () => {
+    try {
+        const edgeLanguageWeaverClient = await new EdgeLanguageWeaverClient().build();
+        const translateTextRequest = new EdgeTranslateTextRequest();
+        translateTextRequest.languagePairId = "EngFra_Generic_Cloud";
+        translateTextRequest.addInput("j'aime cette couleur");
+        translateTextRequest.inputFormat = Format.PLAIN;
+
+        const linguisticOptions = new Map();
+        linguisticOptions.set("Spelling", "UK");
+        translateTextRequest.linguisticOptions = linguisticOptions;
+
+        const translateTextResult = await edgeLanguageWeaverClient.translateTextUsingEdgeParams(translateTextRequest);
+
+        console.log(translateTextResult.translation);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 translateText();
+// translateTextWithLinguisticOptions();

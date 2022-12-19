@@ -43,5 +43,30 @@ const translatePdfFile = async () => {
     }
 }
 
+const translateFileWithLinguisticOptions = async () => {
+    try {
+        const lwClient = await SdkFactory.getLanguageWeaverClient(new ClientConfiguration());
+        const translateFileRequest = new TranslateFileRequest();
+        translateFileRequest.sourceLanguageId = "fra";
+        translateFileRequest.targetLanguageId = "eng";
+        translateFileRequest.model = "generic";
+        translateFileRequest.inputFormat = Format.PLAIN;
+        // provide full path to the source file
+        translateFileRequest.input = path.resolve("resources/input_linguistic_options/input1.txt");
+        // provide full path to the target directory
+        translateFileRequest.outputDir = path.resolve("resources/output");
+        translateFileRequest.outputFile = "input1-translated.txt";
+
+        const linguisticOptions = new Map();
+        linguisticOptions.set("Spelling", "UK");
+        translateFileRequest.linguisticOptions = linguisticOptions;
+
+        await lwClient.translateFile(translateFileRequest);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 translateFile();
 // translatePdfFile();
+// translateFileWithLinguisticOptions();

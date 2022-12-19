@@ -4,7 +4,7 @@ import {
     CloudTranslateBatchFileRequest,
     CredentialsConfiguration, PdfConverter
 } from "@language-weaver/lw-sdk-js";
-import {file1, file2, file3, file4} from "../../../../samples-utils";
+import {file1, file2, file3, file4, file5, file6} from "../../../../samples-utils";
 
 export const translateBatchFileUsingCloud = async (clientId, clientSecret) => {
     try {
@@ -44,6 +44,30 @@ export const translatePdfBatchFileUsingCloud = async (clientId, clientSecret) =>
 
         // provide list of File objects
         translateFileRequest.input = [file3, file4];
+        const translateFileResult = await cloudLanguageWeaverClient.translateBatchFileUsingCloudParams(translateFileRequest);
+        console.log(translateFileResult.translationFileResults);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+export const translateBatchFileWithLinguisticOptionsUsingCloud = async (clientId, clientSecret) => {
+    try {
+        const clientConfiguration = new ClientConfiguration();
+        clientConfiguration.credentialsConfiguration = new CredentialsConfiguration(clientId, clientSecret);
+        const cloudLanguageWeaverClient = await new CloudLanguageWeaverClient()
+            .withConfigurations(clientConfiguration)
+            .build();
+        const translateFileRequest = new CloudTranslateBatchFileRequest();
+        translateFileRequest.sourceLanguageId = "fra";
+        translateFileRequest.targetLanguageId = "eng";
+        translateFileRequest.model = "generic";
+        translateFileRequest.input = [file5, file6];
+
+        const linguisticOptions = new Map();
+        linguisticOptions.set("Spelling", "UK");
+        translateFileRequest.linguisticOptions = linguisticOptions;
+        
         const translateFileResult = await cloudLanguageWeaverClient.translateBatchFileUsingCloudParams(translateFileRequest);
         console.log(translateFileResult.translationFileResults);
     } catch (e) {

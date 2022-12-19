@@ -21,4 +21,27 @@ const translateText = async () => {
     }
 }
 
+const translateTextWithLinguisticOptions = async () => {
+    try {
+        const cloudLanguageWeaverClient = await new CloudLanguageWeaverClient().build();
+        const translateTextRequest = new CloudTranslateTextRequest();
+        translateTextRequest.sourceLanguageId = "fra";
+        translateTextRequest.targetLanguageId = "eng";
+        translateTextRequest.model = "generic";
+        translateTextRequest.addInput("j'aime cette couleur");
+        translateTextRequest.inputFormat = Format.PLAIN;
+
+        const linguisticOptions = new Map();
+        linguisticOptions.set("Spelling", "UK");
+        translateTextRequest.linguisticOptions = linguisticOptions;
+
+        const translateTextResult = await cloudLanguageWeaverClient.translateTextUsingCloudParams(translateTextRequest);
+
+        console.log(translateTextResult.translation);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 translateText();
+// translateTextWithLinguisticOptions();
