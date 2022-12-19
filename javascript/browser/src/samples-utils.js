@@ -49,6 +49,9 @@ import {
 import {
     retrieveFileTranslationUsingEdge
 } from "./samples/translations/file/retrieve/EdgeRetrieveFileTranslationService";
+import {getLinguisticOptions} from "./samples/linguisticOptions/LinguisticOptionsService";
+import {getCloudLinguisticOptions} from "./samples/linguisticOptions/CloudLinguisticOptionsService";
+import {getEdgeLinguisticOptions} from "./samples/linguisticOptions/EdgeLinguisticOptionsService";
 import {getContentInsightsForTranslations} from "./samples/content-insights/ContentInsightsService";
 import {
     getContentInsightsForTranslationsUsingCloud,
@@ -179,6 +182,24 @@ const languagePairsItems = [
         id: "language-pairs-edge",
         title: "Edge",
         onClick: clientId => getEdgeLanguagePairs(clientId)
+    }
+];
+
+const linguisticOptionsItems = [
+    {
+        id: "linguistic-options-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => getLinguisticOptions(clientId, clientSecret)
+    },
+    {
+        id: "linguistic-options-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => getCloudLinguisticOptions(clientId, clientSecret)
+    },
+    {
+        id: "linguistic-options-edge",
+        title: "Edge",
+        onClick: clientId => getEdgeLinguisticOptions(clientId)
     }
 ];
 
@@ -348,6 +369,11 @@ export const samplesConfig = [
         id: "language-pairs",
         title: "Language Pairs",
         items: languagePairsItems
+    },
+    {
+        id: "linguistic-options",
+        title: "Linguistic Options",
+        items: linguisticOptionsItems
     },
     {
         id: "dictionaries",
