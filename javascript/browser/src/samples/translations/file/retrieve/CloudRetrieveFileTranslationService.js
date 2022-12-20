@@ -13,7 +13,7 @@ export const retrieveFileTranslationUsingCloud = async (clientId, clientSecret) 
             .withConfigurations(clientConfiguration)
             .build();
         const request = new CloudRetrieveFileRequest();
-        request.requestId = "requestId";
+        request.translationId = "translationId";
         const translateFileResult = await cloudLanguageWeaverClient.retrieveCloudFileTranslation(request);
         console.log(translateFileResult.fileContent);
     } catch (e) {

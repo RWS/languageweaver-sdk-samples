@@ -10,7 +10,7 @@ export const retrieveFileTranslation = async (clientId, clientSecret) => {
         clientConfiguration.credentialsConfiguration = new CredentialsConfiguration(clientId, clientSecret);
         const lwClient = await SdkFactory.getLanguageWeaverClient(clientConfiguration);
         const request = new RetrieveFileRequest();
-        request.requestId = "requestId";
+        request.translationId = "translationId";
         const translateFileResult = await lwClient.retrieveFileTranslation(request);
         console.log(translateFileResult.fileContent);
     } catch (e) {

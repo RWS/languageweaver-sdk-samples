@@ -66,6 +66,12 @@ import {
 import {getLinguisticOptions} from "./samples/linguisticOptions/LinguisticOptionsService";
 import {getCloudLinguisticOptions} from "./samples/linguisticOptions/CloudLinguisticOptionsService";
 import {getEdgeLinguisticOptions} from "./samples/linguisticOptions/EdgeLinguisticOptionsService";
+import {getContentInsightsForTranslations} from "./samples/content-insights/ContentInsightsService";
+import {
+    getContentInsightsForTranslationsUsingCloud,
+    getContentInsightsUsingCloud
+} from "./samples/content-insights/CloudContentInsightsService";
+import {getContentInsightsForTranslationsUsingEdge} from "./samples/content-insights/EdgeContentInsightsService";
 
 const textTranslationItems = [
     {
@@ -373,6 +379,29 @@ const deleteFeedbackItems = [
     }
 ];
 
+const contentInsightsItems = [
+    {
+        id: "content-insights-for-translations-generic",
+        title: "Generic - For translations",
+        onClick: (clientId, clientSecret) => getContentInsightsForTranslations(clientId, clientSecret)
+    },
+    {
+        id: "content-insights-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => getContentInsightsUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "content-insights-for-translations-cloud",
+        title: "Cloud - For translations",
+        onClick: (clientId, clientSecret) => getContentInsightsForTranslationsUsingCloud(clientId, clientSecret)
+    },
+    {
+        id: "content-insights-for-translation-edge",
+        title: "Edge - For translation",
+        onClick: clientId => getContentInsightsForTranslationsUsingEdge(clientId)
+    }
+];
+
 export const samplesConfig = [
     {
         id: "text-translation",
@@ -458,6 +487,11 @@ export const samplesConfig = [
         id: "delete-feedback",
         title: "Feedback - Delete",
         items: deleteFeedbackItems
+    },
+    {
+        id: "content-insights",
+        title: "Content Insights",
+        items: contentInsightsItems
     },
 ];
 

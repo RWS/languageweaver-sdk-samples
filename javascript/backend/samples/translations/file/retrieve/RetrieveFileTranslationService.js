@@ -6,7 +6,7 @@ const retrieveFileTranslation = async () => {
     try {
         const lwClient = await SdkFactory.getLanguageWeaverClient(new ClientConfiguration());
         const request = new RetrieveFileRequest();
-        request.requestId = "requestId";
+        request.translationId = "translationId";
         request.outputDir = path.resolve("resources/output");
         request.outputFile = "input1-translated.txt";
         const translateFileResult = await lwClient.retrieveFileTranslation(request);

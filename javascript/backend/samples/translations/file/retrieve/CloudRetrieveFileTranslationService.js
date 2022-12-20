@@ -5,7 +5,7 @@ const retrieveFileTranslationUsingCloud = async () => {
     try {
         const cloudLanguageWeaverClient = await new CloudLanguageWeaverClient().build();
         const request = new CloudRetrieveFileRequest();
-        request.requestId = "requestId";
+        request.translationId = "translationId";
         request.outputDir = path.resolve("resources/output");
         request.outputFile = "input1-translated.txt";
         const translateFileResult = await cloudLanguageWeaverClient.retrieveCloudFileTranslation(request);

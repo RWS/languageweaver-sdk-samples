@@ -13,7 +13,7 @@ export const retrieveFileTranslationUsingEdge = async clientId => {
             .withConfigurations(clientConfiguration)
             .build();
         const request = new EdgeRetrieveFileRequest();
-        request.requestId = "requestId";
+        request.translationId = "translationId";
         request.outputFormat = Format.PLAIN;
         const translateFileResult = await edgeLanguageWeaverClient.retrieveEdgeFileTranslation(request);
         console.log(translateFileResult.fileContent);
