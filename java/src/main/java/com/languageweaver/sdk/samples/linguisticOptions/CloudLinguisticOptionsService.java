@@ -1,14 +1,14 @@
 package com.languageweaver.sdk.samples.linguisticOptions;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
+import com.languageweaver.sdk.translate.cloud.api.CloudLanguagePair;
 import com.languageweaver.sdk.translate.cloud.result.CloudLinguisticOptionsResult;
-import com.languageweaver.sdk.translate.common.api.LanguagePair;
 
 public class CloudLinguisticOptionsService {
 
     public static void main(String[] args) throws Exception {
         try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
-            final CloudLinguisticOptionsResult cloudLinguisticOptionsResult = lwClient.getCloudLinguisticOptions(getLanguagePair());
+            final CloudLinguisticOptionsResult cloudLinguisticOptionsResult = lwClient.getCloudLinguisticOptions(getCloudLanguagePair());
 
             if (cloudLinguisticOptionsResult.getLinguisticOptions() != null) {
                 cloudLinguisticOptionsResult.getLinguisticOptions()
@@ -17,8 +17,8 @@ public class CloudLinguisticOptionsService {
         }
     }
 
-    private static LanguagePair getLanguagePair() {
-        return new LanguagePair()
+    private static CloudLanguagePair getCloudLanguagePair() {
+        return new CloudLanguagePair()
                 .setSourceLanguageId("fra")
                 .setTargetLanguageId("eng")
                 .setModel("generic")
