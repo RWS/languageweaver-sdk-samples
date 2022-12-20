@@ -1,9 +1,6 @@
 package com.languageweaver.sdk.samples.linguisticOptions;
 
-import com.languageweaver.sdk.common.configurations.ClientConfiguration;
-import com.languageweaver.sdk.common.configurations.CredentialsConfiguration;
 import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.translate.common.api.LanguagePair;
 import com.languageweaver.sdk.translate.edge.api.EdgeLanguagePair;
 import com.languageweaver.sdk.translate.edge.result.EdgeLinguisticOptionsResult;
 
@@ -17,7 +14,7 @@ public class EdgeLinguisticOptionsService {
                 edgeLinguisticOptionsResult.getLinguisticOptions()
                         .forEach(linguisticOption -> System.out.println(linguisticOption.getId()));
             }
-        }
+        }g
     }
 
     private static EdgeLanguagePair getEdgeLanguagePair() {
