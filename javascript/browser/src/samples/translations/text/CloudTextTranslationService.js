@@ -29,3 +29,29 @@ export const translateTextUsingCloud = async (clientId, clientSecret) => {
         console.log(e);
     }
 }
+
+export const translateTextWithLinguisticOptionsUsingCloud = async (clientId, clientSecret) => {
+    try {
+        const clientConfiguration = new ClientConfiguration();
+        clientConfiguration.credentialsConfiguration = new CredentialsConfiguration(clientId, clientSecret);
+        const cloudLanguageWeaverClient = await new CloudLanguageWeaverClient()
+            .withConfigurations(clientConfiguration)
+            .build();
+        const translateTextRequest = new CloudTranslateTextRequest();
+        translateTextRequest.sourceLanguageId = "fra";
+        translateTextRequest.targetLanguageId = "eng";
+        translateTextRequest.model = "generic";
+        translateTextRequest.addInput("j'aime cette couleur");
+        translateTextRequest.inputFormat = Format.PLAIN;
+
+        const linguisticOptions = new Map();
+        linguisticOptions.set("Spelling", "UK");
+        translateTextRequest.linguisticOptions = linguisticOptions;
+
+        const translateTextResult = await cloudLanguageWeaverClient.translateTextUsingCloudParams(translateTextRequest);
+
+        console.log(translateTextResult.translation);
+    } catch (e) {
+        console.log(e);
+    }
+}

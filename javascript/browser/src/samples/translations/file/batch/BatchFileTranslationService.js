@@ -4,7 +4,7 @@ import SdkFactory, {
     PdfConverter,
     TranslateBatchFileRequest
 } from "@language-weaver/lw-sdk-js";
-import {file1, file2, file3, file4} from "../../../../samples-utils";
+import {file1, file2, file3, file4, file5, file6} from "../../../../samples-utils";
 
 export const translateBatchFile = async (clientId, clientSecret) => {
     try {
@@ -40,6 +40,27 @@ export const translatePdfBatchFile = async (clientId, clientSecret) => {
 
         // provide list of File objects
         translateFileRequest.input = [file3, file4];
+        const translateFileResult = await lwClient.translateBatchFile(translateFileRequest);
+        console.log(translateFileResult.translationFileResults);
+    } catch (e) {
+        console.log(e)
+    }
+}
+export const translateBatchFileWithLinguisticOptions = async (clientId, clientSecret) => {
+    try {
+        const clientConfiguration = new ClientConfiguration();
+        clientConfiguration.credentialsConfiguration = new CredentialsConfiguration(clientId, clientSecret);
+        const lwClient = await SdkFactory.getLanguageWeaverClient(clientConfiguration);
+        const translateFileRequest = new TranslateBatchFileRequest();
+        translateFileRequest.sourceLanguageId = "fra";
+        translateFileRequest.targetLanguageId = "eng";
+        translateFileRequest.model = "generic";
+        translateFileRequest.input = [file5, file6];
+
+        const linguisticOptions = new Map();
+        linguisticOptions.set("Spelling", "UK");
+        translateFileRequest.linguisticOptions = linguisticOptions;
+
         const translateFileResult = await lwClient.translateBatchFile(translateFileRequest);
         console.log(translateFileResult.translationFileResults);
     } catch (e) {

@@ -41,5 +41,27 @@ const translatePdfBatchFile = async () => {
     }
 }
 
+const translateBatchFileWithLinguisticOptions = async () => {
+    try {
+        const lwClient = await SdkFactory.getLanguageWeaverClient(new ClientConfiguration());
+        const translateFileRequest = new TranslateBatchFileRequest();
+        translateFileRequest.sourceLanguageId = "fra";
+        translateFileRequest.targetLanguageId = "eng";
+        translateFileRequest.model = "generic";
+        // provide full path to the input and output folders
+        translateFileRequest.input = path.resolve("resources/input_linguistic_options");
+        translateFileRequest.outputDir = path.resolve("resources/output");
+
+        const linguisticOptions = new Map();
+        linguisticOptions.set("Spelling", "UK");
+        translateFileRequest.linguisticOptions = linguisticOptions;
+
+        await lwClient.translateBatchFile(translateFileRequest);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 translateBatchFile();
 // translatePdfBatchFile();
+// translateBatchFileWithLinguisticOptions();
