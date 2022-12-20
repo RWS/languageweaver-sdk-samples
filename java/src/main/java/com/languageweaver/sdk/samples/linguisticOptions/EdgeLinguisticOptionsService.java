@@ -14,7 +14,7 @@ public class EdgeLinguisticOptionsService {
                 edgeLinguisticOptionsResult.getLinguisticOptions()
                         .forEach(linguisticOption -> System.out.println(linguisticOption.getId()));
             }
-        }g
+        }
     }
 
     private static EdgeLanguagePair getEdgeLanguagePair() {
