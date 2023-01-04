@@ -20,7 +20,7 @@ public class CloudContentInsightsService
         CloudContentInsightsRequest cloudContentInsightsRequest = new CloudContentInsightsRequest()
         {
             SourceLanguage = "eng",
-            File = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
+            FilePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
                 "Resources", "Input", "input1.txt")
         };
 
