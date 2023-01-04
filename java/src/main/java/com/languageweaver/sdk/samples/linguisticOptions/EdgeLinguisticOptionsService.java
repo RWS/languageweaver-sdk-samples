@@ -1,26 +1,23 @@
 package com.languageweaver.sdk.samples.linguisticOptions;
 
 import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.translate.edge.api.EdgeLanguagePair;
-import com.languageweaver.sdk.translate.edge.result.EdgeLinguisticOptionsResult;
+import com.languageweaver.sdk.translate.edge.request.linguisticOptions.EdgeGetLinguisticOptionsRequest;
+import com.languageweaver.sdk.translate.edge.result.linguisticOptions.EdgeLinguisticOptionsResult;
 
 public class EdgeLinguisticOptionsService {
 
     public static void main(String[] args) throws Exception {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
-            final EdgeLinguisticOptionsResult edgeLinguisticOptionsResult = lwClient.getEdgeLinguisticOptions(getEdgeLanguagePair());
+            EdgeGetLinguisticOptionsRequest edgeGetLinguisticOptionsRequest = new EdgeGetLinguisticOptionsRequest()
+                    .setSourceLanguageId("chi")
+                    .setTargetLanguageId("eng")
+                    .setModel("Generic");
+//                   .setPlatform("SRV")
+//                   .setTechnology("TNMV")
 
-            if (edgeLinguisticOptionsResult.getLinguisticOptions() != null) {
-                edgeLinguisticOptionsResult.getLinguisticOptions()
-                        .forEach(linguisticOption -> System.out.println(linguisticOption.getId()));
-            }
+            final EdgeLinguisticOptionsResult edgeLinguisticOptionsResult = lwClient.getEdgeLinguisticOptions(edgeGetLinguisticOptionsRequest);
+            // handle result
         }
     }
 
-    private static EdgeLanguagePair getEdgeLanguagePair() {
-        return new EdgeLanguagePair()
-                .setSourceLanguageId("chi")
-                .setTargetLanguageId("eng")
-                .setLanguagePairId("ChiEng_Generic_Cloud");
-    }
 }

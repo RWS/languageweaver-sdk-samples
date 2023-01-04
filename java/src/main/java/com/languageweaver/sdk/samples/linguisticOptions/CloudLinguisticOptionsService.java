@@ -1,27 +1,21 @@
 package com.languageweaver.sdk.samples.linguisticOptions;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
-import com.languageweaver.sdk.translate.cloud.api.CloudLanguagePair;
-import com.languageweaver.sdk.translate.cloud.result.CloudLinguisticOptionsResult;
+import com.languageweaver.sdk.translate.cloud.request.linguisticOptions.CloudGetLinguisticOptionsRequest;
+import com.languageweaver.sdk.translate.cloud.result.linguisticOptions.CloudLinguisticOptionsResult;
 
 public class CloudLinguisticOptionsService {
 
     public static void main(String[] args) throws Exception {
         try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
-            final CloudLinguisticOptionsResult cloudLinguisticOptionsResult = lwClient.getCloudLinguisticOptions(getCloudLanguagePair());
+            CloudGetLinguisticOptionsRequest cloudGetLinguisticOptionsRequest = new CloudGetLinguisticOptionsRequest()
+                    .setSourceLanguageId("chi")
+                    .setTargetLanguageId("eng")
+                    .setModel("generic");
 
-            if (cloudLinguisticOptionsResult.getLinguisticOptions() != null) {
-                cloudLinguisticOptionsResult.getLinguisticOptions()
-                        .forEach(linguisticOption -> System.out.println(linguisticOption.getName()));
-            }
+            final CloudLinguisticOptionsResult cloudLinguisticOptionsResult = lwClient.getCloudLinguisticOptions(cloudGetLinguisticOptionsRequest);
+            // handle result
         }
     }
 
-    private static CloudLanguagePair getCloudLanguagePair() {
-        return new CloudLanguagePair()
-                .setSourceLanguageId("fra")
-                .setTargetLanguageId("eng")
-                .setModel("generic")
-                .setName("fraeng_generic");
-    }
 }
