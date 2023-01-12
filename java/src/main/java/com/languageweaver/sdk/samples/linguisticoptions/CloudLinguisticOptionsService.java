@@ -1,8 +1,8 @@
-package com.languageweaver.sdk.samples.linguisticOptions;
+package com.languageweaver.sdk.samples.linguisticoptions;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
-import com.languageweaver.sdk.translate.cloud.request.linguisticOptions.CloudGetLinguisticOptionsRequest;
-import com.languageweaver.sdk.translate.cloud.result.linguisticOptions.CloudLinguisticOptionsResult;
+import com.languageweaver.sdk.linguisticoptions.cloud.request.CloudGetLinguisticOptionsRequest;
+import com.languageweaver.sdk.linguisticoptions.cloud.result.CloudLinguisticOptionsResult;
 
 public class CloudLinguisticOptionsService {
 
@@ -17,5 +17,4 @@ public class CloudLinguisticOptionsService {
             // handle result
         }
     }
-
 }

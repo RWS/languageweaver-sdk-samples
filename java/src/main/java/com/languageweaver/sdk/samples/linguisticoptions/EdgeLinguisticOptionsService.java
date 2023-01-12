@@ -1,8 +1,8 @@
-package com.languageweaver.sdk.samples.linguisticOptions;
+package com.languageweaver.sdk.samples.linguisticoptions;
 
 import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.translate.edge.request.linguisticOptions.EdgeGetLinguisticOptionsRequest;
-import com.languageweaver.sdk.translate.edge.result.linguisticOptions.EdgeLinguisticOptionsResult;
+import com.languageweaver.sdk.linguisticoptions.edge.request.EdgeGetLinguisticOptionsRequest;
+import com.languageweaver.sdk.linguisticoptions.edge.result.EdgeLinguisticOptionsResult;
 
 public class EdgeLinguisticOptionsService {
 
@@ -19,5 +19,4 @@ public class EdgeLinguisticOptionsService {
             // handle result
         }
     }
-
 }

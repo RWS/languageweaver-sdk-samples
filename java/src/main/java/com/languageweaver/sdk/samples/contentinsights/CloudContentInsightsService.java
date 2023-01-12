@@ -1,10 +1,10 @@
-package com.languageweaver.sdk.samples.contentInsights;
+package com.languageweaver.sdk.samples.contentinsights;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
 import com.languageweaver.sdk.common.constants.Format;
-import com.languageweaver.sdk.contentInsights.cloud.request.CloudContentInsightsRequest;
-import com.languageweaver.sdk.contentInsights.cloud.request.CloudGetContentInsightsForTranslationsRequest;
-import com.languageweaver.sdk.contentInsights.cloud.result.CloudContentInsightsResult;
+import com.languageweaver.sdk.contentinsights.cloud.request.CloudContentInsightsRequest;
+import com.languageweaver.sdk.contentinsights.cloud.request.CloudGetContentInsightsForTranslationsRequest;
+import com.languageweaver.sdk.contentinsights.cloud.result.CloudContentInsightsResult;
 import com.languageweaver.sdk.translate.cloud.request.CloudTranslateFileRequest;
 
 import java.io.File;

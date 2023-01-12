@@ -1,9 +1,9 @@
-package com.languageweaver.sdk.samples.contentInsights;
+package com.languageweaver.sdk.samples.contentinsights;
 
 import com.languageweaver.sdk.common.constants.Format;
 import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.contentInsights.edge.request.EdgeContentInsightsRequest;
-import com.languageweaver.sdk.contentInsights.edge.response.EdgeContentInsightsResult;
+import com.languageweaver.sdk.contentinsights.edge.request.EdgeContentInsightsRequest;
+import com.languageweaver.sdk.contentinsights.edge.response.EdgeContentInsightsResult;
 import com.languageweaver.sdk.translate.edge.request.EdgeTranslateFileRequest;
 
 import java.io.File;

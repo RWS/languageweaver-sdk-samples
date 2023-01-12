@@ -1,10 +1,10 @@
-package com.languageweaver.sdk.samples.linguisticOptions;
+package com.languageweaver.sdk.samples.linguisticoptions;
 
 import com.languageweaver.sdk.common.LanguageWeaverClient;
 import com.languageweaver.sdk.common.SdkFactory;
 import com.languageweaver.sdk.common.configurations.ClientConfiguration;
-import com.languageweaver.sdk.translate.common.request.linguisticOptions.GetLinguisticOptionsRequest;
-import com.languageweaver.sdk.translate.common.result.linguisticOptions.LinguisticOptionsResult;
+import com.languageweaver.sdk.linguisticoptions.common.request.GetLinguisticOptionsRequest;
+import com.languageweaver.sdk.linguisticoptions.common.result.LinguisticOptionsResult;
 
 public class LinguisticOptionsService {
 
