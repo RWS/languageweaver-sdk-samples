@@ -1,6 +1,6 @@
 ﻿using LanguageWeaver.Sdk.Common.Edge;
-using LanguageWeaver.Sdk.Translate.Edge.Request.LinguisticOptions;
-using LanguageWeaver.Sdk.Translate.Edge.Result.LinguisticOptions;
+using LanguageWeaver.Sdk.LinguisticOptions.Edge.Request;
+using LanguageWeaver.Sdk.LinguisticOptions.Edge.Result;
 
 namespace LanguageWeaver.Sdk.Samples.LinguisticOptions;
 
