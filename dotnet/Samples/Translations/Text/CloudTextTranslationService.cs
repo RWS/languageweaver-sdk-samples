@@ -10,6 +10,13 @@ public static class CloudTextTranslationService
     public static void Main()
     {
         using var lwClient = new CloudLanguageWeaverClient().Build();
+
+        TranslateText(lwClient);
+        TranslateTextWithLinguisticOptions(lwClient);
+    }
+
+    private static void TranslateText(CloudLanguageWeaverClient lwClient)
+    {
         var translateTextRequest = new CloudTranslateTextRequest
         {
             SourceLanguageId = "eng",
@@ -29,6 +36,30 @@ public static class CloudTextTranslationService
         };
 
         CloudTranslationTextResult translateTextResult = lwClient.TranslateText(translateTextRequest);
+        translateTextResult.Translation.ForEach(Console.WriteLine);
+    }
+
+    private static void TranslateTextWithLinguisticOptions(CloudLanguageWeaverClient lwClient)
+    {
+        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
+        linguisticOptions.Add("Spelling", "UK");
+
+        CloudTranslateTextRequest translateTextRequest = new CloudTranslateTextRequest()
+        {
+            SourceLanguageId = "fra",
+            TargetLanguageId = "eng",
+            Model = "generic",
+            Input = new List<string> { "j'aime cette couleur" },
+            InputFormat = Format.Plain,
+            LinguisticOptions = linguisticOptions,
+            Dictionaries = new List<string>
+            {
+                "689f06cf-36ba-4903-a530-da1f7766f478",
+                "3d297ee3-0878-4ef7-9ee7-ca14b48e6956"
+            }
+        };
+
+        var translateTextResult = lwClient.TranslateText(translateTextRequest);
         translateTextResult.Translation.ForEach(Console.WriteLine);
     }
 }

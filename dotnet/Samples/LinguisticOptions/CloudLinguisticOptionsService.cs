@@ -1,6 +1,6 @@
 ﻿using LanguageWeaver.Sdk.Common.Cloud;
-using LanguageWeaver.Sdk.LinguisticOptions.Cloud.Request;
-using LanguageWeaver.Sdk.LinguisticOptions.Cloud.Result;
+using LanguageWeaver.Sdk.Translate.Cloud.Request.LinguisticOptions;
+using LanguageWeaver.Sdk.Translate.Cloud.Result.LinguisticOptions;
 
 namespace LanguageWeaver.Sdk.Samples.LinguisticOptions;
 

@@ -13,6 +13,7 @@ public class CloudFileTranslationService
 
         TranslateFile(lwClient);
         TranslateFileWithPdfConverter(lwClient);
+        TranslateFileWithLinguisticOptions(lwClient);
     }
 
     private static void TranslateFile(CloudLanguageWeaverClient lwClient)
@@ -58,6 +59,34 @@ public class CloudFileTranslationService
                 "Resources", "Input", "input1.pdf"),
             OutputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
                 "Resources", "Output", "input1-translated.docx")
+        };
+
+        CloudTranslationFileResult translateFileResult = lwClient.TranslateFile(translateFileRequest);
+        // handle result
+    }
+
+    private static void TranslateFileWithLinguisticOptions(CloudLanguageWeaverClient lwClient)
+    {
+        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
+        linguisticOptions.Add("Spelling", "UK");
+
+        var translateFileRequest = new CloudTranslateFileRequest()
+        {
+            SourceLanguageId = "fra",
+            TargetLanguageId = "eng",
+            Model = "generic",
+            InputFormat = Format.Plain,
+            LinguisticOptions = linguisticOptions,
+            Dictionaries = new List<string>
+            {
+                "689f06cf-36ba-4903-a530-da1f7766f478",
+                "3d297ee3-0878-4ef7-9ee7-ca14b48e6956"
+            },
+            // provide full path to the source and output file
+            InputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
+                "Resources", "Input", "input1.txt"),
+            OutputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
+                "Resources", "Output", "input1-translated.txt")
         };
 
         CloudTranslationFileResult translateFileResult = lwClient.TranslateFile(translateFileRequest);
