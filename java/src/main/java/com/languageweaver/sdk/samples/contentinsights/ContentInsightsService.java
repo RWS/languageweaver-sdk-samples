@@ -1,11 +1,11 @@
-package com.languageweaver.sdk.samples.contentInsights;
+package com.languageweaver.sdk.samples.contentinsights;
 
 import com.languageweaver.sdk.common.LanguageWeaverClient;
 import com.languageweaver.sdk.common.SdkFactory;
 import com.languageweaver.sdk.common.configurations.ClientConfiguration;
 import com.languageweaver.sdk.common.constants.Format;
-import com.languageweaver.sdk.contentInsights.common.api.ContentInsightsResult;
-import com.languageweaver.sdk.contentInsights.common.request.ContentInsightsRequest;
+import com.languageweaver.sdk.contentinsights.common.api.ContentInsightsResult;
+import com.languageweaver.sdk.contentinsights.common.request.ContentInsightsRequest;
 import com.languageweaver.sdk.translate.common.request.TranslateFileRequest;
 
 import java.io.File;
@@ -33,5 +33,4 @@ public class ContentInsightsService {
             //handle result
         }
     }
-
 }
