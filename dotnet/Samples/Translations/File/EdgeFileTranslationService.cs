@@ -13,6 +13,7 @@ public class EdgeFileTranslationService
 
         TranslateFile(lwClient);
         TranslateFileWithPdfConverter(lwClient);
+        TranslateFileWithLinguisticOptions(lwClient);
     }
 
     private static void TranslateFile(EdgeLanguageWeaverClient lwClient)
@@ -54,6 +55,32 @@ public class EdgeFileTranslationService
                 "Resources", "Input", "input1.pdf"),
             OutputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
                 "Resources", "Output", "input1-translated.docx")
+        };
+
+        EdgeTranslationFileResult translateFileResult = lwClient.TranslateFile(translateFileRequest);
+        // handle result
+    }
+
+    private static void TranslateFileWithLinguisticOptions(EdgeLanguageWeaverClient lwClient)
+    {
+        var translateFileRequest = new EdgeTranslateFileRequest()
+        {
+            LanguagePairId = "EngJpn_Generic_SRV_TNMV_8_5_x_6",
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "formality", "Formal" }
+            },
+            Dictionaries = new List<string>
+            {
+                "DictionaryName1",
+                "DictionaryName2"
+            },
+            InputFormat = Format.Plain,
+            // provide full path to the source and output file
+            InputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
+                "Resources", "Input", "input1.txt"),
+            OutputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
+                "Resources", "Output", "input1-translated.txt")
         };
 
         EdgeTranslationFileResult translateFileResult = lwClient.TranslateFile(translateFileRequest);
