@@ -39,14 +39,14 @@ public static class EdgeTextTranslationService
 
     private static void TranslateTextWithLinguisticOptions(EdgeLanguageWeaverClient lwClient)
     {
-        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
-        linguisticOptions.Add("formality", "Formal");
-
         var translateTextRequest = new EdgeTranslateTextRequest()
         {
             LanguagePairId = "EngJpn_Generic_SRV_TNMV_8_5_x_6",
             Input = new List<string> { "It was a long journey, so I'm really tired now" },
-            LinguisticOptions = linguisticOptions,
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "formality", "Informal" }
+            },
             InputFormat = Format.Plain,
             Dictionaries = new List<string>
             {

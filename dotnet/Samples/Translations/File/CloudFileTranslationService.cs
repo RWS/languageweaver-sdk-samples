@@ -67,20 +67,15 @@ public class CloudFileTranslationService
 
     private static void TranslateFileWithLinguisticOptions(CloudLanguageWeaverClient lwClient)
     {
-        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
-        linguisticOptions.Add("Spelling", "UK");
-
         var translateFileRequest = new CloudTranslateFileRequest()
         {
             SourceLanguageId = "fra",
             TargetLanguageId = "eng",
             Model = "generic",
             InputFormat = Format.Plain,
-            LinguisticOptions = linguisticOptions,
-            Dictionaries = new List<string>
+            LinguisticOptions = new Dictionary<string, string>
             {
-                "689f06cf-36ba-4903-a530-da1f7766f478",
-                "3d297ee3-0878-4ef7-9ee7-ca14b48e6956"
+                { "Spelling", "US" }
             },
             // provide full path to the source and output file
             InputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,

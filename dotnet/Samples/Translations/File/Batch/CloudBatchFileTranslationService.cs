@@ -43,15 +43,15 @@ public class CloudBatchFileTranslationService
 
     private static void TranslateBatchFileWithLinguisticOptions(CloudLanguageWeaverClient lwClient)
     {
-        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
-        linguisticOptions.Add("Spelling", "UK");
-
         var translateBatchFileRequest = new CloudTranslateBatchFileRequest()
         {
             SourceLanguageId = "fra",
             TargetLanguageId = "eng",
             Model = "generic",
-            LinguisticOptions = linguisticOptions,
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "Spelling", "US" }
+            },
             Dictionaries = new List<string>
             {
                 "689f06cf-36ba-4903-a530-da1f7766f478",

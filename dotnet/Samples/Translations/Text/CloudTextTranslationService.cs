@@ -41,9 +41,6 @@ public static class CloudTextTranslationService
 
     private static void TranslateTextWithLinguisticOptions(CloudLanguageWeaverClient lwClient)
     {
-        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
-        linguisticOptions.Add("Spelling", "UK");
-
         CloudTranslateTextRequest translateTextRequest = new CloudTranslateTextRequest()
         {
             SourceLanguageId = "fra",
@@ -51,7 +48,10 @@ public static class CloudTextTranslationService
             Model = "generic",
             Input = new List<string> { "j'aime cette couleur" },
             InputFormat = Format.Plain,
-            LinguisticOptions = linguisticOptions,
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "Spelling", "UK" }
+            },
             Dictionaries = new List<string>
             {
                 "689f06cf-36ba-4903-a530-da1f7766f478",

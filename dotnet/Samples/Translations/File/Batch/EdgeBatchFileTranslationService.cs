@@ -39,13 +39,13 @@ public class EdgeBatchFileTranslationService
 
     private static void TranslateBatchFileWithLinguisticOptions(EdgeLanguageWeaverClient lwClient)
     {
-        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
-        linguisticOptions.Add("formality", "Informal");
-
         var translateBatchFileRequest = new EdgeTranslateBatchFileRequest()
         {
             LanguagePairId = "EngJpn_Generic_SRV_TNMV_8_5_x_6",
-            LinguisticOptions = linguisticOptions,
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "formality", "Informal" }
+            },
             Dictionaries = new List<string>
             {
                 "DictionaryName1",

@@ -41,15 +41,15 @@ public class BatchFileTranslationService
 
     private static void TranslateBatchFileWithLinguisticOptions(ILanguageWeaverClient lwClient)
     {
-        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
-        linguisticOptions.Add("Spelling", "US");
-
         var translateBatchFileRequest = new TranslateBatchFileRequest()
         {
             SourceLanguageId = "fra",
             TargetLanguageId = "eng",
             Model = "generic",
-            LinguisticOptions = linguisticOptions,
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "Spelling", "US" }
+            },
             Dictionaries = new List<string>
             {
                 // provide list of dictionaries

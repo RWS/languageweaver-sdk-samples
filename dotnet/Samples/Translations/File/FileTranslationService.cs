@@ -66,9 +66,6 @@ public class FileTranslationService
 
     private static void TranslateFileWithLinguisticOptions(ILanguageWeaverClient lwClient)
     {
-        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
-        linguisticOptions.Add("Spelling", "UK");
-
         var translateFileRequest = new TranslateFileRequest()
         {
             SourceLanguageId = "fra",
@@ -79,7 +76,10 @@ public class FileTranslationService
             {
                 // provide list of dictionaries
             },
-            LinguisticOptions = linguisticOptions,
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "Spelling", "US" }
+            },
             // provide full path to the source and output file
             InputFile = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
                 "Resources", "Input", "input1.txt"),

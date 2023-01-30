@@ -63,13 +63,13 @@ public class EdgeFileTranslationService
 
     private static void TranslateFileWithLinguisticOptions(EdgeLanguageWeaverClient lwClient)
     {
-        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
-        linguisticOptions.Add("formality", "Formal");
-
         var translateFileRequest = new EdgeTranslateFileRequest()
         {
             LanguagePairId = "EngJpn_Generic_SRV_TNMV_8_5_x_6",
-            LinguisticOptions = linguisticOptions,
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "formality", "Formal" }
+            },
             Dictionaries = new List<string>
             {
                 "DictionaryName1",

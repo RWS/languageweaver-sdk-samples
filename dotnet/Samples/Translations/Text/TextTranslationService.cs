@@ -40,16 +40,16 @@ public class TextTranslationService
 
     private static void TranslateTextWithLinguisticOptions(ILanguageWeaverClient lwClient)
     {
-        Dictionary<string, string> linguisticOptions = new Dictionary<string, string>();
-        linguisticOptions.Add("Spelling", "UK");
-
         var translateTextRequest = new TranslateTextRequest()
         {
             SourceLanguageId = "fra",
             TargetLanguageId = "eng",
             Model = "generic",
             Input = new List<string> { "j'aime cette couleur" },
-            LinguisticOptions = linguisticOptions,
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "Spelling", "UK" }
+            },
             Dictionaries = new List<string>
             {
                 // provide list of dictionaries
