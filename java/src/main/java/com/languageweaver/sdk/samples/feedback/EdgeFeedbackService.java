@@ -3,7 +3,6 @@ package com.languageweaver.sdk.samples.feedback;
 import com.languageweaver.sdk.common.constants.ApprovalStatus;
 import com.languageweaver.sdk.common.constants.FeedbackComment;
 import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.feedback.common.request.DeleteFeedbackRequest;
 import com.languageweaver.sdk.feedback.edge.request.*;
 import com.languageweaver.sdk.feedback.edge.result.EdgeFeedbackListResult;
 import com.languageweaver.sdk.feedback.edge.result.EdgeFeedbackResult;
@@ -55,7 +54,7 @@ public class EdgeFeedbackService {
 
     public static void deleteFeedback() throws IOException {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
-            DeleteFeedbackRequest deleteFeedbackRequest = new EdgeDeleteFeedbackRequest()
+            EdgeDeleteFeedbackRequest deleteFeedbackRequest = new EdgeDeleteFeedbackRequest()
                     .setFeedbackId("feedbackId");
 
             lwClient.deleteFeedback(deleteFeedbackRequest);
@@ -128,7 +127,7 @@ public class EdgeFeedbackService {
             System.out.println(feedback.getApprovalState());
 
 //          DELETE FEEDBACK
-            DeleteFeedbackRequest deleteFeedbackRequest = feedback.toDeleteRequest();
+            EdgeDeleteFeedbackRequest deleteFeedbackRequest = feedback.toDeleteRequest();
             lwClient.deleteFeedback(deleteFeedbackRequest);
         }
     }

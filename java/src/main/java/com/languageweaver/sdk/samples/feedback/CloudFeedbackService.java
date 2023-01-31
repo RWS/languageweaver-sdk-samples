@@ -6,7 +6,6 @@ import com.languageweaver.sdk.feedback.cloud.model.CloudFeedbackSortCriteria;
 import com.languageweaver.sdk.feedback.cloud.request.*;
 import com.languageweaver.sdk.feedback.cloud.result.CloudFeedbackListResult;
 import com.languageweaver.sdk.feedback.cloud.result.CloudFeedbackResult;
-import com.languageweaver.sdk.feedback.common.request.DeleteFeedbackRequest;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -62,7 +61,7 @@ public class CloudFeedbackService {
 
     public static void deleteFeedback() throws IOException {
         try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
-            DeleteFeedbackRequest deleteFeedbackRequest = new CloudDeleteFeedbackRequest()
+            CloudDeleteFeedbackRequest deleteFeedbackRequest = new CloudDeleteFeedbackRequest()
                     .setFeedbackId("feedbackId");
 
             lwClient.deleteFeedback(deleteFeedbackRequest);
@@ -134,7 +133,7 @@ public class CloudFeedbackService {
             System.out.println(feedback.getApprovalState());
 
 //          DELETE FEEDBACK
-            DeleteFeedbackRequest deleteFeedbackRequest = feedback.toDeleteRequest();
+            CloudDeleteFeedbackRequest deleteFeedbackRequest = feedback.toDeleteRequest();
             lwClient.deleteFeedback(deleteFeedbackRequest);
         }
     }

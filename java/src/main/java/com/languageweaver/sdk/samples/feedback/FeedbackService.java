@@ -93,7 +93,7 @@ public class FeedbackService {
                 List<FeedbackResult> feedbackList = filteredFeedback.getFeedbackList();
                 feedbackList.stream()
                         .limit(3)
-                        .forEach(cloudFeedbackResult -> System.out.println(cloudFeedbackResult.getFeedbackId()));
+                        .forEach(feedbackResult -> System.out.println(feedbackResult.getFeedbackId()));
                 pageNumber++;
             } while (filteredFeedback.getFeedbackList().size() > 0);
         }
