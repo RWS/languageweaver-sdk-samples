@@ -23,7 +23,7 @@ public class EdgeContentInsightsService {
                     .addDictionary("DictionaryName2");
 
             EdgeContentInsightsRequest edgeContentInsightsRequest = new EdgeContentInsightsRequest()
-                    .addTranslationId(lwClient.translateFile(translateFileRequest).getTranslationId());
+                    .setTranslationId(lwClient.translateFile(translateFileRequest).getTranslationId());
 
             final EdgeContentInsightsResult edgeContentInsightsResult = lwClient.getContentInsightsForTranslations(edgeContentInsightsRequest);
             // handle result
