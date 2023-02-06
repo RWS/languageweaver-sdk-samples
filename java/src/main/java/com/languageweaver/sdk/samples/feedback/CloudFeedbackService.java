@@ -2,7 +2,6 @@ package com.languageweaver.sdk.samples.feedback;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
 import com.languageweaver.sdk.common.constants.*;
-import com.languageweaver.sdk.feedback.cloud.model.CloudFeedbackSortCriteria;
 import com.languageweaver.sdk.feedback.cloud.request.*;
 import com.languageweaver.sdk.feedback.cloud.result.CloudFeedbackListResult;
 import com.languageweaver.sdk.feedback.cloud.result.CloudFeedbackResult;
@@ -30,8 +29,7 @@ public class CloudFeedbackService {
                     .setQualityEstimationMT(QualityEstimation.ADEQUATE)
                     .setQualityEstimation(QualityEstimation.POOR);
 
-            CloudFeedbackResult feedback = lwClient.createFeedback(createFeedbackRequest);
-            return feedback;
+            return lwClient.createFeedback(createFeedbackRequest);
         }
     }
 
@@ -115,11 +113,11 @@ public class CloudFeedbackService {
         try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
             CloudFeedbackResult feedback;
 
-//          CREATE FEEDBACK
+            // CREATE FEEDBACK
             feedback = createFeedback();
             System.out.println(feedback.getFeedbackId());
 
-//          UPDATE FEEDBACK
+            // UPDATE FEEDBACK
             CloudUpdateFeedbackRequest cloudUpdateFeedbackRequest = feedback.toUpdateRequest()
                     .setSuggestedTranslation("new suggested translation")
                     .setRating(2)
@@ -127,12 +125,12 @@ public class CloudFeedbackService {
                     .clearComments().addComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
             feedback = lwClient.updateFeedback(cloudUpdateFeedbackRequest);
 
-//          UPDATE FEEDBACK APPROVAL
+            // UPDATE FEEDBACK APPROVAL
             CloudUpdateFeedbackApprovalRequest cloudUpdateApprovalRequest = feedback.toUpdateApprovalRequest(ApprovalStatus.REJECTED);
             feedback = lwClient.updateFeedbackApproval(cloudUpdateApprovalRequest);
             System.out.println(feedback.getApprovalState());
 
-//          DELETE FEEDBACK
+            // DELETE FEEDBACK
             CloudDeleteFeedbackRequest deleteFeedbackRequest = feedback.toDeleteRequest();
             lwClient.deleteFeedback(deleteFeedbackRequest);
         }

@@ -1,7 +1,7 @@
 package com.languageweaver.sdk.samples.lps;
 
 import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.translate.edge.result.EdgeLanguagePairsResult;
+import com.languageweaver.sdk.languagepairs.edge.result.EdgeLanguagePairsResult;
 
 public class EdgeLanguagePairService {
 
