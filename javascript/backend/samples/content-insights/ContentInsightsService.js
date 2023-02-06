@@ -1,16 +1,16 @@
 const SdkFactory = require("@language-weaver/lw-sdk-js").default;
 const {
     ClientConfiguration,
-    ContentInsightsForTranslationRequest
+    ContentInsightsRequest,
 } = require("@language-weaver/lw-sdk-js");
 
 const getContentInsightsForTranslations = async () => {
     try {
         const lwClient = await SdkFactory.getLanguageWeaverClient(new ClientConfiguration());
-        const contentInsightsForTranslationsRequest = new ContentInsightsForTranslationRequest();
-        contentInsightsForTranslationsRequest.addTranslationId("translationId");
+        const contentInsightsRequest = new ContentInsightsRequest();
+        contentInsightsRequest.addTranslationId("translationId");
 
-        const contentInsightsResult = await lwClient.getContentInsightsForTranslations(contentInsightsForTranslationsRequest);
+        const contentInsightsResult = await lwClient.getContentInsightsForTranslations(contentInsightsRequest);
         console.log(contentInsightsResult);
     } catch (e) {
         console.log(e);

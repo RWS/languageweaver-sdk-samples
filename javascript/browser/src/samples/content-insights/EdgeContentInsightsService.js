@@ -1,7 +1,7 @@
 import {
     ClientConfiguration,
     CredentialsConfiguration,
-    EdgeContentInsightsForTranslationRequest,
+    EdgeContentInsightsRequest,
     EdgeLanguageWeaverClient
 } from "@language-weaver/lw-sdk-js";
 
@@ -12,10 +12,10 @@ export const getContentInsightsForTranslationsUsingEdge = async (clientId) => {
         const edgeLanguageWeaverClient = await new EdgeLanguageWeaverClient()
             .withConfigurations(clientConfiguration)
             .build();
-        const contentInsightsForTranslationsRequest = new EdgeContentInsightsForTranslationRequest();
-        contentInsightsForTranslationsRequest.translationId = "translationId";
+        const edgeContentInsightsRequest = new EdgeContentInsightsRequest();
+        edgeContentInsightsRequest.translationId = "translationId";
 
-        const contentInsightsResult = await edgeLanguageWeaverClient.getEdgeContentInsightsResultForTranslation(contentInsightsForTranslationsRequest);
+        const contentInsightsResult = await edgeLanguageWeaverClient.getEdgeContentInsightsResultForTranslation(edgeContentInsightsRequest);
         console.log(contentInsightsResult);
     } catch (e) {
         console.log(e);
