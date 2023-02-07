@@ -24,8 +24,7 @@ public class FeedbackService {
                     .setSuggestedTranslation("suggestedTranslation")
                     .addComment(FeedbackComment.SPELLING);
 
-            FeedbackResult feedback = lwClient.createFeedback(createFeedbackRequest);
-            return feedback;
+            return lwClient.createFeedback(createFeedbackRequest);
         }
     }
 
@@ -104,22 +103,22 @@ public class FeedbackService {
         try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(new ClientConfiguration())) {
             FeedbackResult feedback;
 
-//          CREATE FEEDBACK
+            // CREATE FEEDBACK
             feedback = createFeedback();
             System.out.println(feedback.getFeedbackId());
 
-//          UPDATE FEEDBACK
+            // UPDATE FEEDBACK
             UpdateFeedbackRequest updateFeedbackRequest = feedback.toUpdateRequest()
                     .setSuggestedTranslation("new suggested translation")
                     .clearComments().addComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
             feedback = lwClient.updateFeedback(updateFeedbackRequest);
 
-//          UPDATE FEEDBACK APPROVAL
+            // UPDATE FEEDBACK APPROVAL
             UpdateFeedbackApprovalRequest updateApprovalRequest = feedback.toUpdateApprovalRequest(ApprovalStatus.REJECTED);
             feedback = lwClient.updateFeedbackApproval(updateApprovalRequest);
             System.out.println(feedback.getApprovalState());
 
-//          DELETE FEEDBACK
+            // DELETE FEEDBACK
             DeleteFeedbackRequest deleteFeedbackRequest = feedback.toDeleteRequest();
             lwClient.deleteFeedback(deleteFeedbackRequest);
         }

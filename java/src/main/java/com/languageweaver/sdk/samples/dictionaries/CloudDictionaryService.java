@@ -1,7 +1,7 @@
 package com.languageweaver.sdk.samples.dictionaries;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
-import com.languageweaver.sdk.translate.cloud.result.CloudDictionariesResult;
+import com.languageweaver.sdk.dictionaries.cloud.result.CloudDictionariesResult;
 
 public class CloudDictionaryService {
     public static final int PAGE_NUMBER = 1;

@@ -1,7 +1,7 @@
 package com.languageweaver.sdk.samples.dictionaries;
 
 import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
-import com.languageweaver.sdk.translate.edge.result.EdgeDictionariesResult;
+import com.languageweaver.sdk.dictionaries.edge.result.EdgeDictionariesResult;
 
 public class EdgeDictionaryService {
     public static final int PAGE_NUMBER = 1;

@@ -25,8 +25,7 @@ public class EdgeFeedbackService {
                     .setComment(FeedbackComment.SPELLING)
                     .setApprovalState(ApprovalStatus.APPROVED);
 
-            EdgeFeedbackResult feedback = lwClient.createFeedback(createFeedbackRequest);
-            return feedback;
+            return lwClient.createFeedback(createFeedbackRequest);
         }
     }
 
@@ -111,22 +110,22 @@ public class EdgeFeedbackService {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
             EdgeFeedbackResult feedback;
 
-//          CREATE FEEDBACK
+            // CREATE FEEDBACK
             feedback = createFeedback();
             System.out.println(feedback.getFeedbackId());
 
-//          UPDATE FEEDBACK
+            // UPDATE FEEDBACK
             EdgeUpdateFeedbackRequest edgeUpdateFeedbackRequest = feedback.toUpdateRequest()
                     .setSuggestedTranslation("new suggested translation")
                     .setComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
             feedback = lwClient.updateFeedback(edgeUpdateFeedbackRequest);
 
-//          UPDATE FEEDBACK APPROVAL
+            // UPDATE FEEDBACK APPROVAL
             EdgeUpdateFeedbackApprovalRequest edgeUpdateApprovalRequest = feedback.toUpdateApprovalRequest(ApprovalStatus.REJECTED);
             feedback = lwClient.updateFeedbackApproval(edgeUpdateApprovalRequest);
             System.out.println(feedback.getApprovalState());
 
-//          DELETE FEEDBACK
+            // DELETE FEEDBACK
             EdgeDeleteFeedbackRequest deleteFeedbackRequest = feedback.toDeleteRequest();
             lwClient.deleteFeedback(deleteFeedbackRequest);
         }
