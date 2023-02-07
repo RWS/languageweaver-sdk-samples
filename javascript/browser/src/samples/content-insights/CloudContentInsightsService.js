@@ -1,8 +1,8 @@
 import {
     ClientConfiguration,
     CloudContentInsightsRequest,
+    CloudFileContentInsightsRequest,
     CloudLanguageWeaverClient,
-    ContentInsightsForTranslationRequest,
     CredentialsConfiguration
 } from "@language-weaver/lw-sdk-js";
 import {file1} from "../../samples-utils";
@@ -14,11 +14,11 @@ export const getContentInsightsUsingCloud = async (clientId, clientSecret) => {
         const cloudLanguageWeaverClient = await new CloudLanguageWeaverClient()
             .withConfigurations(clientConfiguration)
             .build();
-        const contentInsightsRequest = new CloudContentInsightsRequest();
-        contentInsightsRequest.sourceLanguage = "eng";
-        contentInsightsRequest.files = file1;
+        const cloudFileContentInsightsRequest = new CloudFileContentInsightsRequest();
+        cloudFileContentInsightsRequest.sourceLanguage = "eng";
+        cloudFileContentInsightsRequest.files = file1;
 
-        const contentInsightsResult = await cloudLanguageWeaverClient.getCloudContentInsights(contentInsightsRequest);
+        const contentInsightsResult = await cloudLanguageWeaverClient.getCloudContentInsights(cloudFileContentInsightsRequest);
         console.log(contentInsightsResult);
     } catch (e) {
         console.log(e);
@@ -32,10 +32,10 @@ export const getContentInsightsForTranslationsUsingCloud = async (clientId, clie
         const cloudLanguageWeaverClient = await new CloudLanguageWeaverClient()
             .withConfigurations(clientConfiguration)
             .build();
-        const contentInsightsForTranslationsRequest = new ContentInsightsForTranslationRequest();
-        contentInsightsForTranslationsRequest.addTranslationId("translationId");
+        const cloudContentInsightsRequest = new CloudContentInsightsRequest();
+        cloudContentInsightsRequest.addTranslationId("translationId");
 
-        const contentInsightsResult = await cloudLanguageWeaverClient.getCloudContentInsightsForTranslations(contentInsightsForTranslationsRequest);
+        const contentInsightsResult = await cloudLanguageWeaverClient.getCloudContentInsightsForTranslations(cloudContentInsightsRequest);
         console.log(contentInsightsResult);
     } catch (e) {
         console.log(e);

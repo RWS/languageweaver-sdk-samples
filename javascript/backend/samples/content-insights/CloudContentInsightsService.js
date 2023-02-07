@@ -1,18 +1,18 @@
 const {
-    CloudContentInsightsRequest,
     CloudLanguageWeaverClient,
-    ContentInsightsForTranslationRequest
+    CloudFileContentInsightsRequest,
+    CloudContentInsightsRequest,
 } = require("@language-weaver/lw-sdk-js");
 const path = require("path");
 
 const getContentInsights = async () => {
     try {
         const cloudLanguageWeaverClient = await new CloudLanguageWeaverClient().build();
-        const contentInsightsRequest = new CloudContentInsightsRequest();
-        contentInsightsRequest.sourceLanguage = "eng";
-        contentInsightsRequest.files = path.resolve("resources/input/input1.txt");
+        const cloudFileContentInsightsRequest = new CloudFileContentInsightsRequest();
+        cloudFileContentInsightsRequest.sourceLanguage = "eng";
+        cloudFileContentInsightsRequest.files = path.resolve("resources/input/input1.txt");
 
-        const contentInsightsResult = await cloudLanguageWeaverClient.getCloudContentInsights(contentInsightsRequest);
+        const contentInsightsResult = await cloudLanguageWeaverClient.getCloudContentInsights(cloudFileContentInsightsRequest);
         console.log(contentInsightsResult);
     } catch (e) {
         console.log(e);
@@ -22,10 +22,10 @@ const getContentInsights = async () => {
 const getContentInsightsForTranslations = async () => {
     try {
         const cloudLanguageWeaverClient = await new CloudLanguageWeaverClient().build();
-        const contentInsightsForTranslationsRequest = new ContentInsightsForTranslationRequest();
-        contentInsightsForTranslationsRequest.addTranslationId("translationId");
+        const cloudContentInsightsRequest = new CloudContentInsightsRequest();
+        cloudContentInsightsRequest.addTranslationId("translationId");
 
-        const contentInsightsResult = await cloudLanguageWeaverClient.getCloudContentInsightsForTranslations(contentInsightsForTranslationsRequest);
+        const contentInsightsResult = await cloudLanguageWeaverClient.getCloudContentInsightsForTranslations(cloudContentInsightsRequest);
         console.log(contentInsightsResult);
     } catch (e) {
         console.log(e);
