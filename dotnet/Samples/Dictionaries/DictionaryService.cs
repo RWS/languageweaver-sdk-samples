@@ -1,6 +1,6 @@
 ﻿using LanguageWeaver.Sdk.Common;
 using LanguageWeaver.Sdk.Configurations;
-using LanguageWeaver.Sdk.Translate.Common.Result;
+using LanguageWeaver.Sdk.Dictionaries.Common.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Dictionaries;
 

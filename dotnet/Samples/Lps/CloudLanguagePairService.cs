@@ -1,5 +1,5 @@
 ﻿using LanguageWeaver.Sdk.Common.Cloud;
-using LanguageWeaver.Sdk.Translate.Cloud.Result;
+using LanguageWeaver.Sdk.LanguagePairs.Cloud.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Lps;
 

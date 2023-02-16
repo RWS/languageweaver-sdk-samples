@@ -1,5 +1,5 @@
 ﻿using LanguageWeaver.Sdk.Common.Edge;
-using LanguageWeaver.Sdk.Translate.Edge.Result;
+using LanguageWeaver.Sdk.Dictionaries.Edge.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Dictionaries;
 

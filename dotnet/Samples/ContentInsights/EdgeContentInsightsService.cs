@@ -1,7 +1,7 @@
 ﻿using LanguageWeaver.Sdk.Common.Edge;
 using LanguageWeaver.Sdk.Constants;
 using LanguageWeaver.Sdk.ContentInsights.Edge.Request;
-using LanguageWeaver.Sdk.ContentInsights.Edge.Response;
+using LanguageWeaver.Sdk.ContentInsights.Edge.Result;
 using LanguageWeaver.Sdk.Translate.Edge.Request;
 
 namespace LanguageWeaver.Sdk.Samples.ContentInsights;
@@ -29,8 +29,11 @@ public class EdgeContentInsightsService
         };
 
         EdgeContentInsightsRequest edgeContentInsightsRequest =
-            new EdgeContentInsightsRequest().AddTranslationId(
-                lwClient.TranslateFile(translateFileRequest).TranslationId);
+            new EdgeContentInsightsRequest()
+            {
+                TranslationId =
+                    lwClient.TranslateFile(translateFileRequest).TranslationId
+            };
 
         EdgeContentInsightsResult edgeContentInsightsResult =
             lwClient.GetContentInsightsForTranslations(edgeContentInsightsRequest);

@@ -17,7 +17,7 @@ public class CloudContentInsightsService
 
     private static void CreateContentInsights(CloudLanguageWeaverClient lwClient)
     {
-        CloudContentInsightsRequest cloudContentInsightsRequest = new CloudContentInsightsRequest()
+        CloudFileContentInsightsRequest cloudContentInsightsRequest = new CloudFileContentInsightsRequest()
         {
             SourceLanguage = "eng",
             FilePath = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName,
@@ -43,8 +43,8 @@ public class CloudContentInsightsService
                 "Resources", "Output", "input1-translated.txt")
         };
 
-        CloudGetContentInsightsForTranslationsRequest contentInsightsForTranslationsRequest =
-            new CloudGetContentInsightsForTranslationsRequest().AddTranslationId(lwClient
+        CloudContentInsightsRequest contentInsightsForTranslationsRequest =
+            new CloudContentInsightsRequest().AddTranslationId(lwClient
                 .TranslateFile(translateFileRequest).TranslationId);
 
         CloudContentInsightsResult cloudContentInsightsResult =
