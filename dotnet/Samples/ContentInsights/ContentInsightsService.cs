@@ -1,8 +1,8 @@
 ﻿using LanguageWeaver.Sdk.Common;
 using LanguageWeaver.Sdk.Configurations;
 using LanguageWeaver.Sdk.Constants;
-using LanguageWeaver.Sdk.ContentInsights.Common.Api;
 using LanguageWeaver.Sdk.ContentInsights.Common.Request;
+using LanguageWeaver.Sdk.ContentInsights.Common.Result;
 using LanguageWeaver.Sdk.Translate.Common.Request;
 
 namespace LanguageWeaver.Sdk.Samples.ContentInsights;
