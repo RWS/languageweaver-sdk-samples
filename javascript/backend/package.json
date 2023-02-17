@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@language-weaver/lw-sdk-js": "^1.2.0",
+    "@language-weaver/lw-sdk-js": "^2.0.0",
     "path": "^0.12.7"
   }
 }
