@@ -43,9 +43,9 @@ public class CloudContentInsightsService
                 "Resources", "Output", "input1-translated.txt")
         };
 
+        var cloudTranslationFileResult = lwClient.TranslateFile(translateFileRequest);
         CloudContentInsightsRequest contentInsightsForTranslationsRequest =
-            new CloudContentInsightsRequest().AddTranslationId(lwClient
-                .TranslateFile(translateFileRequest).TranslationId);
+            new CloudContentInsightsRequest().AddTranslationId(cloudTranslationFileResult.TranslationId);
 
         CloudContentInsightsResult cloudContentInsightsResult =
             lwClient.GetContentInsightsForTranslations(contentInsightsForTranslationsRequest);

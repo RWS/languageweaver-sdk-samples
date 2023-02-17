@@ -28,11 +28,11 @@ public class EdgeContentInsightsService
                 "Resources", "Output", "input1-translated.txt")
         };
 
+        var edgeTranslationFileResult = lwClient.TranslateFile(translateFileRequest);
         EdgeContentInsightsRequest edgeContentInsightsRequest =
             new EdgeContentInsightsRequest()
             {
-                TranslationId =
-                    lwClient.TranslateFile(translateFileRequest).TranslationId
+                TranslationId = edgeTranslationFileResult.TranslationId
             };
 
         EdgeContentInsightsResult edgeContentInsightsResult =
