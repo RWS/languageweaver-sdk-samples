@@ -30,10 +30,12 @@ public class ContentInsightsService
                 "Resources", "Output", "input1-translated.txt")
         };
 
+        var translationFileResult = lwClient.TranslateFile(translateFileRequest);
         ContentInsightsRequest contentInsightsRequest =
-            new ContentInsightsRequest().AddTranslationId(lwClient.TranslateFile(translateFileRequest).TranslationId);
+            new ContentInsightsRequest().AddTranslationId(translationFileResult.TranslationId);
 
         ContentInsightsResult contentInsightsResult =
             lwClient.GetContentInsightsForTranslations(contentInsightsRequest);
+        // handle result
     }
 }
