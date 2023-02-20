@@ -1,4 +1,4 @@
-const {EdgeLanguageWeaverClient, ClientConfiguration, CredentialsConfiguration} = require("@language-weaver/lw-sdk-js");
+import {ClientConfiguration, CredentialsConfiguration, EdgeLanguageWeaverClient} from "@language-weaver/lw-sdk-js";
 
 export const getEdgeDictionaries = async clientId => {
     try {

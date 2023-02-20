@@ -1,4 +1,5 @@
-﻿using LanguageWeaver.Sdk.Translate.Result.Edge;
+﻿using LanguageWeaver.Sdk.Common.Edge;
+using LanguageWeaver.Sdk.LanguagePairs.Edge.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Lps;
 

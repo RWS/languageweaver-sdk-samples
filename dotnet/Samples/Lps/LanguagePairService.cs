@@ -1,5 +1,6 @@
-﻿using LanguageWeaver.Sdk.Configurations;
-using LanguageWeaver.Sdk.Translate.Result;
+﻿using LanguageWeaver.Sdk.Common;
+using LanguageWeaver.Sdk.Configurations;
+using LanguageWeaver.Sdk.LanguagePairs.Common.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Lps;
 

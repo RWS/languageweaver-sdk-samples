@@ -1,6 +1,8 @@
-﻿using LanguageWeaver.Sdk.Configurations;
-using LanguageWeaver.Sdk.Translate.Request;
-using LanguageWeaver.Sdk.Translate.Result;
+﻿using LanguageWeaver.Sdk.Common;
+using LanguageWeaver.Sdk.Configurations;
+using LanguageWeaver.Sdk.Constants;
+using LanguageWeaver.Sdk.Translate.Common.Request;
+using LanguageWeaver.Sdk.Translate.Common.Result;
 
 namespace LanguageWeaver.Sdk.Samples.Translations.Text;
 
@@ -9,6 +11,13 @@ public class TextTranslationService
     public static void Main()
     {
         using var lwClient = new SdkFactory().GetLanguageWeaverClient(new ClientConfiguration());
+
+        TranslateText(lwClient);
+        TranslateTextWithLinguisticOptions(lwClient);
+    }
+
+    private static void TranslateText(ILanguageWeaverClient lwClient)
+    {
         var translateTextRequest = new TranslateTextRequest
         {
             SourceLanguageId = "eng",
@@ -18,7 +27,7 @@ public class TextTranslationService
             {
                 "The weather is wonderful today!"
             },
-            InputFormat = "plain",
+            InputFormat = Format.Plain,
             Dictionaries = new List<string>
             {
                 // provide list of dictionaries
@@ -26,6 +35,29 @@ public class TextTranslationService
         };
 
         TranslateTextResult translateTextResult = lwClient.TranslateText(translateTextRequest);
+        Console.WriteLine(translateTextResult.Translation);
+    }
+
+    private static void TranslateTextWithLinguisticOptions(ILanguageWeaverClient lwClient)
+    {
+        var translateTextRequest = new TranslateTextRequest()
+        {
+            SourceLanguageId = "fra",
+            TargetLanguageId = "eng",
+            Model = "generic",
+            Input = new List<string> { "j'aime cette couleur" },
+            LinguisticOptions = new Dictionary<string, string>
+            {
+                { "Spelling", "UK" }
+            },
+            Dictionaries = new List<string>
+            {
+                // provide list of dictionaries
+            },
+            InputFormat = Format.Plain
+        };
+
+        var translateTextResult = lwClient.TranslateText(translateTextRequest);
         Console.WriteLine(translateTextResult.Translation);
     }
 }

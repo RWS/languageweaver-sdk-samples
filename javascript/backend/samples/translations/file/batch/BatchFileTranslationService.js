@@ -1,6 +1,6 @@
 const path = require("path");
 const SdkFactory = require("@language-weaver/lw-sdk-js").default;
-const {ClientConfiguration, TranslateBatchFileRequest} = require("@language-weaver/lw-sdk-js");
+const {ClientConfiguration, TranslateBatchFileRequest, PdfConverter} = require("@language-weaver/lw-sdk-js");
 
 const translateBatchFile = async () => {
     try {
@@ -23,4 +23,45 @@ const translateBatchFile = async () => {
     }
 }
 
+const translatePdfBatchFile = async () => {
+    try {
+        const lwClient = await SdkFactory.getLanguageWeaverClient(new ClientConfiguration());
+        const translateFileRequest = new TranslateBatchFileRequest();
+        translateFileRequest.sourceLanguageId = "eng";
+        translateFileRequest.targetLanguageId = "fra";
+        translateFileRequest.model = "generic";
+        translateFileRequest.pdfConverter = PdfConverter.STANDARD;
+
+        // provide full path to the input and output folders
+        translateFileRequest.input = path.resolve("resources/input_pdf");
+        translateFileRequest.outputDir = path.resolve("resources/output");
+        await lwClient.translateBatchFile(translateFileRequest);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
+const translateBatchFileWithLinguisticOptions = async () => {
+    try {
+        const lwClient = await SdkFactory.getLanguageWeaverClient(new ClientConfiguration());
+        const translateFileRequest = new TranslateBatchFileRequest();
+        translateFileRequest.sourceLanguageId = "fra";
+        translateFileRequest.targetLanguageId = "eng";
+        translateFileRequest.model = "generic";
+        // provide full path to the input and output folders
+        translateFileRequest.input = path.resolve("resources/input_linguistic_options");
+        translateFileRequest.outputDir = path.resolve("resources/output");
+
+        const linguisticOptions = new Map();
+        linguisticOptions.set("Spelling", "UK");
+        translateFileRequest.linguisticOptions = linguisticOptions;
+
+        await lwClient.translateBatchFile(translateFileRequest);
+    } catch (e) {
+        console.log(e);
+    }
+}
+
 translateBatchFile();
+// translatePdfBatchFile();
+// translateBatchFileWithLinguisticOptions();

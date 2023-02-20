@@ -26,3 +26,27 @@ export const translateTextUsingEdge = async clientId => {
         console.log(e);
     }
 }
+
+export const translateTextWithLinguisticOptionsUsingEdge = async (clientId, clientSecret) => {
+    try {
+        const clientConfiguration = new ClientConfiguration();
+        clientConfiguration.credentialsConfiguration = new CredentialsConfiguration(clientId);
+        const edgeLanguageWeaverClient = await new EdgeLanguageWeaverClient()
+            .withConfigurations(clientConfiguration)
+            .build();
+        const translateTextRequest = new EdgeTranslateTextRequest();
+        translateTextRequest.languagePairId = "EngFra_Generic_Cloud";
+        translateTextRequest.addInput("j'aime cette couleur");
+        translateTextRequest.inputFormat = Format.PLAIN;
+
+        const linguisticOptions = new Map();
+        linguisticOptions.set("Spelling", "UK");
+        translateTextRequest.linguisticOptions = linguisticOptions;
+
+        const translateTextResult = await edgeLanguageWeaverClient.translateTextUsingEdgeParams(translateTextRequest);
+
+        console.log(translateTextResult.translation);
+    } catch (e) {
+        console.log(e);
+    }
+}
