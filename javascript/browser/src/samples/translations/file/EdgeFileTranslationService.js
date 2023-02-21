@@ -7,7 +7,6 @@ import {
     PdfConverter
 } from "@language-weaver/lw-sdk-js";
 import {file1, file3, file5} from "../../../samples-utils";
-import {translatePdfFileUsingCloud} from "./CloudFileTranslationService";
 
 export const translateFileUsingEdge = async clientId => {
     try {
