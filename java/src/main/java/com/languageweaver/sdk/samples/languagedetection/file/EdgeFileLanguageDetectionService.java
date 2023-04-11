@@ -15,7 +15,7 @@ public class EdgeFileLanguageDetectionService {
                     .setInputFormat(Format.PLAIN)
                     .setEncoding("UTF-8");
 
-            final EdgeLanguageDetectionResult edgeLanguageDetectionResult = lwClient.languageDetectionFile(edgeFileLanguageDetectionRequest);
+            final EdgeLanguageDetectionResult edgeLanguageDetectionResult = lwClient.detectLanguage(edgeFileLanguageDetectionRequest);
 
             if (edgeLanguageDetectionResult.getLanguages() != null) {
                 edgeLanguageDetectionResult.getLanguages()

@@ -13,7 +13,7 @@ public class EdgeTextLanguageDetectionService {
                     .setInputFormat(Format.PLAIN)
                     .setEncoding("UTF-8");
 
-            final EdgeLanguageDetectionResult edgeLanguageDetectionResult = lwClient.languageDetectionText(edgeTextLanguageDetectionRequest);
+            final EdgeLanguageDetectionResult edgeLanguageDetectionResult = lwClient.detectLanguage(edgeTextLanguageDetectionRequest);
 
             if (edgeLanguageDetectionResult.getLanguages() != null) {
                 edgeLanguageDetectionResult.getLanguages()

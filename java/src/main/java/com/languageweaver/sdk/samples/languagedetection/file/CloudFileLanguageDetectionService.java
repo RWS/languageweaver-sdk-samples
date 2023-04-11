@@ -14,7 +14,7 @@ public class CloudFileLanguageDetectionService {
                     .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
                     .setInputFormat(Format.PLAIN);
 
-            final CloudLanguageDetectionResult cloudLanguageDetectionResult = lwClient.languageDetectionFile(cloudFileLanguageDetectionRequest);
+            final CloudLanguageDetectionResult cloudLanguageDetectionResult = lwClient.detectLanguage(cloudFileLanguageDetectionRequest);
 
             if (cloudLanguageDetectionResult.getLanguages() != null) {
                 cloudLanguageDetectionResult.getLanguages()

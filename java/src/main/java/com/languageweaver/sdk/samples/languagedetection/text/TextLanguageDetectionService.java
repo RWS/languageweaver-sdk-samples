@@ -14,7 +14,7 @@ public class TextLanguageDetectionService {
                     .setInput("A mountain is generally steeper than a hill")
                     .setInputFormat(Format.PLAIN);
 
-            final LanguageDetectionResult languageDetectionResult = lwClient.languageDetectionText(textLanguageDetectionRequest);
+            final LanguageDetectionResult languageDetectionResult = lwClient.detectLanguage(textLanguageDetectionRequest);
 
             if (languageDetectionResult.getLanguages() != null) {
                 languageDetectionResult.getLanguages()
