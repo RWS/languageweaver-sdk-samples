@@ -16,7 +16,7 @@ public class FileLanguageDetectionService {
                     .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
                     .setInputFormat(Format.PLAIN);
 
-            final LanguageDetectionResult languageDetectionResult = lwClient.languageDetectionFile(fileLanguageDetectionRequest);
+            final LanguageDetectionResult languageDetectionResult = lwClient.detectLanguage(fileLanguageDetectionRequest);
 
             if (languageDetectionResult.getLanguages() != null) {
                 languageDetectionResult.getLanguages()

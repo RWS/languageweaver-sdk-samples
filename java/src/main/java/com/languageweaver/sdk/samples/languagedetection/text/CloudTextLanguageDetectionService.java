@@ -13,7 +13,7 @@ public class CloudTextLanguageDetectionService {
                     .setInput("A mountain is generally steeper than a hill")
                     .setInputFormat(Format.PLAIN);
 
-            final CloudLanguageDetectionResult cloudLanguageDetectionResult = lwClient.languageDetectionText(cloudTextLanguageDetectionRequest);
+            final CloudLanguageDetectionResult cloudLanguageDetectionResult = lwClient.detectLanguage(cloudTextLanguageDetectionRequest);
 
             if (cloudLanguageDetectionResult.getLanguages() != null) {
                 cloudLanguageDetectionResult.getLanguages()
