@@ -32,12 +32,12 @@ public class EdgeFileAsyncTranslateOperationsService {
     }
 
     private static void checkTranslationStatus(EdgeLanguageWeaverClient lwClient, EdgeAsyncFileTranslationResult edgeAsyncTextTranslationResult) throws IOException, InterruptedException {
-        EdgeStatusTranslationResult edgeStatusTranslationResult = lwClient.checkTranslationStatus(edgeAsyncTextTranslationResult);
+        EdgeStatusTranslationResult edgeStatusTranslationResult = lwClient.checkEdgeTranslationStatus(edgeAsyncTextTranslationResult.getTranslationId());
         System.out.println("translation state: " + edgeStatusTranslationResult.getState() + "\n" + "translation substate: " + edgeStatusTranslationResult.getSubstate());
     }
 
     private static void retrieveTranslatedContent(EdgeLanguageWeaverClient lwClient, EdgeAsyncFileTranslationResult edgeAsyncTextTranslationResult) throws IOException, InterruptedException {
-        EdgeTranslationFileResult edgeTranslationTextResult = lwClient.retrieveFileTranslatedContent(edgeAsyncTextTranslationResult);
+        EdgeTranslationFileResult edgeTranslationTextResult = lwClient.retrieveTranslatedContent(edgeAsyncTextTranslationResult);
         // handle result
     }
 }

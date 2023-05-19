@@ -30,12 +30,12 @@ public class CloudTextAsyncTranslateOperationsService {
     }
 
     private static void checkTranslationStatus(CloudLanguageWeaverClient lwClient, CloudAsyncTextTranslationResult cloudAsyncTextTranslationResult) throws IOException, InterruptedException {
-        CloudTranslationStatusResult cloudTranslationStatusResult = lwClient.checkTranslationStatus(cloudAsyncTextTranslationResult);
+        CloudTranslationStatusResult cloudTranslationStatusResult = lwClient.checkCloudTranslationStatus(cloudAsyncTextTranslationResult.getRequestId());
         System.out.println("translation status: " + cloudTranslationStatusResult.getTranslationStatus());
     }
 
     private static void retrieveTranslatedContent(CloudLanguageWeaverClient lwClient, CloudAsyncTextTranslationResult cloudAsyncTextTranslationResult) throws IOException, InterruptedException {
-        CloudTranslationTextResult cloudTranslationTextResult = lwClient.retrieveTextTranslatedContent(cloudAsyncTextTranslationResult);
+        CloudTranslationTextResult cloudTranslationTextResult = lwClient.retrieveTranslatedContent(cloudAsyncTextTranslationResult);
         System.out.println("translated content: " + cloudTranslationTextResult.getTranslation().get(0));
     }
 }

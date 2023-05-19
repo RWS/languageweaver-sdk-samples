@@ -32,12 +32,12 @@ public class TextAsyncTranslateOperationsService {
     }
 
     private static void checkTranslationStatus(LanguageWeaverClient lwClient, AsyncTextTranslationResult asyncTextTranslationResult) throws IOException, InterruptedException {
-        TranslationStatusResult translationStatusResult = lwClient.checkTranslationStatus(asyncTextTranslationResult);
+        TranslationStatusResult translationStatusResult = lwClient.checkTranslationStatus(asyncTextTranslationResult.getRequestId());
         System.out.println("translation status: " + translationStatusResult.getTranslationStatus());
     }
 
     private static void retrieveTranslatedContent(LanguageWeaverClient lwClient, AsyncTextTranslationResult asyncTextTranslationResult) throws IOException, InterruptedException {
-        TranslateTextResult translateTextResult = lwClient.retrieveTextTranslatedContent(asyncTextTranslationResult);
+        TranslateTextResult translateTextResult = lwClient.retrieveTranslatedContent(asyncTextTranslationResult);
         System.out.println("translated content: " + translateTextResult.getTranslation());
     }
 }
