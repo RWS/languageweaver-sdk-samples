@@ -37,7 +37,7 @@ public class EdgeFileAsyncTranslateOperationsService {
     }
 
     private static void retrieveTranslatedContent(EdgeLanguageWeaverClient lwClient, EdgeAsyncFileTranslationResult edgeAsyncTextTranslationResult) throws IOException, InterruptedException {
-        EdgeTranslationFileResult edgeTranslationTextResult = lwClient.retrieveTranslatedContent(edgeAsyncTextTranslationResult);
+        EdgeTranslationFileResult edgeTranslationFileResult = lwClient.retrieveTranslatedContent(edgeAsyncTextTranslationResult);
         // handle result
     }
 }

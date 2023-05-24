@@ -41,7 +41,7 @@ public class FileAsyncTranslateOperationsService {
     }
 
     private static void retrieveTranslatedContent(LanguageWeaverClient lwClient, AsyncFileTranslationResult asyncFileTranslationResult) throws IOException, InterruptedException {
-        TranslationFileResult translateTextResult = lwClient.retrieveTranslatedContent(asyncFileTranslationResult);
+        TranslationFileResult translationFileResult = lwClient.retrieveTranslatedContent(asyncFileTranslationResult);
         // handle result
     }
 }

@@ -39,7 +39,7 @@ public class CloudFileAsyncTranslateOperationsService {
     }
 
     private static void retrieveTranslatedContent(CloudLanguageWeaverClient lwClient, CloudAsyncFileTranslationResult cloudAsyncTextTranslationResult) throws IOException, InterruptedException {
-        CloudTranslationFileResult cloudTranslationTextResult = lwClient.retrieveTranslatedContent(cloudAsyncTextTranslationResult);
+        CloudTranslationFileResult cloudTranslationFileResult = lwClient.retrieveTranslatedContent(cloudAsyncTextTranslationResult);
         // handle result
     }
 }
