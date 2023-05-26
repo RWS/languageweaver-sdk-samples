@@ -3,9 +3,7 @@ package com.languageweaver.sdk.samples.asynctranslateoperations.file;
 import com.languageweaver.sdk.common.LanguageWeaverClient;
 import com.languageweaver.sdk.common.SdkFactory;
 import com.languageweaver.sdk.common.configurations.ClientConfiguration;
-import com.languageweaver.sdk.common.constants.Format;
-import com.languageweaver.sdk.common.constants.Statuses;
-import com.languageweaver.sdk.common.constants.TranslationConstants;
+import com.languageweaver.sdk.common.constants.*;
 import com.languageweaver.sdk.translate.common.request.TranslateFileRequest;
 import com.languageweaver.sdk.translate.common.result.AsyncFileTranslationResult;
 import com.languageweaver.sdk.translate.common.result.TranslationFileResult;
@@ -16,15 +14,16 @@ import java.nio.file.Paths;
 
 public class FileAsyncTranslateOperationsService {
     public static void main(String[] args) throws Exception {
-        try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(new ClientConfiguration())) {
-           //create translation
+        ClientConfiguration clientConfiguration = new ClientConfiguration();
+        try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(clientConfiguration)) {
+            //create translation
             TranslateFileRequest translateFileRequest = new TranslateFileRequest()
                     .setSourceLanguageId("eng")
                     .setTargetLanguageId("fra")
                     .setModel("generic")
                     // provide full path to the source file
-                    .setInputFile(Paths.get("java", "src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
-                    .setOutputFile(Paths.get("java", "src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
+                    .setInputFile(Paths.get("src", "main", "resources", "input", "input1.txt").toFile().getAbsolutePath())
+                    .setOutputFile(Paths.get("src", "main", "resources", "output").toFile().getAbsolutePath() + File.separator + "input1-translated.txt")
                     .setInputFormat(Format.PLAIN);
 
             AsyncFileTranslationResult asyncFileTranslationResult = lwClient.createFileTranslation(translateFileRequest);
@@ -38,8 +37,9 @@ public class FileAsyncTranslateOperationsService {
             int sleepTime = asyncFileTranslationResult.getInputSize() < 500 ? TranslationConstants.SMALL_INPUT_SLEEP_TIME : TranslationConstants.SLEEP_TIME;
             long startTime = System.currentTimeMillis();
 
-            String status = Statuses.INIT;
-            while ((status.equals(Statuses.INIT) || status.equals(Statuses.TRANSLATING)) && System.currentTimeMillis() - startTime < TranslationConstants.CHECK_STATUS_TIMEOUT) {
+            String status = clientConfiguration.getProduct().equals(Product.CLOUD) ? Statuses.INIT : EdgeStatuses.PREPARING;
+
+            while (isInitStatus(status) || isTranslatingStatus(status) && System.currentTimeMillis() - startTime < TranslationConstants.CHECK_STATUS_TIMEOUT) {
                 statusResponse = lwClient.checkTranslationStatus(asyncFileTranslationResult.getRequestId());
                 status = statusResponse.getTranslationStatus();
                 Thread.sleep(sleepTime);
@@ -48,5 +48,13 @@ public class FileAsyncTranslateOperationsService {
             TranslationFileResult translationFileResult = lwClient.retrieveTranslatedContent(asyncFileTranslationResult);
             // handle result
         }
+    }
+
+    private static boolean isInitStatus(String status) {
+        return status.equals(Statuses.INIT) || status.equals(EdgeStatuses.PREPARING);
+    }
+
+    private static boolean isTranslatingStatus(String status) {
+        return status.equals(Statuses.TRANSLATING) || status.equals(EdgeStatuses.IN_PROGRESS);
     }
 }

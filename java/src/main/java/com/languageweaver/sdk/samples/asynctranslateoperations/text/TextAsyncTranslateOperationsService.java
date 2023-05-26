@@ -3,9 +3,7 @@ package com.languageweaver.sdk.samples.asynctranslateoperations.text;
 import com.languageweaver.sdk.common.LanguageWeaverClient;
 import com.languageweaver.sdk.common.SdkFactory;
 import com.languageweaver.sdk.common.configurations.ClientConfiguration;
-import com.languageweaver.sdk.common.constants.Format;
-import com.languageweaver.sdk.common.constants.Statuses;
-import com.languageweaver.sdk.common.constants.TranslationConstants;
+import com.languageweaver.sdk.common.constants.*;
 import com.languageweaver.sdk.translate.common.request.TranslateTextRequest;
 import com.languageweaver.sdk.translate.common.result.AsyncTextTranslationResult;
 import com.languageweaver.sdk.translate.common.result.TranslateTextResult;
@@ -13,7 +11,8 @@ import com.languageweaver.sdk.translate.common.result.TranslationStatusResult;
 
 public class TextAsyncTranslateOperationsService {
     public static void main(String[] args) throws Exception {
-        try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(new ClientConfiguration())) {
+        ClientConfiguration clientConfiguration = new ClientConfiguration();
+        try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(clientConfiguration)) {
             //create translation
             TranslateTextRequest translateTextRequest = new TranslateTextRequest()
                     .setSourceLanguageId("eng")
@@ -33,8 +32,10 @@ public class TextAsyncTranslateOperationsService {
             int sleepTime = asyncTextTranslationResult.getInputSize() < 500 ? TranslationConstants.SMALL_INPUT_SLEEP_TIME : TranslationConstants.SLEEP_TIME;
             long startTime = System.currentTimeMillis();
 
-            String status = Statuses.INIT;
-            while ((status.equals(Statuses.INIT) || status.equals(Statuses.TRANSLATING)) && System.currentTimeMillis() - startTime < TranslationConstants.CHECK_STATUS_TIMEOUT) {
+
+            String status = clientConfiguration.getProduct().equals(Product.CLOUD) ? Statuses.INIT : EdgeStatuses.PREPARING;
+
+            while (isInitStatus(status) || isTranslatingStatus(status) && System.currentTimeMillis() - startTime < TranslationConstants.CHECK_STATUS_TIMEOUT) {
                 statusResponse = lwClient.checkTranslationStatus(asyncTextTranslationResult.getRequestId());
                 status = statusResponse.getTranslationStatus();
                 Thread.sleep(sleepTime);
@@ -43,5 +44,13 @@ public class TextAsyncTranslateOperationsService {
             TranslateTextResult translateTextResult = lwClient.retrieveTranslatedContent(asyncTextTranslationResult);
             System.out.println("translated content: " + translateTextResult.getTranslation());
         }
+    }
+
+    private static boolean isInitStatus(String status) {
+        return status.equals(Statuses.INIT) || status.equals(EdgeStatuses.PREPARING);
+    }
+
+    private static boolean isTranslatingStatus(String status) {
+        return status.equals(Statuses.TRANSLATING) || status.equals(EdgeStatuses.IN_PROGRESS);
     }
 }
