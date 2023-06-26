@@ -1,4 +1,4 @@
-package com.languageweaver.sdk.samples.asynctranslateoperations.text;
+package com.languageweaver.sdk.samples.asynctranslations.text;
 
 import com.languageweaver.sdk.common.LanguageWeaverClient;
 import com.languageweaver.sdk.common.SdkFactory;
@@ -28,8 +28,8 @@ public class TextAsyncTranslateOperationsService {
             System.out.println("translation status: " + translationStatusResult.getTranslationStatus());
 
             //retrieve translated content
-            TranslationStatusResult statusResponse = null;
-            int sleepTime = asyncTextTranslationResult.getInputSize() < 500 ? TranslationConstants.SMALL_INPUT_SLEEP_TIME : TranslationConstants.SLEEP_TIME;
+            TranslationStatusResult statusResponse;
+            int sleepTime = asyncTextTranslationResult.getOptimalStatusCheckDelay();
             long startTime = System.currentTimeMillis();
 
 

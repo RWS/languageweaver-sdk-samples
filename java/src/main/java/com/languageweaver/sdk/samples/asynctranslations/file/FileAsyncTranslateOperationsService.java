@@ -1,4 +1,4 @@
-package com.languageweaver.sdk.samples.asynctranslateoperations.file;
+package com.languageweaver.sdk.samples.asynctranslations.file;
 
 import com.languageweaver.sdk.common.LanguageWeaverClient;
 import com.languageweaver.sdk.common.SdkFactory;
@@ -33,8 +33,8 @@ public class FileAsyncTranslateOperationsService {
             System.out.println("translation status: " + translationStatusResult.getTranslationStatus());
 
             //retrieve translated content
-            TranslationStatusResult statusResponse = null;
-            int sleepTime = asyncFileTranslationResult.getInputSize() < 500 ? TranslationConstants.SMALL_INPUT_SLEEP_TIME : TranslationConstants.SLEEP_TIME;
+            TranslationStatusResult statusResponse;
+            int sleepTime = asyncFileTranslationResult.getOptimalStatusCheckDelay();
             long startTime = System.currentTimeMillis();
 
             String status = clientConfiguration.getProduct().equals(Product.CLOUD) ? Statuses.INIT : EdgeStatuses.PREPARING;
@@ -45,7 +45,10 @@ public class FileAsyncTranslateOperationsService {
                 Thread.sleep(sleepTime);
             }
 
-            TranslationFileResult translationFileResult = lwClient.retrieveTranslatedContent(asyncFileTranslationResult);
+            TranslationFileResult translationFileResultWithOutputFile = lwClient.retrieveTranslatedContent(asyncFileTranslationResult, translateFileRequest.getOutputFile());
+            // handle result
+
+            TranslationFileResult translationFileResultWithoutOutputFile = lwClient.retrieveTranslatedContent(asyncFileTranslationResult);
             // handle result
         }
     }

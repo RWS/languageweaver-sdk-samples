@@ -1,4 +1,4 @@
-package com.languageweaver.sdk.samples.asynctranslateoperations.file;
+package com.languageweaver.sdk.samples.asynctranslations.file;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
 import com.languageweaver.sdk.common.constants.Format;
@@ -12,9 +12,6 @@ import com.languageweaver.sdk.translate.common.result.TranslationStatusResult;
 
 import java.io.File;
 import java.nio.file.Paths;
-
-import static com.languageweaver.sdk.common.constants.TranslationConstants.SLEEP_TIME;
-import static com.languageweaver.sdk.common.constants.TranslationConstants.SMALL_INPUT_SLEEP_TIME;
 
 public class CloudFileAsyncTranslateOperationsService {
     public static void main(String[] args) throws Exception {
@@ -36,8 +33,8 @@ public class CloudFileAsyncTranslateOperationsService {
             System.out.println("translation status: " + cloudTranslationStatusResult.getTranslationStatus());
 
             //retrieve translated content
-            TranslationStatusResult statusResponse = null;
-            int sleepTime = cloudAsyncFileTranslationResult.getInputSize() < 500 ? SMALL_INPUT_SLEEP_TIME : SLEEP_TIME;
+            TranslationStatusResult statusResponse;
+            int sleepTime = cloudAsyncFileTranslationResult.getOptimalStatusCheckDelay();
             long startTime = System.currentTimeMillis();
 
             String status = Statuses.INIT;
@@ -48,7 +45,11 @@ public class CloudFileAsyncTranslateOperationsService {
                 Thread.sleep(sleepTime);
             }
 
-            CloudTranslationFileResult cloudTranslationFileResult = lwClient.retrieveTranslatedContent(cloudAsyncFileTranslationResult);
+
+            CloudTranslationFileResult cloudTranslationFileResultWithOutputFile = lwClient.retrieveTranslatedContent(cloudAsyncFileTranslationResult, translateFileRequest.getOutputFile());
+            // handle result
+
+            CloudTranslationFileResult cloudTranslationFileResultWithoutOutputFile = lwClient.retrieveTranslatedContent(cloudAsyncFileTranslationResult);
             // handle result
         }
     }

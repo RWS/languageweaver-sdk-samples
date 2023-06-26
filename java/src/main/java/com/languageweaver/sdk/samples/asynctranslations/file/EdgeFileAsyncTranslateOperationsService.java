@@ -1,4 +1,4 @@
-package com.languageweaver.sdk.samples.asynctranslateoperations.file;
+package com.languageweaver.sdk.samples.asynctranslations.file;
 
 import com.languageweaver.sdk.common.constants.EdgeStatuses;
 import com.languageweaver.sdk.common.constants.Format;
@@ -6,13 +6,13 @@ import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
 import com.languageweaver.sdk.translate.common.result.TranslationStatusResult;
 import com.languageweaver.sdk.translate.edge.request.EdgeTranslateFileRequest;
 import com.languageweaver.sdk.translate.edge.result.EdgeAsyncFileTranslationResult;
-import com.languageweaver.sdk.translate.edge.result.EdgeStatusTranslationResult;
 import com.languageweaver.sdk.translate.edge.result.EdgeTranslationFileResult;
+import com.languageweaver.sdk.translate.edge.result.EdgeTranslationStatusResult;
 
 import java.io.File;
 import java.nio.file.Paths;
 
-import static com.languageweaver.sdk.common.constants.TranslationConstants.*;
+import static com.languageweaver.sdk.common.constants.TranslationConstants.CHECK_STATUS_TIMEOUT;
 
 public class EdgeFileAsyncTranslateOperationsService {
     public static void main(String[] args) throws Exception {
@@ -28,23 +28,26 @@ public class EdgeFileAsyncTranslateOperationsService {
             EdgeAsyncFileTranslationResult edgeAsyncFileTranslationResult = lwClient.createFileTranslation(translateFileRequest);
 
             //check status
-            EdgeStatusTranslationResult edgeStatusTranslationResult = lwClient.checkEdgeTranslationStatus(edgeAsyncFileTranslationResult.getTranslationId());
+            EdgeTranslationStatusResult edgeStatusTranslationResult = lwClient.checkEdgeTranslationStatus(edgeAsyncFileTranslationResult.getRequestId());
             System.out.println("translation state: " + edgeStatusTranslationResult.getState() + "\n" + "translation substate: " + edgeStatusTranslationResult.getSubstate());
 
             //retrieve translated content
-            TranslationStatusResult statusResponse = null;
-            int sleepTime = edgeAsyncFileTranslationResult.getInputSize() < 500 ? SMALL_INPUT_SLEEP_TIME : SLEEP_TIME;
+            TranslationStatusResult statusResponse;
+            int sleepTime = edgeAsyncFileTranslationResult.getOptimalStatusCheckDelay();
             long startTime = System.currentTimeMillis();
 
             String status = EdgeStatuses.PREPARING;
 
             while ((status.equals(EdgeStatuses.PREPARING) || status.equals(EdgeStatuses.IN_PROGRESS)) && System.currentTimeMillis() - startTime < CHECK_STATUS_TIMEOUT) {
-                statusResponse = lwClient.checkTranslationStatus(edgeAsyncFileTranslationResult.getTranslationId());
+                statusResponse = lwClient.checkTranslationStatus(edgeAsyncFileTranslationResult.getRequestId());
                 status = statusResponse.getTranslationStatus();
                 Thread.sleep(sleepTime);
             }
 
-            EdgeTranslationFileResult edgeTranslationFileResult = lwClient.retrieveTranslatedContent(edgeAsyncFileTranslationResult);
+            EdgeTranslationFileResult edgeTranslationFileResultWithOutputFile = lwClient.retrieveTranslatedContent(edgeAsyncFileTranslationResult, translateFileRequest.getOutputFile());
+            //handle result
+
+            EdgeTranslationFileResult edgeTranslationFileResultWithoutOutputFile = lwClient.retrieveTranslatedContent(edgeAsyncFileTranslationResult);
             //handle result
         }
     }

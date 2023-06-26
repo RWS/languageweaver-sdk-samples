@@ -1,4 +1,4 @@
-package com.languageweaver.sdk.samples.asynctranslateoperations.text;
+package com.languageweaver.sdk.samples.asynctranslations.text;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
 import com.languageweaver.sdk.common.constants.Format;
@@ -9,9 +9,6 @@ import com.languageweaver.sdk.translate.cloud.result.CloudAsyncTextTranslationRe
 import com.languageweaver.sdk.translate.cloud.result.CloudTranslationStatusResult;
 import com.languageweaver.sdk.translate.cloud.result.CloudTranslationTextResult;
 import com.languageweaver.sdk.translate.common.result.TranslationStatusResult;
-
-import static com.languageweaver.sdk.common.constants.TranslationConstants.SLEEP_TIME;
-import static com.languageweaver.sdk.common.constants.TranslationConstants.SMALL_INPUT_SLEEP_TIME;
 
 public class CloudTextAsyncTranslateOperationsService {
     public static void main(String[] args) throws Exception {
@@ -31,8 +28,8 @@ public class CloudTextAsyncTranslateOperationsService {
             System.out.println("translation status: " + cloudTranslationStatusResult.getTranslationStatus());
 
             //retrieve translated content
-            TranslationStatusResult statusResponse = null;
-            int sleepTime = cloudAsyncTextTranslationResult.getInputSize() < 500 ? SMALL_INPUT_SLEEP_TIME : SLEEP_TIME;
+            TranslationStatusResult statusResponse;
+            int sleepTime = cloudAsyncTextTranslationResult.getOptimalStatusCheckDelay();
             long startTime = System.currentTimeMillis();
 
             String status = Statuses.INIT;
