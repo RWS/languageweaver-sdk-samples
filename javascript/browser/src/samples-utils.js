@@ -72,6 +72,12 @@ import {
     getContentInsightsUsingCloud
 } from "./samples/content-insights/CloudContentInsightsService";
 import {getContentInsightsForTranslationsUsingEdge} from "./samples/content-insights/EdgeContentInsightsService";
+import {detectCloudFileLanguage} from "./samples/language-detection/file/CloudFileLangaugeDetectionService";
+import {detectEdgeFileLanguage} from "./samples/language-detection/file/EdgeFileLanguageDetectionService";
+import {detectFileLanguage} from "./samples/language-detection/file/FileLanguageDetectionService";
+import {detectCloudTextLanguage} from "./samples/language-detection/text/CloudTextLanguageDetectionService";
+import {detectEdgeTextLanguage} from "./samples/language-detection/text/EdgeTextLanguageDetection";
+import {detectTextLanguage} from "./samples/language-detection/text/TextLanguageDetectionService";
 
 const textTranslationItems = [
     {
@@ -402,6 +408,42 @@ const contentInsightsItems = [
     }
 ];
 
+const fileLanguageDetectionItems = [
+    {
+        id: "file-language-detection-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => detectFileLanguage(clientId, clientSecret)
+    },
+    {
+        id: "file-language-detection-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => detectCloudFileLanguage(clientId, clientSecret)
+    },
+    {
+        id: "file-language-detection-edge",
+        title: "Edge",
+        onClick: (clientId) => detectEdgeFileLanguage(clientId)
+    }
+];
+
+const textLanguageDetectionItems = [
+    {
+        id: "text-language-detection-generic",
+        title: "Generic",
+        onClick: (clientId, clientSecret) => detectTextLanguage(clientId, clientSecret)
+    },
+    {
+        id: "text-language-detection-cloud",
+        title: "Cloud",
+        onClick: (clientId, clientSecret) => detectCloudTextLanguage(clientId, clientSecret)
+    },
+    {
+        id: "text-language-detection-edge",
+        title: "Edge",
+        onClick: (clientId) => detectEdgeTextLanguage(clientId)
+    }
+];
+
 export const samplesConfig = [
     {
         id: "text-translation",
@@ -492,6 +534,16 @@ export const samplesConfig = [
         id: "content-insights",
         title: "Content Insights",
         items: contentInsightsItems
+    },
+    {
+        id: "file-language-detection",
+        title: "File Language Detection",
+        items: fileLanguageDetectionItems
+    },
+    {
+        id: "text-language-detection",
+        title: "Text Language Detection",
+        items: textLanguageDetectionItems
     },
 ];
 
