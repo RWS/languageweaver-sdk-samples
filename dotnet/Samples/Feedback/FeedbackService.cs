@@ -21,7 +21,6 @@ public class FeedbackService
         //UPDATE FEEDBACK
         UpdateFeedbackRequest updateFeedbackRequest = feedback.ToUpdateRequest();
         updateFeedbackRequest.SuggestedTranslation = "new suggested translation";
-        updateFeedbackRequest.ClearComments().AddComment(FeedbackComment.CapitalizationPunctuation);
         feedback = lwClient.UpdateFeedback(updateFeedbackRequest);
 
         //UPDATE FEEDBACK APPROVAL
@@ -48,7 +47,6 @@ public class FeedbackService
             TargetText = "targetText",
             SuggestedTranslation = "suggestedTranslation",
         };
-        createFeedbackRequest.AddComment(FeedbackComment.Spelling);
 
         FeedbackResult feedback = lwClient.CreateFeedback(createFeedbackRequest);
 
@@ -64,8 +62,6 @@ public class FeedbackService
             FeedbackId = "feedbackId",
             SuggestedTranslation = "new suggested translation"
         };
-
-        updateFeedbackRequest.AddComment(FeedbackComment.CapitalizationPunctuation);
 
         FeedbackResult feedback = lwClient.UpdateFeedback(updateFeedbackRequest);
     }
