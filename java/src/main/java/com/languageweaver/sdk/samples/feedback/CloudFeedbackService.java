@@ -1,7 +1,10 @@
 package com.languageweaver.sdk.samples.feedback;
 
 import com.languageweaver.sdk.common.cloud.CloudLanguageWeaverClient;
-import com.languageweaver.sdk.common.constants.*;
+import com.languageweaver.sdk.common.constants.ApprovalStatus;
+import com.languageweaver.sdk.common.constants.CloudFeedbackSortCriteria;
+import com.languageweaver.sdk.common.constants.Order;
+import com.languageweaver.sdk.common.constants.QualityEstimation;
 import com.languageweaver.sdk.feedback.cloud.request.*;
 import com.languageweaver.sdk.feedback.cloud.result.CloudFeedbackListResult;
 import com.languageweaver.sdk.feedback.cloud.result.CloudFeedbackResult;
@@ -21,10 +24,6 @@ public class CloudFeedbackService {
                     .setSourceText("sourceText")
                     .setTargetText("targetText")
                     .setSuggestedTranslation("suggestedTranslation")
-                    .setRating(3)
-                    .addComment(FeedbackComment.SPELLING)
-                    .addComment("custom comment")
-                    .setTranslationMetadata("metadata")
                     .setNumberOfSegments(1)
                     .setQualityEstimationMT(QualityEstimation.ADEQUATE)
                     .setQualityEstimation(QualityEstimation.POOR);
@@ -38,9 +37,7 @@ public class CloudFeedbackService {
             CloudUpdateFeedbackRequest cloudUpdateFeedbackRequest = new CloudUpdateFeedbackRequest()
                     .setFeedbackId("feedbackId")
                     .setSuggestedTranslation("new suggested translation")
-                    .setRating(2)
-                    .setQualityEstimation(QualityEstimation.POOR)
-                    .addComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
+                    .setQualityEstimation(QualityEstimation.POOR);
 
             CloudFeedbackResult feedback = lwClient.updateFeedback(cloudUpdateFeedbackRequest);
         }
@@ -87,7 +84,6 @@ public class CloudFeedbackService {
         try (CloudLanguageWeaverClient lwClient = new CloudLanguageWeaverClient().build()) {
             CloudFilterFeedbackRequest filterFeedbackRequest = new CloudFilterFeedbackRequest()
                     .setApprovalStatus(ApprovalStatus.APPROVED)
-                    .setFeedbackCategory(FeedbackCategory.IMPROVEMENT)
                     .setUser("userId")
                     .setStartDate("10/10/2021")
                     .setEndDate("10/10/2022")
@@ -120,9 +116,7 @@ public class CloudFeedbackService {
             // UPDATE FEEDBACK
             CloudUpdateFeedbackRequest cloudUpdateFeedbackRequest = feedback.toUpdateRequest()
                     .setSuggestedTranslation("new suggested translation")
-                    .setRating(2)
-                    .setQualityEstimation(QualityEstimation.POOR)
-                    .clearComments().addComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
+                    .setQualityEstimation(QualityEstimation.POOR);
             feedback = lwClient.updateFeedback(cloudUpdateFeedbackRequest);
 
             // UPDATE FEEDBACK APPROVAL

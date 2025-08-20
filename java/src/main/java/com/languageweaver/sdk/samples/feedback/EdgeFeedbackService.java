@@ -1,7 +1,6 @@
 package com.languageweaver.sdk.samples.feedback;
 
 import com.languageweaver.sdk.common.constants.ApprovalStatus;
-import com.languageweaver.sdk.common.constants.FeedbackComment;
 import com.languageweaver.sdk.common.edge.EdgeLanguageWeaverClient;
 import com.languageweaver.sdk.feedback.edge.request.*;
 import com.languageweaver.sdk.feedback.edge.result.EdgeFeedbackListResult;
@@ -22,7 +21,6 @@ public class EdgeFeedbackService {
                     .setSourceText("sourceText")
                     .setTargetText("targetText")
                     .setSuggestedTranslation("suggestedTranslation")
-                    .setComment(FeedbackComment.SPELLING)
                     .setApprovalState(ApprovalStatus.APPROVED);
 
             return lwClient.createFeedback(createFeedbackRequest);
@@ -33,8 +31,7 @@ public class EdgeFeedbackService {
         try (EdgeLanguageWeaverClient lwClient = new EdgeLanguageWeaverClient().build()) {
             EdgeUpdateFeedbackRequest edgeUpdateFeedbackRequest = new EdgeUpdateFeedbackRequest()
                     .setFeedbackId("feedbackId")
-                    .setSuggestedTranslation("new suggested translation")
-                    .setComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
+                    .setSuggestedTranslation("new suggested translation");
 
             EdgeFeedbackResult feedback = lwClient.updateFeedback(edgeUpdateFeedbackRequest);
         }
@@ -84,7 +81,6 @@ public class EdgeFeedbackService {
                     .setSourceText("sourceText")
                     .setMachineTranslation("machineTranslation")
                     .setSuggestedTranslation("suggestedTranslation")
-                    .setComment("comment")
                     .setReviewer("reviewer username")
                     .setUser("creation username")
                     .addApprovalStatus(ApprovalStatus.APPROVED)
@@ -116,8 +112,7 @@ public class EdgeFeedbackService {
 
             // UPDATE FEEDBACK
             EdgeUpdateFeedbackRequest edgeUpdateFeedbackRequest = feedback.toUpdateRequest()
-                    .setSuggestedTranslation("new suggested translation")
-                    .setComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
+                    .setSuggestedTranslation("new suggested translation");
             feedback = lwClient.updateFeedback(edgeUpdateFeedbackRequest);
 
             // UPDATE FEEDBACK APPROVAL

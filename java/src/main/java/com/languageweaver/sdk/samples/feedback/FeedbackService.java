@@ -4,7 +4,6 @@ import com.languageweaver.sdk.common.LanguageWeaverClient;
 import com.languageweaver.sdk.common.SdkFactory;
 import com.languageweaver.sdk.common.configurations.ClientConfiguration;
 import com.languageweaver.sdk.common.constants.ApprovalStatus;
-import com.languageweaver.sdk.common.constants.FeedbackComment;
 import com.languageweaver.sdk.feedback.common.request.*;
 import com.languageweaver.sdk.feedback.common.result.FeedbackListResult;
 import com.languageweaver.sdk.feedback.common.result.FeedbackResult;
@@ -21,8 +20,7 @@ public class FeedbackService {
                     .setModel("generic")
                     .setSourceText("sourceText")
                     .setTargetText("targetText")
-                    .setSuggestedTranslation("suggestedTranslation")
-                    .addComment(FeedbackComment.SPELLING);
+                    .setSuggestedTranslation("suggestedTranslation");
 
             return lwClient.createFeedback(createFeedbackRequest);
         }
@@ -32,8 +30,7 @@ public class FeedbackService {
         try (LanguageWeaverClient lwClient = new SdkFactory().getLanguageWeaverClient(new ClientConfiguration())) {
             UpdateFeedbackRequest updateFeedbackRequest = new UpdateFeedbackRequest()
                     .setFeedbackId("feedbackId")
-                    .setSuggestedTranslation("new suggested translation")
-                    .addComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
+                    .setSuggestedTranslation("new suggested translation");
 
             FeedbackResult feedback = lwClient.updateFeedback(updateFeedbackRequest);
         }
@@ -109,8 +106,7 @@ public class FeedbackService {
 
             // UPDATE FEEDBACK
             UpdateFeedbackRequest updateFeedbackRequest = feedback.toUpdateRequest()
-                    .setSuggestedTranslation("new suggested translation")
-                    .clearComments().addComment(FeedbackComment.CAPITALIZATION_PUNCTUATION);
+                    .setSuggestedTranslation("new suggested translation");
             feedback = lwClient.updateFeedback(updateFeedbackRequest);
 
             // UPDATE FEEDBACK APPROVAL

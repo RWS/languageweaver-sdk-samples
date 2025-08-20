@@ -20,7 +20,6 @@ public class EdgeFeedbackService
         //UPDATE FEEDBACK
         EdgeUpdateFeedbackRequest edgeUpdateFeedbackRequest = feedback.ToUpdateRequest();
         edgeUpdateFeedbackRequest.SuggestedTranslation = "new suggested translation";
-        edgeUpdateFeedbackRequest.ClearComments().AddComment(FeedbackComment.CapitalizationPunctuation);
         feedback = lwClient.UpdateFeedback(edgeUpdateFeedbackRequest);
 
         //UPDATE FEEDBACK APPROVAL
@@ -49,7 +48,6 @@ public class EdgeFeedbackService
             SuggestedTranslation = "suggestedTranslation2",
             ApprovalState = ApprovalStatus.Approved
         };
-        edgeCreateFeedbackRequest.AddComment(FeedbackComment.Spelling);
 
         EdgeFeedbackResult feedback = lwClient.CreateFeedback(edgeCreateFeedbackRequest);
         return feedback;
@@ -64,7 +62,6 @@ public class EdgeFeedbackService
             FeedbackId = "feedbackId",
             SuggestedTranslation = "new suggested translation"
         };
-        edgeUpdateFeedbackRequest.AddComment(FeedbackComment.CapitalizationPunctuation);
 
         EdgeFeedbackResult feedback = lwClient.UpdateFeedback(edgeUpdateFeedbackRequest);
 
@@ -127,7 +124,6 @@ public class EdgeFeedbackService
             SourceText = "sourceText",
             MachineTranslation = "machineTranslation",
             SuggestedTranslation = "suggestedTranslation",
-            Comment = "comment",
             Reviewer = "reviewer username",
             User = "creation username",
             ApprovalStatus = ApprovalStatus.Approved,
