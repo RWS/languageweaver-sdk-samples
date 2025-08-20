@@ -20,9 +20,7 @@ public class CloudFeedbackService
         //UPDATE FEEDBACK
         CloudUpdateFeedbackRequest cloudUpdateFeedbackRequest = feedback.ToUpdateRequest();
         cloudUpdateFeedbackRequest.SuggestedTranslation = "new suggested translation";
-        cloudUpdateFeedbackRequest.Rating = 2;
         cloudUpdateFeedbackRequest.QualityEstimation = QualityEstimation.Poor;
-        cloudUpdateFeedbackRequest.ClearComments().AddComment(FeedbackComment.CapitalizationPunctuation);
         feedback = lwClient.UpdateFeedback(cloudUpdateFeedbackRequest);
 
         //UPDATE FEEDBACK APPROVAL
@@ -48,14 +46,10 @@ public class CloudFeedbackService
             SourceText = "sourceText",
             TargetText = "targetText",
             SuggestedTranslation = "suggestedTranslation",
-            Rating = 3,
-            TranslationMetadata = "metadata",
             NumberOfSegments = 1,
             QualityEstimation = QualityEstimation.Adequate,
             QualityEstimationMt = QualityEstimation.Poor
         };
-        cloudCreateFeedbackRequest.AddComment(FeedbackComment.Spelling);
-        cloudCreateFeedbackRequest.AddComment("custom comment");
 
         CloudFeedbackResult feedback = lwClient.CreateFeedback(cloudCreateFeedbackRequest);
         return feedback;
@@ -69,10 +63,8 @@ public class CloudFeedbackService
         {
             FeedbackId = "feedbackId",
             SuggestedTranslation = "new suggested translation",
-            Rating = 2,
             QualityEstimation = QualityEstimation.Poor
         };
-        cloudUpdateFeedbackRequest.AddComment(FeedbackComment.CapitalizationPunctuation);
 
         CloudFeedbackResult feedback = lwClient.UpdateFeedback(cloudUpdateFeedbackRequest);
         Console.WriteLine(feedback.ApprovalState);
@@ -131,7 +123,6 @@ public class CloudFeedbackService
         CloudFilterFeedbackRequest filterFeedbackRequest = new CloudFilterFeedbackRequest()
         {
             ApprovalStatus = ApprovalStatus.Approved,
-            FeedbackCategory = FeedbackCategory.Improvement,
             User = "userId",
             StartDate = "10/10/2021",
             EndDate = "10/10/2022",
